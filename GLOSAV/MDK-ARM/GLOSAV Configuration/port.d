@@ -1,0 +1,11 @@
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\port.c
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
+glosav configuration\port.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+glosav configuration\port.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+glosav configuration\port.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h
+glosav configuration\port.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h

@@ -1,0 +1,148 @@
+/* 
+ * FreeModbus Libary: A portable Modbus implementation for Modbus ASCII/RTU.
+ * Copyright (c) 2006 Christian Walter <wolti@sil.at>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * File: $Id: mbfuncuser.c,v 1.1 2015/08/06 23:48:22 Bykov Exp $
+ */
+
+/* ----------------------- System includes ----------------------------------*/
+#include "stdlib.h"
+#include "string.h"
+
+/* ----------------------- Platform includes --------------------------------*/
+#include "port.h"
+
+/* ----------------------- Modbus includes ----------------------------------*/
+#include "mb.h"
+#include "mbframe.h"
+#include "mbproto.h"
+#include "mbconfig.h"
+
+/* ----------------------- Defines ------------------------------------------*/
+
+#define SUBFUNC_COMPORTS     	( 1 )
+
+#define MB_PDU_FUNC_USER100_SUBFUNC_OFF     	( MB_PDU_DATA_OFF + 0 )
+#define MB_PDU_FUNC_USER100_SIZE_MIN          ( 1 )
+
+/* ----------------------- Static functions ---------------------------------*/
+eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
+
+/* ----------------------- Start implementation -----------------------------*/
+
+/*
+packet format:
+func - subFunc - dataSpecific
+func=100
+subfunc = ...
+1 - read-write Rx-TxFIFO Com ports: 
+command data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ... // data to TX FIFO
+answer data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ...	// data from RX FIFO
+2 - ???
+*/
+
+eMBException
+eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
+{
+//    USHORT          usRegReadAddress;
+//    USHORT          usRegReadCount;
+//    USHORT          usRegWriteAddress;
+//    USHORT          usRegWriteCount;
+    UCHAR           ucByteCnt;
+    UCHAR          	*pucFrameCur;
+    UCHAR          	idx, bytesLeft;
+	  UCHAR						errFormat = 0;
+    UCHAR           portDataCnt;
+
+    eMBException    eStatus = MB_EX_NONE;
+    eMBErrorCode    eRegStatus;
+
+    if( *usLen >= ( MB_PDU_FUNC_USER100_SIZE_MIN + MB_PDU_SIZE_MIN ) )
+    {
+			switch (( UCHAR )( pucFrame[MB_PDU_FUNC_USER100_SUBFUNC_OFF])){
+				case SUBFUNC_COMPORTS:
+					// проверим сначала корректность данных (посчитаем порты и данные)
+					idx = MB_PDU_FUNC_USER100_SUBFUNC_OFF+1;
+					bytesLeft = *usLen - idx;
+					ucByteCnt = 0;
+					while(bytesLeft && !errFormat){
+						portDataCnt = pucFrame[idx] & 0x0F;
+						idx++; bytesLeft--; ucByteCnt++;
+						if(portDataCnt > bytesLeft){
+							errFormat = 1;
+							break;
+						}
+						idx+=portDataCnt;
+						ucByteCnt+=portDataCnt;
+						bytesLeft-=portDataCnt;
+					}
+					if(errFormat){
+			      /* Can't be a valid request because the length is incorrect. */
+						eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+				    return eStatus;
+					}
+					break;
+				default:
+					eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+//					eStatus = MB_EX_ILLEGAL_FUNCTION;
+			    return eStatus;
+			}
+			
+      /* Make callback to update the TX FIFO values. */
+      eRegStatus = eMBUser100ComPortCB( &pucFrame[MB_PDU_FUNC_USER100_SUBFUNC_OFF+1], &ucByteCnt, MB_REG_WRITE );
+			if( eRegStatus == MB_ENOERR )	{
+					/* Set the current PDU data pointer to the beginning. */
+					pucFrameCur = &pucFrame[MB_PDU_FUNC_OFF];
+					*usLen = MB_PDU_FUNC_OFF;
+
+					/* First byte contains the function code. */
+					*pucFrameCur++ = MB_FUNC_USER_100;
+					*usLen += 1;
+
+					/* Second byte in the response contain the subfunction code. */
+					*pucFrameCur++ = SUBFUNC_COMPORTS;
+					*usLen += 1;
+
+					/* Make the read callback. */
+					eRegStatus =
+							eMBUser100ComPortCB( pucFrameCur, &ucByteCnt, MB_REG_READ );
+					if( eRegStatus == MB_ENOERR )	{
+							*usLen += ucByteCnt;
+					}
+			}
+			if( eRegStatus != MB_ENOERR )
+			{
+					eStatus = prveMBError2Exception( eRegStatus );
+			}
+		}
+		else
+		{
+				eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+		}
+    return eStatus;
+}
+
+
