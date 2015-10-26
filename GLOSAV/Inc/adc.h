@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : ADC.h
-  * Date               : 19/09/2015 18:06:41
   * Description        : This file provides code for the configuration
   *                      of the ADC instances.
   ******************************************************************************
@@ -42,9 +41,21 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
 extern ADC_HandleTypeDef hadc3;
 
+/* USER CODE BEGIN Private defines */
+
+/* USER CODE END Private defines */
+
 void MX_ADC3_Init(void);
+
+/* USER CODE BEGIN Prototypes */
+
+/* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }

@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * @file    stm32f4xx_it.c
-  * @date    19/09/2015 18:06:43
   * @brief   Interrupt Service Routines.
   ******************************************************************************
   *
@@ -36,13 +35,14 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "cmsis_os.h"
+
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-/* External variables --------------------------------------------------------*/
- 
-extern void xPortSysTickHandler(void);
 
+/* External variables --------------------------------------------------------*/
+extern void xPortSysTickHandler(void);
+extern CAN_HandleTypeDef hcan1;
 extern TIM_HandleTypeDef htim2;
 extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart5;
@@ -56,20 +56,6 @@ extern UART_HandleTypeDef huart6;
 /******************************************************************************/
 
 /**
-* @brief This function handles UART4 global interrupt.
-*/
-void UART4_IRQHandler(void)
-{
-  /* USER CODE BEGIN UART4_IRQn 0 */
-
-  /* USER CODE END UART4_IRQn 0 */
-  HAL_UART_IRQHandler(&huart4);
-  /* USER CODE BEGIN UART4_IRQn 1 */
-
-  /* USER CODE END UART4_IRQn 1 */
-}
-
-/**
 * @brief This function handles System tick timer.
 */
 void SysTick_Handler(void)
@@ -77,13 +63,32 @@ void SysTick_Handler(void)
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
   /* USER CODE END SysTick_IRQn 0 */
-  if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED) {
-    xPortSysTickHandler();
-  }
   HAL_IncTick();
+  osSystickHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
+}
+
+/******************************************************************************/
+/* STM32F4xx Peripheral Interrupt Handlers                                    */
+/* Add here the Interrupt Handlers for the used peripherals.                  */
+/* For the available peripheral interrupt handler names,                      */
+/* please refer to the startup file (startup_stm32f4xx.s).                    */
+/******************************************************************************/
+
+/**
+* @brief This function handles CAN1 RX0 interrupts.
+*/
+void CAN1_RX0_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
+
+  /* USER CODE END CAN1_RX0_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan1);
+  /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
+
+  /* USER CODE END CAN1_RX0_IRQn 1 */
 }
 
 /**
@@ -101,31 +106,17 @@ void TIM2_IRQHandler(void)
 }
 
 /**
-* @brief This function handles USART3 global interrupt.
+* @brief This function handles USART1 global interrupt.
 */
-void USART3_IRQHandler(void)
+void USART1_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART3_IRQn 0 */
+  /* USER CODE BEGIN USART1_IRQn 0 */
 
-  /* USER CODE END USART3_IRQn 0 */
-  HAL_UART_IRQHandler(&huart3);
-  /* USER CODE BEGIN USART3_IRQn 1 */
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
 
-  /* USER CODE END USART3_IRQn 1 */
-}
-
-/**
-* @brief This function handles UART5 global interrupt.
-*/
-void UART5_IRQHandler(void)
-{
-  /* USER CODE BEGIN UART5_IRQn 0 */
-
-  /* USER CODE END UART5_IRQn 0 */
-  HAL_UART_IRQHandler(&huart5);
-  /* USER CODE BEGIN UART5_IRQn 1 */
-
-  /* USER CODE END UART5_IRQn 1 */
+  /* USER CODE END USART1_IRQn 1 */
 }
 
 /**
@@ -143,17 +134,45 @@ void USART2_IRQHandler(void)
 }
 
 /**
-* @brief This function handles USART1 global interrupt.
+* @brief This function handles USART3 global interrupt.
 */
-void USART1_IRQHandler(void)
+void USART3_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART1_IRQn 0 */
+  /* USER CODE BEGIN USART3_IRQn 0 */
 
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
 
-  /* USER CODE END USART1_IRQn 1 */
+  /* USER CODE END USART3_IRQn 1 */
+}
+
+/**
+* @brief This function handles UART4 global interrupt.
+*/
+void UART4_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART4_IRQn 0 */
+
+  /* USER CODE END UART4_IRQn 0 */
+  HAL_UART_IRQHandler(&huart4);
+  /* USER CODE BEGIN UART4_IRQn 1 */
+
+  /* USER CODE END UART4_IRQn 1 */
+}
+
+/**
+* @brief This function handles UART5 global interrupt.
+*/
+void UART5_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART5_IRQn 0 */
+
+  /* USER CODE END UART5_IRQn 0 */
+  HAL_UART_IRQHandler(&huart5);
+  /* USER CODE BEGIN UART5_IRQn 1 */
+
+  /* USER CODE END UART5_IRQn 1 */
 }
 
 /**

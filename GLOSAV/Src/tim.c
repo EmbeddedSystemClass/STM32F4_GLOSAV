@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : TIM.c
-  * Date               : 19/09/2015 18:06:42
   * Description        : This file provides code for the configuration
   *                      of the TIM instances.
   ******************************************************************************
@@ -98,10 +97,10 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
     /* Peripheral interrupt Deinit*/
     HAL_NVIC_DisableIRQ(TIM2_IRQn);
 
+  }
   /* USER CODE BEGIN TIM2_MspDeInit 1 */
 
   /* USER CODE END TIM2_MspDeInit 1 */
-  }
 } 
 
 /* USER CODE BEGIN 1 */

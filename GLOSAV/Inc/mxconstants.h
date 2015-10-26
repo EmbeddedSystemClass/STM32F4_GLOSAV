@@ -1,8 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : TIM.h
-  * Description        : This file provides code for the configuration
-  *                      of the TIM instances.
+  * File Name          : mxconstants.h
+  * Description        : This file contains the common defines of the application
   ******************************************************************************
   *
   * COPYRIGHT(c) 2015 STMicroelectronics
@@ -31,43 +30,54 @@
   *
   ******************************************************************************
   */
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __tim_H
-#define __tim_H
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
-extern TIM_HandleTypeDef htim2;
+/* Private define ------------------------------------------------------------*/
 
+#define out_CAN1_SD_Pin GPIO_PIN_2
+#define out_CAN1_SD_GPIO_Port GPIOE
+#define out_CAN2_SD_Pin GPIO_PIN_3
+#define out_CAN2_SD_GPIO_Port GPIOE
+#define in_door_Pin GPIO_PIN_5
+#define in_door_GPIO_Port GPIOE
+#define in_CALL_Pin GPIO_PIN_6
+#define in_CALL_GPIO_Port GPIOE
+#define in_IGN_STM_Pin GPIO_PIN_3
+#define in_IGN_STM_GPIO_Port GPIOF
+#define in_1_wire_in_Pin GPIO_PIN_0
+#define in_1_wire_in_GPIO_Port GPIOC
+#define out_1_Wire_ctrl_Pin GPIO_PIN_1
+#define out_1_Wire_ctrl_GPIO_Port GPIOC
+#define out_SKZI_rst_Pin GPIO_PIN_3
+#define out_SKZI_rst_GPIO_Port GPIOA
+#define in_case_open_o_Pin GPIO_PIN_13
+#define in_case_open_o_GPIO_Port GPIOF
+#define in_case_open_sw_Pin GPIO_PIN_14
+#define in_case_open_sw_GPIO_Port GPIOF
+#define out_SPI2_NSS_Pin GPIO_PIN_12
+#define out_SPI2_NSS_GPIO_Port GPIOB
+#define out_UART1_dir_Pin GPIO_PIN_8
+#define out_UART1_dir_GPIO_Port GPIOA
+#define out_UART5_dir_Pin GPIO_PIN_3
+#define out_UART5_dir_GPIO_Port GPIOD
+#define out_UART4_dir_Pin GPIO_PIN_4
+#define out_UART4_dir_GPIO_Port GPIOD
+#define out_UART6_dir_Pin GPIO_PIN_10
+#define out_UART6_dir_GPIO_Port GPIOG
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_TIM2_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
-
-#ifdef __cplusplus
-}
-#endif
-#endif /*__ tim_H */
+/**
+  * @}
+  */ 
 
 /**
   * @}
-  */
-
-/**
-  * @}
-  */
+*/ 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

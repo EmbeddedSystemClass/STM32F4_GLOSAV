@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : freertos.c
-  * Date               : 19/09/2015 18:06:42
   * Description        : Code for freertos applications
   ******************************************************************************
   *
@@ -52,9 +51,12 @@ osThreadId defaultTaskHandle;
 /* Function prototypes -------------------------------------------------------*/
 void StartDefaultTask(void const * argument);
 
+void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
+
 /* Hook prototypes */
 void vApplicationTickHook(void);
 void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName);
@@ -98,7 +100,7 @@ void vApplicationMallocFailedHook(void)
 
 /* Init FreeRTOS */
 
-void MX_FREERTOS_Init() {
+void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
        
   /* USER CODE END Init */
@@ -128,6 +130,19 @@ void MX_FREERTOS_Init() {
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
+}
+
+/* StartDefaultTask function */
+void StartDefaultTask(void const * argument)
+{
+
+  /* USER CODE BEGIN StartDefaultTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartDefaultTask */
 }
 
 /* USER CODE BEGIN Application */

@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : ADC.c
-  * Date               : 19/09/2015 18:06:41
   * Description        : This file provides code for the configuration
   *                      of the ADC instances.
   ******************************************************************************
@@ -119,10 +118,10 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     */
     HAL_GPIO_DeInit(GPIOF, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_10);
 
+  }
   /* USER CODE BEGIN ADC3_MspDeInit 1 */
 
   /* USER CODE END ADC3_MspDeInit 1 */
-  }
 } 
 
 /* USER CODE BEGIN 1 */

@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : gpio.c
-  * Date               : 19/09/2015 18:06:41
   * Description        : This file provides code for the configuration
   *                      of all used GPIO pins.
   ******************************************************************************
@@ -68,21 +67,21 @@ void MX_GPIO_Init(void)
   __GPIOD_CLK_ENABLE();
   __GPIOG_CLK_ENABLE();
 
-  /*Configure GPIO pins : PE2 PE3 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+  /*Configure GPIO pins : PEPin PEPin PE8 */
+  GPIO_InitStruct.Pin = out_CAN1_SD_Pin|out_CAN2_SD_Pin|GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PE5 PE6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
+  /*Configure GPIO pins : PEPin PEPin */
+  GPIO_InitStruct.Pin = in_door_Pin|in_CALL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PF3 PF13 PF14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_13|GPIO_PIN_14;
+  /*Configure GPIO pins : PFPin PFPin PFPin */
+  GPIO_InitStruct.Pin = in_IGN_STM_Pin|in_case_open_o_Pin|in_case_open_sw_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
@@ -94,46 +93,46 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PC0 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = in_1_wire_in_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  HAL_GPIO_Init(in_1_wire_in_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PC1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = out_1_Wire_ctrl_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  HAL_GPIO_Init(out_1_Wire_ctrl_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA3 PA8 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_8;
+  /*Configure GPIO pins : PAPin PAPin */
+  GPIO_InitStruct.Pin = out_SKZI_rst_Pin|out_UART1_dir_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_12;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = out_SPI2_NSS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(out_SPI2_NSS_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PD3 PD4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
+  /*Configure GPIO pins : PDPin PDPin */
+  GPIO_InitStruct.Pin = out_UART5_dir_Pin|out_UART4_dir_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PG10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = out_UART6_dir_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+  HAL_GPIO_Init(out_UART6_dir_GPIO_Port, &GPIO_InitStruct);
 
 }
 
