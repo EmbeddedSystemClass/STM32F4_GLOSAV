@@ -7,10 +7,14 @@
 #include "queue.h"
 #include "semphr.h"
 
+#define CAN1_MESSAGE_QUEUE_MAX_LENGTH  10
+
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 
 static CanRxMsgTypeDef can1RxMessage;
+
+QueueHandle_t xCAN1_MessageQueue;
 
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
@@ -18,16 +22,20 @@ static void CAN2_Sending_Task(void *pvParameters);
 void CAN_App_Init(void)
 {
 		hcan1.pRxMsg = &can1RxMessage;
+		xCAN1_MessageQueue = xQueueCreate( CAN1_MESSAGE_QUEUE_MAX_LENGTH, sizeof( CanRxMsgTypeDef ) );
+	
 		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
 }
 
 static void CAN1_Listening_Task(void *pvParameters)
 {
-	
+	CanRxMsgTypeDef RxMessage;	
+	static uint8_t temp;
 	while(1)
-	{
-			vTaskDelay(1000);
+	{  
+		xQueueReceive(xCAN1_MessageQueue, &RxMessage, portMAX_DELAY);
+		temp=RxMessage.Data[0];
 	}
 }
 
@@ -77,6 +85,15 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
 {
 	static uint8_t temp=0;
 	temp=hcan->pRxMsg->Data[0];
+	static portBASE_TYPE xHigherPriorityTaskWoken;
+	xHigherPriorityTaskWoken = pdFALSE;
+
+	xQueueSendFromISR(xCAN1_MessageQueue, hcan->pRxMsg, &xHigherPriorityTaskWoken);
+	
+	if(xHigherPriorityTaskWoken == pdTRUE)
+	{
+		taskYIELD();
+	}
 	
 	HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);
 }

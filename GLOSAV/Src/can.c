@@ -77,7 +77,7 @@ void MX_CAN1_Init(void)
   hcan1filter.BankNumber = 14;
   HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
 	
-	HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 1, 1);
+	HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 8, 0);
   HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 	
 	__HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0); 
