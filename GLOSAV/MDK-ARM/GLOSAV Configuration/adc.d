@@ -2,6 +2,7 @@ glosav configuration\adc.o: ..\Src\adc.c
 glosav configuration\adc.o: ..\Inc\adc.h
 glosav configuration\adc.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\adc.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\adc.o: ..\Inc\mxconstants.h
 glosav configuration\adc.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\adc.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\adc.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h

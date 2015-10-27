@@ -1221,6 +1221,7 @@ __weak void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
   /* NOTE : This function Should not be modified, when the callback is needed,
             the HAL_CAN_RxCpltCallback could be implemented in the user file
    */
+
 }
 
 /**

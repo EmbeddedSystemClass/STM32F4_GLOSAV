@@ -6,6 +6,7 @@ glosav configuration\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\cmsis_os.o: ..\Drivers\CMSIS\Include\core_cmFunc.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\cmsis_os.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\cmsis_os.o: ..\Inc\mxconstants.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h

@@ -2,6 +2,7 @@ glosav configuration\can.o: ..\Src\can.c
 glosav configuration\can.o: ..\Inc\can.h
 glosav configuration\can.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\can.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\can.o: ..\Inc\mxconstants.h
 glosav configuration\can.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\can.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\can.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h

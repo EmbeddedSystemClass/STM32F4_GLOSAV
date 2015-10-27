@@ -3,6 +3,7 @@ glosav configuration\freertos.o: ..\Middlewares\Third_Party\FreeRTOS\Source\incl
 glosav configuration\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\freertos.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\freertos.o: ..\Inc\mxconstants.h
 glosav configuration\freertos.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\freertos.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
 glosav configuration\freertos.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
@@ -18,6 +19,7 @@ glosav configuration\freertos.o: ..\Middlewares\Third_Party\FreeRTOS\Source\incl
 glosav configuration\freertos.o: ..\Inc\tasks.h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\freertos.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\freertos.o: ..\Inc\mxconstants.h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\freertos.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h

@@ -58,7 +58,7 @@ void MX_CAN1_Init(void)
   hcan1.Init.TTCM = DISABLE;
   hcan1.Init.ABOM = DISABLE;
   hcan1.Init.AWUM = DISABLE;
-  hcan1.Init.NART = ENABLE;
+  hcan1.Init.NART = DISABLE;
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = DISABLE;
   HAL_CAN_Init(&hcan1);
@@ -69,13 +69,18 @@ void MX_CAN1_Init(void)
   hcan1filter.FilterIdLow = 0;
   hcan1filter.FilterMaskIdHigh = 0;
   hcan1filter.FilterMaskIdLow = 0;
-  hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO1;
+  hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
   hcan1filter.FilterNumber = 0;
   hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
   hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
   hcan1filter.FilterActivation = ENABLE;
-  hcan1filter.BankNumber = 15;
+  hcan1filter.BankNumber = 14;
   HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+	
+	HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 1, 1);
+  HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
+	
+	__HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0); 
 
 }
 /* CAN2 init function */
@@ -117,12 +122,12 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
     PD0     ------> CAN1_RX
     PD1     ------> CAN1_TX 
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+    GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
-    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN CAN1_MspInit 1 */
 
@@ -169,7 +174,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
     PD0     ------> CAN1_RX
     PD1     ------> CAN1_TX 
     */
-    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_0|GPIO_PIN_1);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_8|GPIO_PIN_9);
 
   /* USER CODE BEGIN CAN1_MspDeInit 1 */
 

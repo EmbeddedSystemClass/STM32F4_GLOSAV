@@ -7,6 +7,7 @@ glosav configuration\mbfuncholding.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttyp
 glosav configuration\mbfuncholding.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\mbfuncholding.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\mbfuncholding.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\mbfuncholding.o: ..\Inc\mxconstants.h
 glosav configuration\mbfuncholding.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\mbfuncholding.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\mbfuncholding.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
@@ -42,6 +43,7 @@ glosav configuration\mbfuncholding.o: ..\Middlewares\Third_Party\FreeRTOS\Source
 glosav configuration\mbfuncholding.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\mbfuncholding.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\mbfuncholding.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\mbfuncholding.o: ..\Inc\mxconstants.h
 glosav configuration\mbfuncholding.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\mbfuncholding.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
 glosav configuration\mbfuncholding.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h

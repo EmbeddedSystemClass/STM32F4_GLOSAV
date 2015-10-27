@@ -1,6 +1,7 @@
 glosav configuration\stm32f4xx_hal_msp.o: ..\Src\stm32f4xx_hal_msp.c
 glosav configuration\stm32f4xx_hal_msp.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\stm32f4xx_hal_msp.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\stm32f4xx_hal_msp.o: ..\Inc\mxconstants.h
 glosav configuration\stm32f4xx_hal_msp.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\stm32f4xx_hal_msp.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\stm32f4xx_hal_msp.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h

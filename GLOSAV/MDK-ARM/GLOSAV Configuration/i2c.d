@@ -2,6 +2,7 @@ glosav configuration\i2c.o: ..\Src\i2c.c
 glosav configuration\i2c.o: ..\Inc\i2c.h
 glosav configuration\i2c.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\i2c.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\i2c.o: ..\Inc\mxconstants.h
 glosav configuration\i2c.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\i2c.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\i2c.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h

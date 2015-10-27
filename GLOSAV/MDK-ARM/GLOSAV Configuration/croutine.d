@@ -3,6 +3,7 @@ glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\incl
 glosav configuration\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\croutine.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\croutine.o: ..\Inc\mxconstants.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h

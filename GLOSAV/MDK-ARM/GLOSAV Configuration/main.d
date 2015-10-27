@@ -1,6 +1,7 @@
 glosav configuration\main.o: ..\Src\main.c
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\main.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\main.o: ..\Inc\mxconstants.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\main.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
@@ -37,6 +38,7 @@ glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RT
 glosav configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\main.o: ..\Inc\FreeRTOSConfig.h
+glosav configuration\main.o: ..\Inc\mxconstants.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h

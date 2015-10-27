@@ -2,6 +2,7 @@ glosav configuration\tim.o: ..\Src\tim.c
 glosav configuration\tim.o: ..\Inc\tim.h
 glosav configuration\tim.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\tim.o: ..\Inc\stm32f4xx_hal_conf.h
+glosav configuration\tim.o: ..\Inc\mxconstants.h
 glosav configuration\tim.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\tim.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\tim.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
