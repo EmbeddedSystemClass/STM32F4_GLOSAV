@@ -1,6 +1,6 @@
 #include "can_app.h"
 
-#include "stm32f4xx_hal.h"
+
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -9,6 +9,14 @@
 
 #define CAN1_MESSAGE_QUEUE_MAX_LENGTH  10
 
+#define FMS_PGN_LFC			0x00FEE9
+#define FMS_PGN_DD			0x00FEFC
+#define FMS_PGN_HRLFC		0x00FD09
+#define FMS_PGN_AT1T1I	0x00FE56
+#define FMS_PGN_VW			0x00FEEA
+#define FMS_PGN_CVW			0x00FE70
+
+
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 
@@ -16,8 +24,11 @@ static CanRxMsgTypeDef can1RxMessage;
 
 QueueHandle_t xCAN1_MessageQueue;
 
+stCAN_FSM_Params CAN_FSM_Params;
+
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
+void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 
 void CAN_App_Init(void)
 {
@@ -35,7 +46,7 @@ static void CAN1_Listening_Task(void *pvParameters)
 	while(1)
 	{  
 		xQueueReceive(xCAN1_MessageQueue, &RxMessage, portMAX_DELAY);
-		temp=RxMessage.Data[0];
+		CAN1_Handling_Message(&RxMessage);
 	}
 }
 
@@ -47,9 +58,9 @@ static void CAN2_Sending_Task(void *pvParameters)
 			CanTxMsgTypeDef TxMess;
 			hcan2.pTxMsg = &TxMess;
 			TxMess.StdId = 0x321;
-			TxMess.ExtId = 0x01;
+			TxMess.ExtId = (FMS_PGN_DD<<8);
 			TxMess.RTR = CAN_RTR_DATA;
-			TxMess.IDE = CAN_ID_STD;
+			TxMess.IDE = CAN_ID_EXT;
 			TxMess.DLC = 8;
 			TxMess.Data[0]=0x3A;
 			TxMess.Data[1]=0xFF;
@@ -108,5 +119,55 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 {
 	static uint32_t i=0;
 	i++;
+}
+
+void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
+{
+		static uint32_t i=0;
+		uint32_t pgn=(can1msg->ExtId>>8)&0xFFFF;
+	
+		switch(pgn)
+		{
+			case FMS_PGN_LFC:
+			{
+
+			}
+			break;
+			
+			case FMS_PGN_DD:
+			{
+
+			}
+			break;
+			
+			case FMS_PGN_HRLFC:
+			{
+
+			}
+			break;
+			
+			case FMS_PGN_AT1T1I:
+			{
+
+			}
+			break;
+			
+			case FMS_PGN_VW:
+			{
+
+			}
+			break;
+			
+			case FMS_PGN_CVW:
+			{
+
+			}
+			break;
+			
+			default:
+			{
+				
+			}
+		}
 }
 

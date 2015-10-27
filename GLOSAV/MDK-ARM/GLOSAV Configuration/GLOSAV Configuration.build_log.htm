@@ -28,30 +28,32 @@ Project File Date:  10/26/2015
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
 compiling can_app.c...
-..\Src\can_app.h(7): warning:  #1-D: last line of file ends without a newline
+..\Src\can_app.h(13): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\can_app.c(27): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\can_app.c(38): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
 TaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",128,NULL, tskIDLE_PRIORITY + 1, NULL);
-..\Src\can_app.c(28): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\can_app.c(39): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
 TaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
-..\Src\can_app.c(34): warning:  #550-D: variable "temp" was set but never used
+..\Src\can_app.c(45): warning:  #177-D: variable "temp" was declared but never referenced
         static uint8_t temp;
-..\Src\can_app.c(86): warning:  #550-D: variable "temp" was set but never used
+..\Src\can_app.c(97): warning:  #550-D: variable "temp" was set but never used
         static uint8_t temp=0;
-..\Src\can_app.c: 5 warnings, 0 errors
+..\Src\can_app.c(126): warning:  #177-D: variable "i" was declared but never referenced
+                static uint32_t i=0;
+..\Src\can_app.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=22056 RO-data=1352 RW-data=656 ZI-data=35576  
+Program Size: Code=22064 RO-data=1352 RW-data=656 ZI-data=35576  
 FromELF: creating hex file...
-"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 5 Warning(s).
+"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
