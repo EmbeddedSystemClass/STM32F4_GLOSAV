@@ -51,6 +51,8 @@ static osMessageQId* TX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,
 };
 
+extern SemaphoreHandle_t	xCAN1_DataMutex;
+
 
 eMBErrorCode
 eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
@@ -156,6 +158,13 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 						}
 					}
 				}
+				
+				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
+				{	
+					
+				}
+				xSemaphoreGive( xCAN1_DataMutex );
+				
 				* ucBytes = idx;
 				break;
 

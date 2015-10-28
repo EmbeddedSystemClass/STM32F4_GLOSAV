@@ -6,8 +6,9 @@ void CAN_App_Init(void);
 
 typedef struct 
 {
-	uint32_t VehicleWeight;
-	
+	uint16_t 	Weight;
+	uint16_t 	CombinationWeight;
+	uint8_t 	Speed;
 } stCAN_FSM_Params;
 
 #endif

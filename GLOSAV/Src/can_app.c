@@ -15,6 +15,7 @@
 #define FMS_PGN_AT1T1I	0x00FE56
 #define FMS_PGN_VW			0x00FEEA
 #define FMS_PGN_CVW			0x00FE70
+#define FMS_PGN_CCVS		0x00FEF1
 
 
 extern CAN_HandleTypeDef hcan1;
@@ -23,8 +24,13 @@ extern CAN_HandleTypeDef hcan2;
 static CanRxMsgTypeDef can1RxMessage;
 
 QueueHandle_t xCAN1_MessageQueue;
+SemaphoreHandle_t	xCAN1_DataMutex;
 
-stCAN_FSM_Params CAN_FSM_Params;
+union
+{
+	stCAN_FSM_Params CAN_FSM_Params;
+	uint16_t can_fsm_serialize[sizeof(stCAN_FSM_Params)];
+};
 
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
@@ -34,6 +40,8 @@ void CAN_App_Init(void)
 {
 		hcan1.pRxMsg = &can1RxMessage;
 		xCAN1_MessageQueue = xQueueCreate( CAN1_MESSAGE_QUEUE_MAX_LENGTH, sizeof( CanRxMsgTypeDef ) );
+		
+		xCAN1_DataMutex = xSemaphoreCreateMutex();
 	
 		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
@@ -71,12 +79,10 @@ static void CAN2_Sending_Task(void *pvParameters)
 			TxMess.Data[6]=0xAA;
 			TxMess.Data[7]=0xFF;
 	
-
-	
 		while(1)
 		{
 				HAL_CAN_Transmit(&hcan2,10);
-				vTaskDelayUntil( &xLastWakeTime, 100 );
+				vTaskDelayUntil( &xLastWakeTime, 10 );
 		}
 }
 
@@ -126,48 +132,58 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 		static uint32_t i=0;
 		uint32_t pgn=(can1msg->ExtId>>8)&0xFFFF;
 	
-		switch(pgn)
-		{
-			case FMS_PGN_LFC:
+	xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
+  {	
+			switch(pgn)
 			{
+					case FMS_PGN_LFC:
+					{
 
-			}
-			break;
-			
-			case FMS_PGN_DD:
-			{
+					}
+					break;
+					
+					case FMS_PGN_DD:
+					{
 
-			}
-			break;
-			
-			case FMS_PGN_HRLFC:
-			{
+					}
+					break;
+					
+					case FMS_PGN_HRLFC:
+					{
 
-			}
-			break;
-			
-			case FMS_PGN_AT1T1I:
-			{
+					}
+					break;
+					
+					case FMS_PGN_AT1T1I:
+					{
 
-			}
-			break;
-			
-			case FMS_PGN_VW:
-			{
+					}
+					break;
+					
+					case FMS_PGN_VW:
+					{
 
-			}
-			break;
-			
-			case FMS_PGN_CVW:
-			{
+					}
+					break;
+					
+					case FMS_PGN_CVW:
+					{
 
+					}
+					break;
+					
+					case FMS_PGN_CCVS:
+					{
+						
+					}
+					break;
+					
+					default:
+					{
+						
+					}
 			}
-			break;
-			
-			default:
-			{
-				
-			}
-		}
+	}
+  xSemaphoreGive( xCAN1_DataMutex );
 }
 
