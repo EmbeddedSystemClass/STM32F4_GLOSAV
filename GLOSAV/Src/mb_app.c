@@ -17,6 +17,10 @@
 
 #include "tasks.h"
 
+#include "can_app.h"
+
+#include <string.h>
+
 #define REG_INPUT_START                 ( 1000 )
 #define REG_INPUT_NREGS                 ( 64 )
 
@@ -27,7 +31,7 @@
 #define MAX_COM_PORTS_CNT		(16) // максимальное количество адресуемых портов
 #define MAX_COM_PORT_BUFFER	(15) // максимальное количество байтов от/к одному порту
 
-
+extern uint16_t *can_fsm_serialize_pnt;
 
 /* ----------------------- Static variables ---------------------------------*/
 USHORT   usRegInputStart = REG_INPUT_START;
@@ -158,12 +162,15 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 						}
 					}
 				}
-				
+				//--------------------------
+				pucBuffer[idx]=(MAX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
 				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
 				{	
-					
+					 memcpy(&pucBuffer[idx+1],can_fsm_serialize_pnt,sizeof(stCAN_FSM_Params));
 				}
 				xSemaphoreGive( xCAN1_DataMutex );
+				idx+=(1+sizeof(stCAN_FSM_Params));
+				//---------------------------
 				
 				* ucBytes = idx;
 				break;
