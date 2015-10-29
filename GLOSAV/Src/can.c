@@ -64,18 +64,18 @@ void MX_CAN1_Init(void)
   HAL_CAN_Init(&hcan1);
 	HAL_CAN_MspInit(&hcan1);
 	
-	 CAN_FilterConfTypeDef hcan1filter;
-  hcan1filter.FilterIdHigh = 0;
-  hcan1filter.FilterIdLow = 0;
-  hcan1filter.FilterMaskIdHigh = 0;
-  hcan1filter.FilterMaskIdLow = 0;
-  hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
-  hcan1filter.FilterNumber = 0;
-  hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
-  hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
-  hcan1filter.FilterActivation = ENABLE;
-  hcan1filter.BankNumber = 14;
-  HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+//	CAN_FilterConfTypeDef hcan1filter;
+//  hcan1filter.FilterIdHigh = 0;
+//  hcan1filter.FilterIdLow = 0;
+//  hcan1filter.FilterMaskIdHigh = 0;
+//  hcan1filter.FilterMaskIdLow = 0;
+//  hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+//  hcan1filter.FilterNumber = 0;
+//  hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+//  hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+//  hcan1filter.FilterActivation = ENABLE;
+//  hcan1filter.BankNumber = 14;
+//  HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
 	
 	HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 8, 0);
   HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);

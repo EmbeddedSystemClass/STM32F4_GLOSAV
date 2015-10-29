@@ -33,8 +33,24 @@ static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
 void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 
+#define CAN1_ADDRESS	(0x00000100<<3)
+#define CAN1_FILTER		(0xFFFFFFFF<<3)
+
 void CAN_App_Init(void)
 {
+		CAN_FilterConfTypeDef hcan1filter;
+		hcan1filter.FilterIdHigh = (CAN1_ADDRESS>>16)&0xFFFF0000;
+		hcan1filter.FilterIdLow =  (CAN1_ADDRESS		)&0x0000FFFF;
+		hcan1filter.FilterMaskIdHigh = (CAN1_FILTER>>16)&0xFFFF0000;
+		hcan1filter.FilterMaskIdLow =  (CAN1_FILTER		 )&0x0000FFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 0;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 14;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+	
 		hcan1.pRxMsg = &can1RxMessage;
 
 		xCAN1_MessageQueue = xQueueCreate( CAN1_MESSAGE_QUEUE_MAX_LENGTH, sizeof( CanRxMsgTypeDef ) );
@@ -64,7 +80,7 @@ static void CAN2_Sending_Task(void *pvParameters)
 			CanTxMsgTypeDef TxMess;
 			hcan2.pTxMsg = &TxMess;
 			TxMess.StdId = 0x321;
-			TxMess.ExtId = (FMS_PGN_DD<<8);
+			TxMess.ExtId = /*(FMS_PGN_DD<<8)*/0x100;
 			TxMess.RTR = CAN_RTR_DATA;
 			TxMess.IDE = CAN_ID_EXT;
 			TxMess.DLC = 8;

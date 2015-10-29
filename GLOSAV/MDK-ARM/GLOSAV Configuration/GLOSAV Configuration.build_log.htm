@@ -27,40 +27,33 @@ Project File Date:  10/26/2015
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
-compiling mb_app.c...
-..\Src\can_app.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\mb_app.c(166): warning:  #69-D: integer conversion resulted in truncation
-                                pucBuffer[idx]=(
-AX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
-..\Src\mb_app.c: 2 warnings, 0 errors
 compiling can_app.c...
 ..\Src\can_app.h(14): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\can_app.c(44): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\can_app.c(60): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
 TaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",128,NULL, tskIDLE_PRIORITY + 1, NULL);
-..\Src\can_app.c(45): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\can_app.c(61): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
 TaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
-..\Src\can_app.c(51): warning:  #177-D: variable "temp" was declared but never referenced
+..\Src\can_app.c(67): warning:  #177-D: variable "temp" was declared but never referenced
         static uint8_t temp;
-..\Src\can_app.c(101): warning:  #550-D: variable "temp" was set but never used
+..\Src\can_app.c(117): warning:  #550-D: variable "temp" was set but never used
         static uint8_t temp=0;
-..\Src\can_app.c(130): warning:  #177-D: variable "i" was declared but never referenced
+..\Src\can_app.c(146): warning:  #177-D: variable "i" was declared but never referenced
                 static uint32_t i=0;
 ..\Src\can_app.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=22240 RO-data=1352 RW-data=668 ZI-data=35580  
+Program Size: Code=22244 RO-data=1352 RW-data=668 ZI-data=35580  
 FromELF: creating hex file...
-"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 8 Warning(s).
+"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:13
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
