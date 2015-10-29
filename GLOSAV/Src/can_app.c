@@ -26,13 +26,8 @@ static CanRxMsgTypeDef can1RxMessage;
 QueueHandle_t xCAN1_MessageQueue;
 SemaphoreHandle_t	xCAN1_DataMutex;
 
-union
-{
-	stCAN_FSM_Params CAN_FSM_Params;
-	uint16_t can_fsm_serialize[sizeof(stCAN_FSM_Params)];
-};
 
-uint16_t *can_fsm_serialize_pnt;
+stCAN_FSM_Params CAN_FSM_Params;
 
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
@@ -41,7 +36,7 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 void CAN_App_Init(void)
 {
 		hcan1.pRxMsg = &can1RxMessage;
-		can_fsm_serialize_pnt=can_fsm_serialize;
+
 		xCAN1_MessageQueue = xQueueCreate( CAN1_MESSAGE_QUEUE_MAX_LENGTH, sizeof( CanRxMsgTypeDef ) );
 		
 		xCAN1_DataMutex = xSemaphoreCreateMutex();

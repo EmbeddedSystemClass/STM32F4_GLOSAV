@@ -31,7 +31,7 @@
 #define MAX_COM_PORTS_CNT		(16) // максимальное количество адресуемых портов
 #define MAX_COM_PORT_BUFFER	(15) // максимальное количество байтов от/к одному порту
 
-extern uint16_t *can_fsm_serialize_pnt;
+extern stCAN_FSM_Params CAN_FSM_Params;
 
 /* ----------------------- Static variables ---------------------------------*/
 USHORT   usRegInputStart = REG_INPUT_START;
@@ -166,7 +166,7 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 				pucBuffer[idx]=(MAX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
 				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
 				{	
-					 memcpy(&pucBuffer[idx+1],can_fsm_serialize_pnt,sizeof(stCAN_FSM_Params));
+					 memcpy(&pucBuffer[idx+1],(uint8_t*)(&CAN_FSM_Params),sizeof(stCAN_FSM_Params));
 				}
 				xSemaphoreGive( xCAN1_DataMutex );
 				idx+=(1+sizeof(stCAN_FSM_Params));
