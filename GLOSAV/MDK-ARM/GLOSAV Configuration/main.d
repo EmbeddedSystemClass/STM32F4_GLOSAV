@@ -62,6 +62,7 @@ glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RT
 glosav configuration\main.o: ..\Inc\usart_app.h
 glosav configuration\main.o: ..\Inc\gpio_app.h
 glosav configuration\main.o: ..\Src\can_app.h
+glosav configuration\main.o: ..\Src\adc_app.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
 glosav configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h

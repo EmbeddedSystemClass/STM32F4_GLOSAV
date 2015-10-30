@@ -33,16 +33,18 @@ static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
 void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 
-#define CAN1_ADDRESS	(0x00000100<<3)
-#define CAN1_FILTER		(0xFFFFFFFF<<3)
+#define CAN1_ADDRESS	(0x00000100)
+#define CAN1_FILTER		(0xFFFFFFFF)
+
+#define CAN1_LISTENING_STACK_SIZE		128
 
 void CAN_App_Init(void)
 {
 		CAN_FilterConfTypeDef hcan1filter;
-		hcan1filter.FilterIdHigh = (CAN1_ADDRESS>>16)&0xFFFF0000;
-		hcan1filter.FilterIdLow =  (CAN1_ADDRESS		)&0x0000FFFF;
-		hcan1filter.FilterMaskIdHigh = (CAN1_FILTER>>16)&0xFFFF0000;
-		hcan1filter.FilterMaskIdLow =  (CAN1_FILTER		 )&0x0000FFFF;
+		hcan1filter.FilterIdHigh = ((CAN1_ADDRESS<<3)>>16)&0xFFFF0000;
+		hcan1filter.FilterIdLow =  (CAN1_ADDRESS<<3 )&0x0000FFFF;
+		hcan1filter.FilterMaskIdHigh = ((CAN1_FILTER<<3)>>16)&0xFFFF0000;
+		hcan1filter.FilterMaskIdLow =  (CAN1_FILTER<<3 )&0x0000FFFF;
 		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
 		hcan1filter.FilterNumber = 0;
 		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
@@ -57,7 +59,7 @@ void CAN_App_Init(void)
 		
 		xCAN1_DataMutex = xSemaphoreCreateMutex();
 	
-		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",128,NULL, tskIDLE_PRIORITY + 1, NULL);
+		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
 }
 
