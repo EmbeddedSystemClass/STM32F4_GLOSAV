@@ -5,7 +5,7 @@ glosav configuration\stm32f4xx_hal_pwr.o: ..\Inc\mxconstants.h
 glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h
+glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h
 glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\CMSIS\Include\core_cm4.h
 glosav configuration\stm32f4xx_hal_pwr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\stm32f4xx_hal_pwr.o: ..\Drivers\CMSIS\Include\core_cmInstr.h

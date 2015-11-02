@@ -35,7 +35,7 @@ extern stCAN_FSM_Params CAN_FSM_Params;
 
 /* ----------------------- Static variables ---------------------------------*/
 USHORT   usRegInputStart = REG_INPUT_START;
-USHORT   usRegInputBuf[REG_INPUT_NREGS];
+USHORT   *usRegInputBuf=CAN_FSM_Params.can_mb_buf;
 USHORT   usRegHoldingStart = REG_HOLDING_START;
 USHORT   usRegHoldingBuf[REG_HOLDING_NREGS] = {0x11, 0x22, 0x33, 0x44, 0x66, 0x77};
 
@@ -71,8 +71,8 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         {
 						xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
 						{	
-								*pucRegBuffer++ = ( unsigned char )( CAN_FSM_Params.can_mb_buf[iRegIndex] >> 8 );
-								*pucRegBuffer++ = ( unsigned char )( CAN_FSM_Params.can_mb_buf[iRegIndex] & 0xFF );
+								*pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
+								*pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
 						}
 						xSemaphoreGive( xCAN1_DataMutex );
 

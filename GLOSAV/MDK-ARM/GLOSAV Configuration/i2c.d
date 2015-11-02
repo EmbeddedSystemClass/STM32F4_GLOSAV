@@ -6,7 +6,7 @@ glosav configuration\i2c.o: ..\Inc\mxconstants.h
 glosav configuration\i2c.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h
 glosav configuration\i2c.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\i2c.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-glosav configuration\i2c.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h
+glosav configuration\i2c.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h
 glosav configuration\i2c.o: ..\Drivers\CMSIS\Include\core_cm4.h
 glosav configuration\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\i2c.o: ..\Drivers\CMSIS\Include\core_cmInstr.h

@@ -92,6 +92,7 @@ void MX_USART1_UART_Init(void)
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   HAL_UART_Init(&huart1);
+	HAL_UART_MspInit(&huart1);
 
 }
 /* USART2 init function */

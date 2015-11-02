@@ -1,6 +1,6 @@
 glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
 glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h
+glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\core_cm4.h
 glosav configuration\system_stm32f4xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\core_cmInstr.h

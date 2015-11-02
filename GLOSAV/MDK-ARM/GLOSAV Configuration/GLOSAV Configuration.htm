@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Mon Nov 02 12:47:30 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Mon Nov 02 19:49:55 2015
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -645,7 +645,7 @@ Global Symbols
 <P><STRONG><a name="[89]"></a>Callback01</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, tasks.o(i.Callback01))
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
 </UL>
-<P><STRONG><a name="[9a]"></a>HAL_ADC_ConfigChannel</STRONG> (Thumb, 288 bytes, Stack size 12 bytes, stm32f4xx_hal_adc.o(i.HAL_ADC_ConfigChannel))
+<P><STRONG><a name="[9a]"></a>HAL_ADC_ConfigChannel</STRONG> (Thumb, 292 bytes, Stack size 12 bytes, stm32f4xx_hal_adc.o(i.HAL_ADC_ConfigChannel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_ADC_ConfigChannel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_ADC3_Init
@@ -762,7 +762,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit_IT
 </UL>
 
-<P><STRONG><a name="[b1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 390 bytes, Stack size 36 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_Init))
+<P><STRONG><a name="[b1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 400 bytes, Stack size 36 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_MspInit
@@ -830,8 +830,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SYSTICK_Config
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -883,9 +883,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
 
 <P><STRONG><a name="[bb]"></a>HAL_RCC_GetPCLK1Freq</STRONG> (Thumb, 36 bytes, Stack size 4 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq))
@@ -984,8 +984,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[14b]"></a>HAL_TIM_Base_Stop</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_Base_Stop))
-<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<BR><BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
 </UL>
 
 <P><STRONG><a name="[ce]"></a>HAL_TIM_ConfigClockSource</STRONG> (Thumb, 242 bytes, Stack size 16 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_ConfigClockSource))
@@ -1084,6 +1084,7 @@ Global Symbols
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
 <P><STRONG><a name="[14a]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_Receive_IT))
@@ -1235,10 +1236,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fc]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usart.o(i.MX_USART1_UART_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
+<P><STRONG><a name="[fc]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1276,7 +1278,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(.constdata)
 </UL>
-<P><STRONG><a name="[8f]"></a>StartTaskMODBUS</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
+<P><STRONG><a name="[8f]"></a>StartTaskMODBUS</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = StartTaskMODBUS &rArr; eMBInit &rArr; eMBRTUInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1427,10 +1429,10 @@ Global Symbols
 <P><STRONG><a name="[10f]"></a>eMBASCIIInit</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, mbascii.o(i.eMBASCIIInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = eMBASCIIInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBInit
 </UL>
@@ -1601,10 +1603,10 @@ Global Symbols
 <P><STRONG><a name="[11f]"></a>eMBRTUInit</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, mbrtu.o(i.eMBRTUInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = eMBRTUInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBInit
 </UL>
@@ -1668,7 +1670,7 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncReadHoldingRegister
 </UL>
 
-<P><STRONG><a name="[11c]"></a>eMBRegInputCB</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, mb_app.o(i.eMBRegInputCB))
+<P><STRONG><a name="[11c]"></a>eMBRegInputCB</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, mb_app.o(i.eMBRegInputCB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = eMBRegInputCB &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -2221,10 +2223,10 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>xMBASCIITransmitFSM</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, mbascii.o(i.xMBASCIITransmitFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = xMBASCIITransmitFSM &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBBIN2CHAR
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2314,9 +2316,9 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>xMBRTUTransmitFSM</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, mbrtu.o(i.xMBRTUTransmitFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = xMBRTUTransmitFSM &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2685,10 +2687,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e5]"></a>UART_SetConfig</STRONG> (Thumb, 366 bytes, Stack size 24 bytes, stm32f4xx_hal_uart.o(i.UART_SetConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK2Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
