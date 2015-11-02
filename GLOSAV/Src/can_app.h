@@ -4,11 +4,18 @@
 
 void CAN_App_Init(void);
 
-typedef struct 
+#define CAN_STRUCT_MB_BUF_SIZE	32
+
+typedef union
 {
-	uint16_t 	Weight;
-	uint16_t 	CombinationWeight;
-	uint8_t 	Speed;
-} stCAN_FSM_Params;
+	struct 
+	{
+		uint16_t 	Weight;
+		uint16_t 	CombinationWeight;
+		uint8_t 	Speed;
+	} params;
+	
+	uint16_t can_mb_buf[CAN_STRUCT_MB_BUF_SIZE];
+}stCAN_FSM_Params;
 
 #endif

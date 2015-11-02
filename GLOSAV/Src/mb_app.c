@@ -22,7 +22,7 @@
 #include <string.h>
 
 #define REG_INPUT_START                 ( 1000 )
-#define REG_INPUT_NREGS                 ( 64 )
+#define REG_INPUT_NREGS                 CAN_STRUCT_MB_BUF_SIZE//( 64 )
 
 #define REG_HOLDING_START               ( 1 )
 #define REG_HOLDING_NREGS               ( 32 )
@@ -69,8 +69,13 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         iRegIndex = ( int )( usAddress - usRegInputStart );
         while( usNRegs > 0 )
         {
-            *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
-            *pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+						xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
+						{	
+								*pucRegBuffer++ = ( unsigned char )( CAN_FSM_Params.can_mb_buf[iRegIndex] >> 8 );
+								*pucRegBuffer++ = ( unsigned char )( CAN_FSM_Params.can_mb_buf[iRegIndex] & 0xFF );
+						}
+						xSemaphoreGive( xCAN1_DataMutex );
+
             iRegIndex++;
             usNRegs--;
         }
@@ -163,13 +168,13 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 					}
 				}
 				//--------------------------
-				pucBuffer[idx]=(MAX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
-				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
-				{	
-					 memcpy(&pucBuffer[idx+1],(uint8_t*)(&CAN_FSM_Params),sizeof(stCAN_FSM_Params));
-				}
-				xSemaphoreGive( xCAN1_DataMutex );
-				idx+=(1+sizeof(stCAN_FSM_Params));
+//				pucBuffer[idx]=(MAX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
+//				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
+//				{	
+//					 memcpy(&pucBuffer[idx+1],(uint8_t*)(&CAN_FSM_Params),sizeof(stCAN_FSM_Params));
+//				}
+//				xSemaphoreGive( xCAN1_DataMutex );
+//				idx+=(1+sizeof(stCAN_FSM_Params));
 				//---------------------------
 				
 				* ucBytes = idx;

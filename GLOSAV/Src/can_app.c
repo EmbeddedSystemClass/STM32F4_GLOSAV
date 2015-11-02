@@ -41,10 +41,10 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 void CAN_App_Init(void)
 {
 		CAN_FilterConfTypeDef hcan1filter;
-		hcan1filter.FilterIdHigh = ((CAN1_ADDRESS<<3)>>16)&0xFFFF0000;
-		hcan1filter.FilterIdLow =  (CAN1_ADDRESS<<3 )&0x0000FFFF;
-		hcan1filter.FilterMaskIdHigh = ((CAN1_FILTER<<3)>>16)&0xFFFF0000;
-		hcan1filter.FilterMaskIdLow =  (CAN1_FILTER<<3 )&0x0000FFFF;
+		hcan1filter.FilterIdHigh =0;// ((CAN1_ADDRESS<<3)>>16)&0xFFFF0000;
+		hcan1filter.FilterIdLow = 0;// (CAN1_ADDRESS<<3 )&0x0000FFFF;
+		hcan1filter.FilterMaskIdHigh =0;// ((CAN1_FILTER<<3)>>16)&0xFFFF0000;
+		hcan1filter.FilterMaskIdLow = 0;// (CAN1_FILTER<<3 )&0x0000FFFF;
 		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
 		hcan1filter.FilterNumber = 0;
 		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
@@ -85,7 +85,7 @@ static void CAN2_Sending_Task(void *pvParameters)
 			TxMess.ExtId = /*(FMS_PGN_DD<<8)*/0x100;
 			TxMess.RTR = CAN_RTR_DATA;
 			TxMess.IDE = CAN_ID_EXT;
-			TxMess.DLC = 8;
+			TxMess.DLC = 1;
 			TxMess.Data[0]=0x3A;
 			TxMess.Data[1]=0xFF;
 			TxMess.Data[2]=0xAA;
@@ -97,8 +97,12 @@ static void CAN2_Sending_Task(void *pvParameters)
 	
 		while(1)
 		{
+				TxMess.ExtId = 0x18FA0010;
 				HAL_CAN_Transmit(&hcan2,10);
-				vTaskDelayUntil( &xLastWakeTime, 10 );
+				vTaskDelayUntil( &xLastWakeTime, 400 );
+				TxMess.ExtId = 0x18FB0010;
+				HAL_CAN_Transmit(&hcan2,10);
+				vTaskDelayUntil( &xLastWakeTime, 400 );
 		}
 }
 

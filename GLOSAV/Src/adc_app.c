@@ -32,9 +32,7 @@ static void ADC_Task(void *pvParameters)
 		
 	
 		while(1)
-		{
-
-			
+		{	
 			for(adc_chn_count=0;adc_chn_count<ADC_CHANNELS_NUM;adc_chn_count++)
 			{
 					sConfig.Channel = adc_channel_list[adc_chn_count];
