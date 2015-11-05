@@ -14,6 +14,7 @@ glosav configuration\main.o: ..\Drivers\CMSIS\Include\core_cmSimd.h
 glosav configuration\main.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
+glosav configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h
@@ -41,6 +42,7 @@ glosav configuration\main.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\main.o: ..\Inc\mxconstants.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
+glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h
@@ -56,7 +58,6 @@ glosav configuration\main.o: ..\Inc\spi.h
 glosav configuration\main.o: ..\Inc\tim.h
 glosav configuration\main.o: ..\Inc\usart.h
 glosav configuration\main.o: ..\Inc\gpio.h
-glosav configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 glosav configuration\main.o: ..\Inc\config.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\main.o: ..\Inc\usart_app.h

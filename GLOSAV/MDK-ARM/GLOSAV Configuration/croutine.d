@@ -6,8 +6,10 @@ glosav configuration\croutine.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\croutine.o: ..\Inc\mxconstants.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
+glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h
+glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h

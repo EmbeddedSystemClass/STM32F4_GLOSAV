@@ -220,12 +220,11 @@ void StartTaskMODBUS( void const * argument)
 {
     const UCHAR     ucSlaveID[] = { 0xAA, 0xBB, 0xCC };
     eMBErrorCode    eStatus;
-		
-		eStatus = eMBInit( MB_RTU, 0x0A, 1, 921600, UART_PARITY_NONE );
 
     for( ;; )
     {
-        if( eStatus!=MB_ENOERR)
+//        if( MB_ENOERR != ( eStatus = eMBInit( MB_ASCII, 0x0A, 1, 38400, MB_PAR_EVEN ) ) )
+        if( MB_ENOERR != ( eStatus = eMBInit( MB_RTU, 0x0A, 1, 115200, UART_PARITY_NONE ) ) )
         {
             /* Can not initialize. Add error handling code here. */
         }

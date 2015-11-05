@@ -152,49 +152,51 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 		static uint32_t i=0;
 		uint32_t pgn=(can1msg->ExtId>>8)&0xFFFF;
 	
+	uint16_t test=0;
+	
 	xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
   {	
 			switch(pgn)
 			{
 					case FMS_PGN_LFC:
 					{
-
+						test=123;
 					}
 					break;
 					
 					case FMS_PGN_DD:
 					{
-
+						test=234;
 					}
 					break;
 					
 					case FMS_PGN_HRLFC:
 					{
-
+						test=345;
 					}
 					break;
 					
 					case FMS_PGN_AT1T1I:
 					{
-
+						test=567;
 					}
 					break;
 					
 					case FMS_PGN_VW:
 					{
-
+						test=678;
 					}
 					break;
 					
 					case FMS_PGN_CVW:
 					{
-
+						test=789;
 					}
 					break;
 					
 					case FMS_PGN_CCVS:
 					{
-						
+						test=890;
 					}
 					break;
 					

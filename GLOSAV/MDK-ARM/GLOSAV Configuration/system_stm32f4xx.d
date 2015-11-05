@@ -14,6 +14,7 @@ glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm
 glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
+glosav configuration\system_stm32f4xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 glosav configuration\system_stm32f4xx.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h

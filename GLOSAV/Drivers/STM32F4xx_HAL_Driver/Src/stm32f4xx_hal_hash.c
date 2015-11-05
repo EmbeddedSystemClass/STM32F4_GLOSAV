@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_hash.c
   * @author  MCD Application Team
-  * @version V1.2.0
-  * @date    26-December-2014
+  * @version V1.4.1
+  * @date    09-October-2015
   * @brief   HASH HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the HASH peripheral:
@@ -68,7 +68,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -109,7 +109,7 @@
 
 #ifdef HAL_HASH_MODULE_ENABLED
 
-#if defined(STM32F415xx) || defined(STM32F417xx) || defined(STM32F437xx) || defined(STM32F439xx)
+#if defined(STM32F415xx) || defined(STM32F417xx) || defined(STM32F437xx) || defined(STM32F439xx) || defined(STM32F479xx)
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -176,8 +176,8 @@ static void HASH_DMAXferCplt(DMA_HandleTypeDef *hdma)
         buffersize = hhash->Init.KeySize;
       }
       /* Configure the number of valid bits in last word of the message */
-      HASH->STR |= 8 * (buffersize % 4);
-      
+      MODIFY_REG(HASH->STR, HASH_STR_NBLW, 8 * (buffersize % 4));
+            
       /* Set the HASH DMA transfer complete */
       hhash->hdmain->XferCpltCallback = HASH_DMAXferCplt;
       
@@ -355,6 +355,8 @@ HAL_StatusTypeDef HAL_HASH_Init(HASH_HandleTypeDef *hhash)
    
   if(hhash->State == HAL_HASH_STATE_RESET)
   {
+    /* Allocate lock resource and initialize it */
+    hhash->Lock = HAL_UNLOCKED;
     /* Init the low level hardware */
     HAL_HASH_MspInit(hhash);
   }
@@ -712,10 +714,14 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start(HASH_HandleTypeDef *hhash, uint8_t *pInBuf
   * @param  pInBuffer: Pointer to the input buffer (buffer to be hashed).
   * @param  Size: Length of the input buffer in bytes.
   *          If the Size is not multiple of 64 bytes, the padding is managed by hardware.
+  * @note  Input buffer size in bytes must be a multiple of 4 otherwise the digest computation is corrupted.
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_HASH_SHA1_Accumulate(HASH_HandleTypeDef *hhash, uint8_t *pInBuffer, uint32_t Size)
 {
+  /* Check the parameters */
+  assert_param(IS_HASH_SHA1_BUFFER_SIZE(Size));
+
   /* Process Locked */
   __HAL_LOCK(hhash);
   
@@ -790,14 +796,6 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
   /* Process Locked */
   __HAL_LOCK(hhash);
   
-  if(hhash->HashITCounter == 0)
-  {
-    hhash->HashITCounter = 1;
-  }
-  else
-  {
-    hhash->HashITCounter = 0;
-  }
   if(hhash->State == HAL_HASH_STATE_READY)
   {
     /* Change the HASH state */
@@ -816,6 +814,8 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
          the message digest of a new message */
       HASH->CR |= HASH_CR_INIT;
     }
+    /* Reset interrupt counter */
+    hhash->HashITCounter = 0;
     
     /* Set the phase */
     hhash->Phase = HAL_HASH_PHASE_PROCESS;
@@ -849,11 +849,17 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
       hhash->State = HAL_HASH_STATE_READY;
       /* Call digest computation complete callback */
       HAL_HASH_DgstCpltCallback(hhash);
+      
+      /* Process Unlocked */
+      __HAL_UNLOCK(hhash);
+      
+      /* Return function status */
+      return HAL_OK;
     }
   }
   if(__HAL_HASH_GET_FLAG(HASH_FLAG_DINIS))
   {
-    if(hhash->HashInCount > 64)
+    if(hhash->HashInCount >= 68)
     {
       inputaddr = (uint32_t)hhash->pHashInBuffPtr;
       /* Write the Input block in the Data IN register */
@@ -874,8 +880,11 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
         }
         else
         {
-          hhash->HashInCount -= 64;
+          hhash->HashInCount = 0;
+          hhash->pHashInBuffPtr+= hhash->HashInCount;
         }
+        /* Set Interrupt counter */
+        hhash->HashITCounter = 1;
       }
       else
       {
@@ -899,7 +908,10 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
       {
         inputcounter = (inputcounter+4-inputcounter%4);
       }
-      
+      else if ((inputcounter < 4) && (inputcounter != 0))
+      {
+        inputcounter = 4;
+      }
       /* Write the Input block in the Data IN register */
       for(buffercounter = 0; buffercounter < inputcounter/4; buffercounter++)
       {
@@ -910,9 +922,9 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
   }
   
   /* Process Unlocked */
@@ -943,14 +955,6 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
   /* Process Locked */
   __HAL_LOCK(hhash);
   
-  if(hhash->HashITCounter == 0)
-  {
-    hhash->HashITCounter = 1;
-  }
-  else
-  {
-    hhash->HashITCounter = 0;
-  }
   if(hhash->State == HAL_HASH_STATE_READY)
   {
     /* Change the HASH state */
@@ -969,6 +973,8 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
          the message digest of a new message */
       HASH->CR |= HASH_CR_INIT;
     }
+    /* Reset interrupt counter */
+    hhash->HashITCounter = 0;
     
     /* Set the phase */
     hhash->Phase = HAL_HASH_PHASE_PROCESS;
@@ -1003,11 +1009,17 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
       hhash->State = HAL_HASH_STATE_READY;
       /* Call digest computation complete callback */
       HAL_HASH_DgstCpltCallback(hhash);
+      
+      /* Process Unlocked */
+      __HAL_UNLOCK(hhash);
+      
+      /* Return function status */
+      return HAL_OK;
     }
   }
   if(__HAL_HASH_GET_FLAG(HASH_FLAG_DINIS))
   {
-    if(hhash->HashInCount > 64)
+    if(hhash->HashInCount >= 68)
     {
       inputaddr = (uint32_t)hhash->pHashInBuffPtr;
       /* Write the Input block in the Data IN register */
@@ -1019,7 +1031,6 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
       if(hhash->HashITCounter == 0)
       {
         HASH->DIN = *(uint32_t*)inputaddr;
-      
         if(hhash->HashInCount >= 68)
         {
           /* Decrement buffer counter */
@@ -1028,8 +1039,11 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
         }
         else
         {
-          hhash->HashInCount -= 64;
+          hhash->HashInCount = 0;
+          hhash->pHashInBuffPtr+= hhash->HashInCount;
         }
+        /* Set Interrupt counter */
+        hhash->HashITCounter = 1;
       }
       else
       {
@@ -1053,7 +1067,10 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
       {
         inputcounter = (inputcounter+4-inputcounter%4);
       }
-      
+      else if ((inputcounter < 4) && (inputcounter != 0))
+      {
+        inputcounter = 4;
+      }
       /* Write the Input block in the Data IN register */
       for(buffercounter = 0; buffercounter < inputcounter/4; buffercounter++)
       {
@@ -1064,9 +1081,9 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
   }
   
   /* Process Unlocked */
@@ -1828,7 +1845,7 @@ HAL_HASH_STATETypeDef HAL_HASH_GetState(HASH_HandleTypeDef *hhash)
   * @}
   */
 
-#endif /* STM32F415xx || STM32F417xx || STM32F437xx || STM32F439xx */
+#endif /* STM32F415xx || STM32F417xx || STM32F437xx || STM32F439xx || STM32F479xx */
 #endif /* HAL_HASH_MODULE_ENABLED */
 /**
   * @}

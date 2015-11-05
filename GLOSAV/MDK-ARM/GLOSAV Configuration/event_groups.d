@@ -7,6 +7,7 @@ glosav configuration\event_groups.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\event_groups.o: ..\Inc\mxconstants.h
 glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
 glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
+glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h
 glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
 glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
 glosav configuration\event_groups.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h
