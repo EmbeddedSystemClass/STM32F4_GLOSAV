@@ -12,7 +12,8 @@ typedef union
 	{
 		uint16_t 	Weight;
 		uint16_t 	CombinationWeight;
-		uint8_t 	Speed;
+		uint16_t 	Speed;
+		uint16_t 	FuelLevel;
 	} params;
 	
 	uint16_t can_mb_buf[CAN_STRUCT_MB_BUF_SIZE];

@@ -27,52 +27,35 @@ Project File Date:  11/02/2015
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
-compiling main.c...
-..\Src\can_app.h(21): warning:  #1-D: last line of file ends without a newline
+compiling can_app.c...
+..\Src\can_app.h(22): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\adc_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\main.c: 2 warnings, 0 errors
-compiling tasks.c...
-..\Src\tasks.c(227): warning:  #188-D: enumerated type mixed with another type
-          if( MB_ENOERR != ( eStatus = eMBInit( MB_RTU, 0x0A, 1, 115200, 
-ART_PARITY_NONE ) ) )
-..\Src\tasks.c(222): warning:  #550-D: variable "eStatus" was set but never used
-      eMBErrorCode    eStatus;
-..\Src\tasks.c: 2 warnings, 0 errors
-compiling mb_app.c...
-..\Src\can_app.h(21): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\mb_app.c: 1 warning, 0 errors
-compiling mb.c...
-compiling mbrtu.c...
-..\Middlewares\Third_Party\FreeModbus\modbus\rtu\mbrtu.c(156): warning:  #550-D: variable "xFrameReceived" was set but never used
-      BOOL            xFrameReceived = FALSE;
-..\Middlewares\Third_Party\FreeModbus\modbus\rtu\mbrtu.c: 1 warning, 0 errors
-compiling mbcrc.c...
-compiling mbutils.c...
-compiling mbfunccoils.c...
-compiling mbfuncdisc.c...
-compiling mbfuncholding.c...
-compiling mbfuncinput.c...
-compiling mbfuncother.c...
-compiling mbascii.c...
-compiling mbfuncuser.c...
-compiling porttimer.c...
-compiling portevent.c...
-compiling portserial.c...
-compiling portother.c...
+..\Src\can_app.c(62): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+                
+TaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
+..\Src\can_app.c(63): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+                
+TaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
+..\Src\can_app.c(72): warning:  #177-D: variable "temp" was declared but never referenced
+        static uint8_t temp;
+..\Src\can_app.c(126): warning:  #550-D: variable "temp" was set but never used
+        static uint8_t temp=0;
+..\Src\can_app.c(155): warning:  #177-D: variable "i" was declared but never referenced
+                static uint32_t i=0;
+..\Src\can_app.c(158): warning:  #177-D: variable "test" was declared but never referenced
+        uint16_t test=0;
+..\Src\can_app.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=29228 RO-data=1324 RW-data=680 ZI-data=35648  
+Program Size: Code=29220 RO-data=1324 RW-data=680 ZI-data=35648  
 FromELF: creating hex file...
-"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 6 Warning(s).
+"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:01:16
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

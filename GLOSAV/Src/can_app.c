@@ -61,6 +61,9 @@ void CAN_App_Init(void)
 	
 		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
+		
+		
+		CAN_FSM_Params.params.Weight=0xAB;
 }
 
 static void CAN1_Listening_Task(void *pvParameters)
@@ -160,43 +163,43 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 			{
 					case FMS_PGN_LFC:
 					{
-						test=123;
+
 					}
 					break;
 					
 					case FMS_PGN_DD:
 					{
-						test=234;
+							CAN_FSM_Params.params.FuelLevel=can1msg->Data[1];
 					}
 					break;
 					
 					case FMS_PGN_HRLFC:
 					{
-						test=345;
+
 					}
 					break;
 					
 					case FMS_PGN_AT1T1I:
 					{
-						test=567;
+
 					}
 					break;
 					
 					case FMS_PGN_VW:
 					{
-						test=678;
+
 					}
 					break;
 					
 					case FMS_PGN_CVW:
 					{
-						test=789;
+
 					}
 					break;
 					
 					case FMS_PGN_CCVS:
 					{
-						test=890;
+
 					}
 					break;
 					

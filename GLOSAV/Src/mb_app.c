@@ -71,8 +71,8 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         {
 						xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
 						{	
-								*pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
-								*pucRegBuffer++ = ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/CAN_FSM_Params.can_mb_buf[iRegIndex] >> 8 );
+								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/CAN_FSM_Params.can_mb_buf[iRegIndex] & 0xFF );
 						}
 						xSemaphoreGive( xCAN1_DataMutex );
 
