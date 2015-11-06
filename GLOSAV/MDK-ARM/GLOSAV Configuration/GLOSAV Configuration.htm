@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Thu Nov 05 16:13:09 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Fri Nov 06 12:45:33 2015
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -219,7 +219,6 @@ Global Symbols
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSwitchContext
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvTaskExitError
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
@@ -243,6 +242,7 @@ Global Symbols
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortSysTickHandler
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortValidateInterruptPriority
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSwitchContext
 </UL>
 
 <P><STRONG><a name="[154]"></a>vPortClearInterruptMask</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, port.o(.emb_text))
@@ -884,9 +884,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
 
 <P><STRONG><a name="[b8]"></a>HAL_RCC_GetPCLK1Freq</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq))
@@ -1275,7 +1275,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>StartTaskMODBUS</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
+<P><STRONG><a name="[8c]"></a>StartTaskMODBUS</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = StartTaskMODBUS &rArr; eMBInit &rArr; eMBRTUInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1659,7 +1659,7 @@ Global Symbols
 <LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncReadHoldingRegister
 </UL>
 
-<P><STRONG><a name="[117]"></a>eMBRegInputCB</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, mb_app.o(i.eMBRegInputCB))
+<P><STRONG><a name="[117]"></a>eMBRegInputCB</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, mb_app.o(i.eMBRegInputCB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = eMBRegInputCB &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -1876,8 +1876,8 @@ Global Symbols
 <P><STRONG><a name="[12f]"></a>vListInitialise</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, list.o(i.vListInitialise))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueCreateMutex
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckForValidListAndQueue
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseTaskLists
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseTaskLists
 </UL>
 
 <P><STRONG><a name="[13c]"></a>vListInitialiseItem</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, list.o(i.vListInitialiseItem))
@@ -2309,9 +2309,9 @@ Global Symbols
 <P><STRONG><a name="[15d]"></a>xPortStartScheduler</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, port.o(i.xPortStartScheduler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = xPortStartScheduler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortSetupTimerInterrupt
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___6_port_c_39a90d8d__prvEnableVFP
+<BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___6_port_c_39a90d8d__prvEnableVFP
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___6_port_c_39a90d8d__prvStartFirstTask
+<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortSetupTimerInterrupt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskStartScheduler
 </UL>
@@ -2455,14 +2455,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = xTaskGenericCreate &rArr; prvAllocateTCBAndStack &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pxPortInitialiseStack
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ulPortSetInterruptMask
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseTaskLists
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseTCBVariables
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAllocateTCBAndStack
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pxPortInitialiseStack
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseTaskLists
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_App_Init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_App_Init
@@ -2600,7 +2600,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> can_app.o(i.CAN_App_Init)
 </UL>
-<P><STRONG><a name="[72]"></a>ADC_Task</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, adc_app.o(i.ADC_Task))
+<P><STRONG><a name="[72]"></a>ADC_Task</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, adc_app.o(i.ADC_Task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = ADC_Task &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConfigChannel
@@ -2675,10 +2675,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e3]"></a>UART_SetConfig</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, stm32f4xx_hal_uart.o(i.UART_SetConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK2Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>

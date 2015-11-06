@@ -49,4 +49,6 @@ glosav configuration\adc_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\inclu
 glosav configuration\adc_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
 glosav configuration\adc_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\adc_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
+glosav configuration\adc_app.o: ..\Src\can_app.h
 glosav configuration\adc_app.o: ..\Inc\adc.h
+glosav configuration\adc_app.o: ..\Src\mb_app.h

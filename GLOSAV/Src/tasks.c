@@ -240,15 +240,15 @@ void StartTaskMODBUS( void const * argument)
             }
             else
             {
-                usRegHoldingBuf[0] = 1;
+                //usRegHoldingBuf[0] = 1;
                 do
                 {
                     ( void )eMBPoll(  );
 
                     /* Here we simply count the number of poll cycles. */
-                    usRegInputBuf[0]++;
+                    //usRegInputBuf[0]++;
                 }
-                while( usRegHoldingBuf[0] );
+                while(/* usRegHoldingBuf[0] */1);
             }
             ( void )eMBDisable(  );
             ( void )eMBClose(  );

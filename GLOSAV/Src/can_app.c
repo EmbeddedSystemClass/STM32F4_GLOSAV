@@ -1,5 +1,5 @@
 #include "can_app.h"
-
+#include "mb_app.h"
 
 
 #include "FreeRTOS.h"
@@ -27,7 +27,7 @@ QueueHandle_t xCAN1_MessageQueue;
 SemaphoreHandle_t	xCAN1_DataMutex;
 
 
-stCAN_FSM_Params CAN_FSM_Params;
+//stCAN_FSM_Params CAN_FSM_Params;
 
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
@@ -63,7 +63,7 @@ void CAN_App_Init(void)
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
 		
 		
-		CAN_FSM_Params.params.Weight=0xAB;
+		MBInputRegParams.params.CANFMSParams.weight=0xAB;
 }
 
 static void CAN1_Listening_Task(void *pvParameters)
@@ -169,7 +169,7 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 					
 					case FMS_PGN_DD:
 					{
-							CAN_FSM_Params.params.FuelLevel=can1msg->Data[1];
+							MBInputRegParams.params.CANFMSParams.fuelLevel=can1msg->Data[1];
 					}
 					break;
 					

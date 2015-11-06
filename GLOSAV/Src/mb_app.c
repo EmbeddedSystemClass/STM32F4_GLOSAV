@@ -17,12 +17,13 @@
 
 #include "tasks.h"
 
-#include "can_app.h"
+//#include "can_app.h"
+#include "mb_app.h"
 
 #include <string.h>
 
 #define REG_INPUT_START                 ( 1000 )
-#define REG_INPUT_NREGS                 CAN_STRUCT_MB_BUF_SIZE//( 64 )
+#define REG_INPUT_NREGS                 MB_INPUT_BUF_SIZE//( 64 )
 
 #define REG_HOLDING_START               ( 1 )
 #define REG_HOLDING_NREGS               ( 32 )
@@ -31,13 +32,15 @@
 #define MAX_COM_PORTS_CNT		(16) // максимальное количество адресуемых портов
 #define MAX_COM_PORT_BUFFER	(15) // максимальное количество байтов от/к одному порту
 
-extern stCAN_FSM_Params CAN_FSM_Params;
+//extern stCAN_FSM_Params CAN_FSM_Params;
 
 /* ----------------------- Static variables ---------------------------------*/
 USHORT   usRegInputStart = REG_INPUT_START;
-USHORT   *usRegInputBuf=CAN_FSM_Params.can_mb_buf;
+//USHORT   *usRegInputBuf[REG_INPUT_NREGS];
 USHORT   usRegHoldingStart = REG_HOLDING_START;
 USHORT   usRegHoldingBuf[REG_HOLDING_NREGS] = {0x11, 0x22, 0x33, 0x44, 0x66, 0x77};
+
+stMBInputRegParams MBInputRegParams;
 
 static osMessageQId* RX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	&myQueueUart4RxHandle,
@@ -71,8 +74,8 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         {
 						xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
 						{	
-								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/CAN_FSM_Params.can_mb_buf[iRegIndex] >> 8 );
-								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/CAN_FSM_Params.can_mb_buf[iRegIndex] & 0xFF );
+								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] >> 8 );
+								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] & 0xFF );
 						}
 						xSemaphoreGive( xCAN1_DataMutex );
 
