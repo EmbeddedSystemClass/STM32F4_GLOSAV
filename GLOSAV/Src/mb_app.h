@@ -18,6 +18,7 @@ typedef union
 }stMBInputRegParams;
 
 extern stMBInputRegParams MBInputRegParams;
+extern SemaphoreHandle_t	xMBInputRegParamsMutex;
 
 #endif
 

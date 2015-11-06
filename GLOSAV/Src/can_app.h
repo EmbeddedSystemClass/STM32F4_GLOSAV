@@ -15,6 +15,4 @@ typedef	struct
 } stCANFMSParams;
 
 
-//extern stCAN_FSM_Params CAN_FSM_Params;
-
 #endif

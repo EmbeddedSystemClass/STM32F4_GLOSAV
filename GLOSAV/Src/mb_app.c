@@ -58,7 +58,7 @@ static osMessageQId* TX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,
 };
 
-extern SemaphoreHandle_t	xCAN1_DataMutex;
+SemaphoreHandle_t	xMBInputRegParamsMutex;
 
 
 eMBErrorCode
@@ -72,12 +72,12 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         iRegIndex = ( int )( usAddress - usRegInputStart );
         while( usNRegs > 0 )
         {
-						xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
+						xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
 						{	
 								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] >> 8 );
 								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] & 0xFF );
 						}
-						xSemaphoreGive( xCAN1_DataMutex );
+						xSemaphoreGive( xMBInputRegParamsMutex );
 
             iRegIndex++;
             usNRegs--;

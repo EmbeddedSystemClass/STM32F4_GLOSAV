@@ -61,3 +61,6 @@ glosav configuration\tasks.o: ..\Inc\config.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mbport.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mbproto.h
+glosav configuration\tasks.o: ..\Src\mb_app.h
+glosav configuration\tasks.o: ..\Src\can_app.h
+glosav configuration\tasks.o: ..\Src\adc_app.h

@@ -8,6 +8,7 @@
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
 #include "mbport.h"
+#include "mb_app.h"
 
 /* ----------------------- Defines ------------------------------------------*/
 //#define REG_INPUT_START                 ( 1000 )
@@ -23,9 +24,9 @@
 
 /* ----------------------- Static variables ---------------------------------*/
 //static USHORT   usRegInputStart = REG_INPUT_START;
-extern USHORT   usRegInputBuf[];
-//static USHORT   usRegHoldingStart = REG_HOLDING_START;
-extern USHORT   usRegHoldingBuf[];
+//extern USHORT   usRegInputBuf[];
+////static USHORT   usRegHoldingStart = REG_HOLDING_START;
+//extern USHORT   usRegHoldingBuf[];
 
 osThreadId myTaskTrmlRxHandle;
 osThreadId myTaskSIMRxHandle;
@@ -63,6 +64,9 @@ void Callback01(void const * argument);
 void startUserTasks(void)
 {
   /* USER CODE BEGIN RTOS_TIMERS */
+	
+	xMBInputRegParamsMutex = xSemaphoreCreateMutex();
+	
   /* start timers, add new ones, ... */
   osTimerDef(myTimer01, Callback01);
   myTimer01Handle = osTimerCreate(osTimer(myTimer01), osTimerPeriodic, NULL);

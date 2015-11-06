@@ -24,10 +24,8 @@ extern CAN_HandleTypeDef hcan2;
 static CanRxMsgTypeDef can1RxMessage;
 
 QueueHandle_t xCAN1_MessageQueue;
-SemaphoreHandle_t	xCAN1_DataMutex;
+//SemaphoreHandle_t	xCAN1_DataMutex;
 
-
-//stCAN_FSM_Params CAN_FSM_Params;
 
 static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
@@ -57,7 +55,7 @@ void CAN_App_Init(void)
 
 		xCAN1_MessageQueue = xQueueCreate( CAN1_MESSAGE_QUEUE_MAX_LENGTH, sizeof( CanRxMsgTypeDef ) );
 		
-		xCAN1_DataMutex = xSemaphoreCreateMutex();
+		//xCAN1_DataMutex = xSemaphoreCreateMutex();
 	
 		xTaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
 		xTaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
@@ -157,7 +155,7 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 	
 	uint16_t test=0;
 	
-	xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );
+	xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
   {	
 			switch(pgn)
 			{
@@ -209,6 +207,6 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 					}
 			}
 	}
-  xSemaphoreGive( xCAN1_DataMutex );
+  xSemaphoreGive( xMBInputRegParamsMutex );
 }
 

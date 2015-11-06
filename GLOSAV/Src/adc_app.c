@@ -8,13 +8,13 @@
 
 //uint16_t adc_channels_data[ADC_CHANNELS_NUM];
 const uint8_t adc_channel_list[ADC_CHANNELS_NUM]={ADC_CHANNEL_8,ADC_CHANNEL_14,ADC_CHANNEL_15};
-SemaphoreHandle_t	xADC_DataMutex;
+//SemaphoreHandle_t	xADC_DataMutex;
 
 static void ADC_Task(void *pvParameters);
 
 void ADC_App_Init(void)
 {
-		xADC_DataMutex = xSemaphoreCreateMutex();
+		//xMBInputRegParamsMutex = xSemaphoreCreateMutex();
 		xTaskCreate(ADC_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
@@ -44,11 +44,11 @@ static void ADC_Task(void *pvParameters)
 					
 					if (HAL_ADC_PollForConversion(&hadc3, 10) == HAL_OK && HAL_ADC_GetState(&hadc3) == HAL_ADC_STATE_EOC_REG)
 					{
-						xSemaphoreTake( xADC_DataMutex, portMAX_DELAY );
+						xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
 						{
 							MBInputRegParams.params.adcData[adc_chn_count] = HAL_ADC_GetValue(&hadc3);
 						}
-						xSemaphoreGive( xADC_DataMutex );
+						xSemaphoreGive( xMBInputRegParamsMutex );
 				  }
 				
 					HAL_ADC_Stop(&hadc3);
