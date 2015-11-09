@@ -66,6 +66,7 @@ void startUserTasks(void)
   /* USER CODE BEGIN RTOS_TIMERS */
 	
 	xMBInputRegParamsMutex = xSemaphoreCreateMutex();
+	xMBHoldingRegParamsMutex= xSemaphoreCreateMutex();
 	
   /* start timers, add new ones, ... */
   osTimerDef(myTimer01, Callback01);

@@ -36,6 +36,7 @@ glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
+glosav configuration\usart_app.o: ..\Src\usart_app.h
 glosav configuration\usart_app.o: ..\Inc\gpio.h
 glosav configuration\usart_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\usart_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

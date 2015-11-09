@@ -10,6 +10,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
+#include "usart_app.h"
 #include "gpio.h"
 #include <stdio.h>
 #include "stm32f4xx_hal.h"

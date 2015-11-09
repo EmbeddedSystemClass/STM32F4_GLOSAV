@@ -41,6 +41,8 @@ USHORT   usRegHoldingStart = REG_HOLDING_START;
 USHORT   usRegHoldingBuf[REG_HOLDING_NREGS] = {0x11, 0x22, 0x33, 0x44, 0x66, 0x77};
 
 stMBInputRegParams MBInputRegParams;
+stMBHoldingRegParams MBHoldingRegParams;
+
 
 static osMessageQId* RX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	&myQueueUart4RxHandle,
@@ -59,7 +61,7 @@ static osMessageQId* TX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 };
 
 SemaphoreHandle_t	xMBInputRegParamsMutex;
-
+SemaphoreHandle_t	xMBHoldingRegParamsMutex;
 
 eMBErrorCode
 eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
@@ -105,8 +107,8 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
         case MB_REG_READ:
             while( usNRegs > 0 )
             {
-                *pucRegBuffer++ = ( unsigned char )( usRegHoldingBuf[iRegIndex] >> 8 );
-                *pucRegBuffer++ = ( unsigned char )( usRegHoldingBuf[iRegIndex] & 0xFF );
+                *pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] >> 8 );
+                *pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] & 0xFF );
                 iRegIndex++;
                 usNRegs--;
             }
@@ -115,8 +117,8 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
         case MB_REG_WRITE:
             while( usNRegs > 0 )
             {
-                usRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
-                usRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+                MBHoldingRegParams.usRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
+                MBHoldingRegParams.usRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
                 iRegIndex++;
                 usNRegs--;
             }

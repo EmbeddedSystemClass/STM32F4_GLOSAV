@@ -1,0 +1,4 @@
+#ifndef DISCRETE_OUTPUT_APP_H
+#define DISCRETE_OUTPUT_APP_H
+
+#endif
