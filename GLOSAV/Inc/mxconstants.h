@@ -42,8 +42,6 @@
 #define out_CAN1_SD_GPIO_Port GPIOE
 #define out_CAN2_SD_Pin GPIO_PIN_3
 #define out_CAN2_SD_GPIO_Port GPIOE
-#define in_door_Pin GPIO_PIN_5
-#define in_door_GPIO_Port GPIOE
 #define in_CALL_Pin GPIO_PIN_6
 #define in_CALL_GPIO_Port GPIOE
 #define in_IGN_STM_Pin GPIO_PIN_3
@@ -52,8 +50,6 @@
 #define in_1_wire_in_GPIO_Port GPIOC
 #define out_1_Wire_ctrl_Pin GPIO_PIN_1
 #define out_1_Wire_ctrl_GPIO_Port GPIOC
-#define out_SKZI_rst_Pin GPIO_PIN_3
-#define out_SKZI_rst_GPIO_Port GPIOA
 #define in_case_open_o_Pin GPIO_PIN_13
 #define in_case_open_o_GPIO_Port GPIOF
 #define in_case_open_sw_Pin GPIO_PIN_14
