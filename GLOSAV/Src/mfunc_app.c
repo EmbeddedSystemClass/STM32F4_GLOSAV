@@ -2,6 +2,7 @@
 #include "can_app.h"
 #include "adc.h"
 #include "mb_app.h"
+#include "tim.h"
 
 
 #define ADC_POLL_PERIOD		100
@@ -102,7 +103,7 @@ void Mfunc_App_Init(void)
 		MfuncInputs[13].adcChn=ADC_CHANNEL_7;
 		MfuncInputs[13].mode=MFUNC_ADC;
 		
-	
+	HAL_TIM_Base_Start_IT(&htim6);
 		xTaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
@@ -134,6 +135,34 @@ void Mfunc_Input_SetMode(uint32_t mode)
 					}						
 			}
 			mode=mode>>2;
+	}
+}
+
+void Mfunc_TimerInterruptHandler(void)
+{
+	uint8_t mfunc_count;
+	for(mfunc_count=0;mfunc_count<MFUNC_CHANNELS_NUM;mfunc_count++)
+	{
+			if(MfuncInputs[mfunc_count].mode!=MFUNC_ADC)
+			{
+					MfuncInputs[mfunc_count].discreteStateOld=MfuncInputs[mfunc_count].discreteState;
+					MfuncInputs[mfunc_count].discreteState=HAL_GPIO_ReadPin(MfuncInputs[mfunc_count].port,MfuncInputs[mfunc_count].pin);
+					
+					if(MfuncInputs[mfunc_count].mode==MFUNC_REDGE)
+					{
+							if((MfuncInputs[mfunc_count].discreteState==GPIO_PIN_SET)&&(MfuncInputs[mfunc_count].discreteStateOld==GPIO_PIN_RESET))
+							{
+									MBHoldingRegParams.params.mfuncCount[mfunc_count]++;
+							}
+					}
+					else if(MfuncInputs[mfunc_count].mode==MFUNC_FEDGE)
+					{
+							if((MfuncInputs[mfunc_count].discreteState==GPIO_PIN_RESET)&&(MfuncInputs[mfunc_count].discreteStateOld==GPIO_PIN_SET))
+							{
+									MBHoldingRegParams.params.mfuncCount[mfunc_count]++;
+							}					
+					}				
+			}
 	}
 }
 

@@ -36,5 +36,6 @@ typedef struct
 
 void Mfunc_App_Init(void);
 void Mfunc_Input_SetMode(uint32_t mode);
+void Mfunc_TimerInterruptHandler(void);
 
 #endif

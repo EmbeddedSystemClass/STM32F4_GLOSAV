@@ -28,20 +28,20 @@ Project File Date:  11/02/2015
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
 compiling mfunc_app.c...
-..\Src\mfunc_app.h(40): warning:  #1-D: last line of file ends without a newline
+..\Src\mfunc_app.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\Src\can_app.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\Src\mb_app.h(21): warning:  #47-D: incompatible redefinition of macro "MFUNC_CHANNELS_NUM" (declared at line 11 of "..\Src\mfunc_app.h")
   #define MFUNC_CHANNELS_NUM    16
-..\Src\mfunc_app.c(106): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\mfunc_app.c(107): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
 TaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
-..\Src\mfunc_app.c(181): warning:  #1-D: last line of file ends without a newline
+..\Src\mfunc_app.c(210): warning:  #1-D: last line of file ends without a newline
   }
 ..\Src\mfunc_app.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=29788 RO-data=1320 RW-data=668 ZI-data=36428  
+Program Size: Code=30032 RO-data=1320 RW-data=668 ZI-data=36428  
 FromELF: creating hex file...
 "GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 5 Warning(s).
 
@@ -50,7 +50,7 @@ FromELF: creating hex file...
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>
