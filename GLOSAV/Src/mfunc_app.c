@@ -7,7 +7,7 @@
 #define ADC_POLL_PERIOD		100
 
 //uint16_t adc_channels_data[ADC_CHANNELS_NUM];
-const uint8_t adc_channel_list[MFUNC_CHANNELS_NUM]={ADC_CHANNEL_8,ADC_CHANNEL_14,ADC_CHANNEL_15};
+//const uint8_t adc_channel_list[MFUNC_CHANNELS_NUM]={ADC_CHANNEL_8,ADC_CHANNEL_14,ADC_CHANNEL_15};
 //SemaphoreHandle_t	xADC_DataMutex;
 
 stMfunc MfuncInputs[MFUNC_CHANNELS_NUM];
@@ -106,13 +106,44 @@ void Mfunc_App_Init(void)
 		xTaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
+void Mfunc_Input_SetMode(uint32_t mode)
+{
+	uint8_t mfunc_count;
+	GPIO_InitTypeDef GPIO_InitStruct;
+	
+	for(mfunc_count=0;mfunc_count<MFUNC_CHANNELS_NUM;mfunc_count++)
+	{
+			if(MfuncInputs[mfunc_count].mode!=(mode&0x3))
+			{										
+					MfuncInputs[mfunc_count].mode=mode&0x3;
+							
+					if(MfuncInputs[mfunc_count].mode==MFUNC_ADC)
+					{
+						  GPIO_InitStruct.Pin = MfuncInputs[mfunc_count].pin;
+							GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+							GPIO_InitStruct.Pull = GPIO_NOPULL;
+							HAL_GPIO_Init(MfuncInputs[mfunc_count].port, &GPIO_InitStruct);						
+					}
+					else
+					{
+						  GPIO_InitStruct.Pin = MfuncInputs[mfunc_count].pin;
+							GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+							GPIO_InitStruct.Pull = GPIO_NOPULL;
+							GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+							HAL_GPIO_Init(MfuncInputs[mfunc_count].port, &GPIO_InitStruct);		
+					}						
+			}
+			mode=mode>>2;
+	}
+}
+
 static void Mfunc_Task(void *pvParameters)
 {
 		TickType_t xLastWakeTime;
 		uint8_t adc_chn_count=0;
 	
 		ADC_ChannelConfTypeDef sConfig;
-		sConfig.Channel = adc_channel_list[0];
+	//	sConfig.Channel = adc_channel_list[0];
 		sConfig.Rank = 1;
 		sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
 	  HAL_ADC_ConfigChannel(&hadc3, &sConfig);

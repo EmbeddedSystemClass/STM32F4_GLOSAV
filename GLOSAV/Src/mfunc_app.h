@@ -8,7 +8,7 @@
 #include "queue.h"
 #include "semphr.h"
 
-#define MFUNC_CHANNELS_NUM	16
+#define MFUNC_CHANNELS_NUM	14
 
 
 
