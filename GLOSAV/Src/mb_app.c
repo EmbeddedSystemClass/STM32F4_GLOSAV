@@ -122,6 +122,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
                 iRegIndex++;
                 usNRegs--;
             }
+						USARTs_SetSpeed(MBHoldingRegParams.params.write.uartBaudRate);
+						DiscreteOutputs_SetState(MBHoldingRegParams.params.write.discreteOutputs);
+						break;
         }
     }
     else

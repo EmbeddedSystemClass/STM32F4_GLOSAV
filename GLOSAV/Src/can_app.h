@@ -1,7 +1,7 @@
 #ifndef CAN_APP_H
 #define CAN_APP_H
 #include "stm32f4xx_hal.h"
-#include "adc_app.h"
+#include "mfunc_app.h"
 
 void CAN_App_Init(void);
 

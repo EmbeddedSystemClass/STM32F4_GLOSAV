@@ -27,65 +27,28 @@ Project File Date:  11/02/2015
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
-compiling tasks.c...
-..\Src\adc_app.h(18): warning:  #1-D: last line of file ends without a newline
+compiling mfunc_app.c...
+..\Src\mfunc_app.h(40): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\Src\can_app.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\tasks.c(232): warning:  #188-D: enumerated type mixed with another type
-          if( MB_ENOERR != ( eStatus = eMBInit( MB_RTU, 0x0A, 1, 921600, 
-ART_PARITY_NONE ) ) )
-..\Src\tasks.c(227): warning:  #550-D: variable "eStatus" was set but never used
-      eMBErrorCode    eStatus;
-..\Src\tasks.c: 4 warnings, 0 errors
-compiling mb_app.c...
-..\Src\adc_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\can_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\mb_app.c: 2 warnings, 0 errors
-compiling can_app.c...
-..\Src\adc_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\can_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\can_app.c(60): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+..\Src\mfunc_app.c(83): error:  #20: identifier "hadc2" is undefined
+                MfuncInputs[10].adc=&hadc2;
+..\Src\mfunc_app.c(106): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
                 
-TaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
-..\Src\can_app.c(61): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
-                
-TaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);
-..\Src\can_app.c(70): warning:  #177-D: variable "temp" was declared but never referenced
-        static uint8_t temp;
-..\Src\can_app.c(124): warning:  #550-D: variable "temp" was set but never used
-        static uint8_t temp=0;
-..\Src\can_app.c(153): warning:  #177-D: variable "i" was declared but never referenced
-                static uint32_t i=0;
-..\Src\can_app.c(156): warning:  #177-D: variable "test" was declared but never referenced
-        uint16_t test=0;
-..\Src\can_app.c: 8 warnings, 0 errors
-compiling adc_app.c...
-..\Src\adc_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\can_app.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\adc_app.c(18): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
-                
-TaskCreate(ADC_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
-..\Src\adc_app.c(59): warning:  #1-D: last line of file ends without a newline
+TaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
+..\Src\mfunc_app.c(150): warning:  #1-D: last line of file ends without a newline
   }
-..\Src\adc_app.c: 4 warnings, 0 errors
-linking...
-Program Size: Code=29188 RO-data=1324 RW-data=664 ZI-data=36088  
-FromELF: creating hex file...
-"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 18 Warning(s).
+..\Src\mfunc_app.c: 4 warnings, 1 error
+"GLOSAV Configuration\GLOSAV Configuration.axf" - 1 Error(s), 4 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:22
+Target not created.
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

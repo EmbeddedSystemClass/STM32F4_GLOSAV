@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "config.h"
 
+
 void MAIN_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
@@ -38,4 +39,6 @@ void MAIN_GPIO_Init(void)
   HAL_GPIO_Init(UART5_DIR_PORT, &GPIO_InitStruct);
   GPIO_InitStruct.Pin = UART6_DIR_PIN;
   HAL_GPIO_Init(UART6_DIR_PORT, &GPIO_InitStruct);
+	
+	
 }

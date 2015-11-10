@@ -47,7 +47,7 @@
 #include "usart_app.h"
 #include "gpio_app.h"
 #include "can_app.h"
-#include "adc_app.h"
+#include "mfunc_app.h"
 #include "mb.h"
 
 /* USER CODE END Includes */
@@ -112,7 +112,7 @@ int main(void)
 	startUARTRcv(&huart6);	// RS-485 ext
 	
 	CAN_App_Init();
-	ADC_App_Init();
+	Mfunc_App_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

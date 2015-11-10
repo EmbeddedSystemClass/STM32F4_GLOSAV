@@ -63,5 +63,5 @@ glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeModbus\modbus\incl
 glosav configuration\mb_app.o: ..\Inc\tasks.h
 glosav configuration\mb_app.o: ..\Src\mb_app.h
 glosav configuration\mb_app.o: ..\Src\can_app.h
-glosav configuration\mb_app.o: ..\Src\adc_app.h
+glosav configuration\mb_app.o: ..\Src\mfunc_app.h
 glosav configuration\mb_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

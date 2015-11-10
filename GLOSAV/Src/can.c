@@ -1,7 +1,6 @@
 /**
   ******************************************************************************
   * File Name          : CAN.c
-  * Date               : 19/09/2015 18:06:41
   * Description        : This file provides code for the configuration
   *                      of the CAN instances.
   ******************************************************************************
@@ -62,25 +61,6 @@ void MX_CAN1_Init(void)
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = DISABLE;
   HAL_CAN_Init(&hcan1);
-	HAL_CAN_MspInit(&hcan1);
-	
-	 CAN_FilterConfTypeDef hcan1filter;
-  hcan1filter.FilterIdHigh = 0;
-  hcan1filter.FilterIdLow = 0;
-  hcan1filter.FilterMaskIdHigh = 0;
-  hcan1filter.FilterMaskIdLow = 0;
-  hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
-  hcan1filter.FilterNumber = 0;
-  hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
-  hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
-  hcan1filter.FilterActivation = ENABLE;
-  hcan1filter.BankNumber = 14;
-  HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
-	
-	HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 7, 0);
-  HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
-	
-	__HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0); 
 
 }
 /* CAN2 init function */
@@ -100,11 +80,10 @@ void MX_CAN2_Init(void)
   hcan2.Init.RFLM = DISABLE;
   hcan2.Init.TXFP = DISABLE;
   HAL_CAN_Init(&hcan2);
-	HAL_CAN_MspInit(&hcan2);
-	
-	
 
 }
+
+static int CAN1_CLK_ENABLED=0;
 
 void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
 {
@@ -116,19 +95,25 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
 
   /* USER CODE END CAN1_MspInit 0 */
     /* Peripheral clock enable */
-    __CAN1_CLK_ENABLE();
+    CAN1_CLK_ENABLED++;
+    if(CAN1_CLK_ENABLED==1){
+      __CAN1_CLK_ENABLE();
+    }
   
     /**CAN1 GPIO Configuration    
-    PD0     ------> CAN1_RX
-    PD1     ------> CAN1_TX 
+    PB8     ------> CAN1_RX
+    PB9     ------> CAN1_TX 
     */
     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+    /* Peripheral interrupt init*/
+    HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 8, 0);
+    HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
   /* USER CODE BEGIN CAN1_MspInit 1 */
 
   /* USER CODE END CAN1_MspInit 1 */
@@ -140,16 +125,19 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
   /* USER CODE END CAN2_MspInit 0 */
     /* Peripheral clock enable */
     __CAN2_CLK_ENABLE();
- //   __CAN1_CLK_ENABLE();
+    CAN1_CLK_ENABLED++;
+    if(CAN1_CLK_ENABLED==1){
+      __CAN1_CLK_ENABLE();
+    }
   
     /**CAN2 GPIO Configuration    
-    PB13     ------> CAN2_TX
-    PB5     ------> CAN2_RX 
+    PB5     ------> CAN2_RX
+    PB6     ------> CAN2_TX 
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_5;
+    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF9_CAN2;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -168,13 +156,19 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 
   /* USER CODE END CAN1_MspDeInit 0 */
     /* Peripheral clock disable */
-    __CAN1_CLK_DISABLE();
+    CAN1_CLK_ENABLED--;
+    if(CAN1_CLK_ENABLED==0){
+      __CAN1_CLK_DISABLE();
+    }
   
     /**CAN1 GPIO Configuration    
-    PD0     ------> CAN1_RX
-    PD1     ------> CAN1_TX 
+    PB8     ------> CAN1_RX
+    PB9     ------> CAN1_TX 
     */
     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_8|GPIO_PIN_9);
+
+    /* Peripheral interrupt Deinit*/
+    HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 
   /* USER CODE BEGIN CAN1_MspDeInit 1 */
 
@@ -187,13 +181,16 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
   /* USER CODE END CAN2_MspDeInit 0 */
     /* Peripheral clock disable */
     __CAN2_CLK_DISABLE();
- //   __CAN1_CLK_DISABLE();
+    CAN1_CLK_ENABLED--;
+    if(CAN1_CLK_ENABLED==0){
+      __CAN1_CLK_DISABLE();
+    }
   
     /**CAN2 GPIO Configuration    
-    PB13     ------> CAN2_TX
-    PB5     ------> CAN2_RX 
+    PB5     ------> CAN2_RX
+    PB6     ------> CAN2_TX 
     */
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_5);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_5|GPIO_PIN_6);
 
   /* USER CODE BEGIN CAN2_MspDeInit 1 */
 

@@ -36,7 +36,7 @@ glosav configuration\can_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ha
 glosav configuration\can_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 glosav configuration\can_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 glosav configuration\can_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
-glosav configuration\can_app.o: ..\Src\adc_app.h
+glosav configuration\can_app.o: ..\Src\mfunc_app.h
 glosav configuration\can_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\can_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\can_app.o: ..\Inc\FreeRTOSConfig.h

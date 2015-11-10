@@ -2,7 +2,7 @@
 #define MB_APP_H
 #include "stm32f4xx_hal.h"
 #include "can_app.h"
-#include "adc_app.h"
+#include "mfunc_app.h"
 
 #define MB_INPUT_BUF_SIZE	126
 #define MB_HOLDING_BUF_SIZE	126
@@ -12,7 +12,7 @@ typedef union
 	struct 
 	{
 		stCANFMSParams CANFMSParams;
-		uint16_t	adcData[ADC_CHANNELS_NUM];
+		uint16_t	adcData[MFUNC_CHANNELS_NUM];
 	} params;
 	
 	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
@@ -28,7 +28,7 @@ typedef union
 	{
 		struct
 		{
-				uint8_t uartBaudRate[UART_NUM];
+				uint32_t uartBaudRate[UART_NUM];
 				uint8_t discreteOutputs;
 				uint32_t mfuncMode;
 		}write;

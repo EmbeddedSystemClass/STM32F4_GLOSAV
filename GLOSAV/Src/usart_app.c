@@ -126,3 +126,8 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
+void USARTs_SetSpeed(uint32_t *uartBaudRate)
+{
+		
+}
+
