@@ -189,7 +189,10 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 					
 					case FMS_PGN_VW:
 					{
-							
+							if((can1msg->Data[0]>0)&&(can1msg->Data[0]<=AXLE_NUM))
+							{
+									MBHoldingRegParams.params.CANFMSParams.axleWeight[can1msg->Data[0]]=*((uint16_t*)&can1msg->Data[1]);
+							}
 					}
 					break;
 					
