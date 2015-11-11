@@ -8,10 +8,15 @@ void CAN_App_Init(void);
 
 typedef	struct 
 {
-	uint16_t 	weight;
-	uint16_t 	combinationWeight;
-	uint16_t 	speed;
-	uint16_t 	fuelLevel;
+	uint16_t 	vehicleSpeed;
+	uint8_t 	calcLoad;
+	uint32_t 	totalFuelCons;
+	uint8_t  	fuelLevelRel;
+	uint16_t	engSpeed;
+	uint16_t  axleWeight2;
+	uint32_t 	calcTotalEngTime;
+	uint16_t 	serviceDist;
+	uint16_t 	fuelRate;
 } stCANFMSParams;
 
 

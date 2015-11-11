@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Tue Nov 10 17:16:23 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Wed Nov 11 12:34:23 2015
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -600,7 +600,7 @@ Global Symbols
 
 <P><STRONG><a name="[181]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[94]"></a>CAN1_Handling_Message</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, can_app.o(i.CAN1_Handling_Message))
+<P><STRONG><a name="[94]"></a>CAN1_Handling_Message</STRONG> (Thumb, 176 bytes, Stack size 16 bytes, can_app.o(i.CAN1_Handling_Message))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = CAN1_Handling_Message &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -616,7 +616,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429xx.o(RESET)
 </UL>
-<P><STRONG><a name="[9b]"></a>CAN_App_Init</STRONG> (Thumb, 116 bytes, Stack size 64 bytes, can_app.o(i.CAN_App_Init))
+<P><STRONG><a name="[9b]"></a>CAN_App_Init</STRONG> (Thumb, 110 bytes, Stack size 64 bytes, can_app.o(i.CAN_App_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = CAN_App_Init &rArr; xTaskGenericCreate &rArr; prvAllocateTCBAndStack &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGenericCreate
