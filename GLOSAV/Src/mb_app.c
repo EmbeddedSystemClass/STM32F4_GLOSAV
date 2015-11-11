@@ -26,7 +26,7 @@
 #define REG_INPUT_NREGS                 MB_INPUT_BUF_SIZE//( 64 )
 
 #define REG_HOLDING_START               ( 1 )
-#define REG_HOLDING_NREGS               ( 32 )
+#define REG_HOLDING_NREGS               ( MB_HOLDING_BUF_SIZE )
 
 // Указатели на FIFO RX от СОМ портов в порядке их нумерации. Если порта нет, то NULL
 #define MAX_COM_PORTS_CNT		(16) // максимальное количество адресуемых портов

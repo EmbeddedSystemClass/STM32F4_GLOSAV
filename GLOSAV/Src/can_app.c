@@ -159,31 +159,31 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 			{
 					case FMS_PGN_CCVS1:
 					{
-							MBInputRegParams.params.CANFMSParams.vehicleSpeed=*((uint16_t*)&can1msg->Data[1]);
+							MBHoldingRegParams.params.CANFMSParams.vehicleSpeed=*((uint16_t*)&can1msg->Data[1]);
 					}
 					break;
 					
 					case FMS_PGN_EEC2:
 					{
-							MBInputRegParams.params.CANFMSParams.calcLoad=can1msg->Data[2];
+							MBHoldingRegParams.params.CANFMSParams.calcLoad=can1msg->Data[2];
 					}
 					break;
 					
 					case FMS_PGN_LFC:
 					{
-							MBInputRegParams.params.CANFMSParams.totalFuelCons=*((uint32_t*)&can1msg->Data[4]);
+							MBHoldingRegParams.params.CANFMSParams.totalFuelCons=*((uint32_t*)&can1msg->Data[4]);
 					}
 					break;
 					
 					case FMS_PGN_DD:
 					{
-							MBInputRegParams.params.CANFMSParams.fuelLevelRel=can1msg->Data[1];
+							MBHoldingRegParams.params.CANFMSParams.fuelLevelRel=can1msg->Data[1];
 					}
 					break;
 					
 					case FMS_PGN_EEC1:
 					{
-							MBInputRegParams.params.CANFMSParams.engSpeed=*((uint16_t*)&can1msg->Data[3]);
+							MBHoldingRegParams.params.CANFMSParams.engSpeed=*((uint16_t*)&can1msg->Data[3]);
 					}
 					break;
 					
@@ -195,19 +195,19 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 					
 					case FMS_PGN_HOURS:
 					{
-							MBInputRegParams.params.CANFMSParams.calcTotalEngTime=*((uint32_t*)&can1msg->Data[0]);
+							MBHoldingRegParams.params.CANFMSParams.calcTotalEngTime=*((uint32_t*)&can1msg->Data[0]);
 					}
 					break;
 					
 					case FMS_PGN_SERV:
 					{
-							MBInputRegParams.params.CANFMSParams.serviceDist=*((uint16_t*)&can1msg->Data[1]);
+							MBHoldingRegParams.params.CANFMSParams.serviceDist=*((uint16_t*)&can1msg->Data[1]);
 					}
 					break;
 					
 					case FMS_PGN_LFE1:
 					{
-							MBInputRegParams.params.CANFMSParams.fuelRate=*((uint16_t*)&can1msg->Data[0]);
+							MBHoldingRegParams.params.CANFMSParams.fuelRate=*((uint16_t*)&can1msg->Data[0]);
 					}
 					break;
 					

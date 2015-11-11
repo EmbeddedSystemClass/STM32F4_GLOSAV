@@ -18,7 +18,7 @@ typedef union
 	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
 }stMBInputRegParams;
 
-#define MFUNC_CHANNELS_NUM	16
+//#define MFUNC_CHANNELS_NUM	16
 #define UART_NUM		8
 
 

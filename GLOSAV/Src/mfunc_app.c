@@ -103,6 +103,8 @@ void Mfunc_App_Init(void)
 		MfuncInputs[13].adcChn=ADC_CHANNEL_7;
 		MfuncInputs[13].mode=MFUNC_ADC;
 		
+		Mfunc_Input_SetMode(0xC000000);
+		
 	HAL_TIM_Base_Start_IT(&htim6);
 		xTaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
@@ -129,7 +131,7 @@ void Mfunc_Input_SetMode(uint32_t mode)
 					{
 						  GPIO_InitStruct.Pin = MfuncInputs[mfunc_count].pin;
 							GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-							GPIO_InitStruct.Pull = GPIO_NOPULL;
+							GPIO_InitStruct.Pull = GPIO_PULLUP;
 							GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
 							HAL_GPIO_Init(MfuncInputs[mfunc_count].port, &GPIO_InitStruct);		
 					}						
@@ -147,6 +149,15 @@ void Mfunc_TimerInterruptHandler(void)
 			{
 					MfuncInputs[mfunc_count].discreteStateOld=MfuncInputs[mfunc_count].discreteState;
 					MfuncInputs[mfunc_count].discreteState=HAL_GPIO_ReadPin(MfuncInputs[mfunc_count].port,MfuncInputs[mfunc_count].pin);
+				
+					if(MfuncInputs[mfunc_count].discreteState)
+					{
+							MBHoldingRegParams.params.mfuncDiscrete|=(uint16_t)(1<<mfunc_count);
+					}
+					else
+					{
+							MBHoldingRegParams.params.mfuncDiscrete&=(~((uint16_t)(1<<mfunc_count)));
+					}
 					
 					if(MfuncInputs[mfunc_count].mode==MFUNC_REDGE)
 					{
@@ -196,7 +207,7 @@ static void Mfunc_Task(void *pvParameters)
 							{
 								xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
 								{
-									MBInputRegParams.params.adcData[adc_chn_count] = HAL_ADC_GetValue(MfuncInputs[adc_chn_count].adc);
+									MBHoldingRegParams.params.mfuncADC[adc_chn_count] = HAL_ADC_GetValue(MfuncInputs[adc_chn_count].adc);
 								}
 								xSemaphoreGive( xMBInputRegParamsMutex );
 							}

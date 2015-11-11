@@ -115,7 +115,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
     HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 8, 0);
     HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
   /* USER CODE BEGIN CAN1_MspInit 1 */
-
+__HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0); 
   /* USER CODE END CAN1_MspInit 1 */
   }
   else if(hcan->Instance==CAN2)
