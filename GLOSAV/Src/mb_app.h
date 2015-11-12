@@ -8,16 +8,16 @@
 #define MB_INPUT_BUF_SIZE	126
 #define MB_HOLDING_BUF_SIZE	126
 
-typedef union
-{
-	struct 
-	{
-		stCANFMSParams CANFMSParams;
-		uint16_t	adcData[MFUNC_CHANNELS_NUM];
-	} params;
-	
-	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
-}stMBInputRegParams;
+//typedef union
+//{
+//	struct 
+//	{
+//		stCANFMSParams CANFMSParams;
+//		uint16_t	adcData[MFUNC_CHANNELS_NUM];
+//	} params;
+//	
+//	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
+//}stMBInputRegParams;
 
 
 
@@ -43,19 +43,8 @@ typedef union
 	uint16_t usRegHoldingBuf[MB_HOLDING_BUF_SIZE];
 }stMBHoldingRegParams;
 
-//typedef union
-//{
-//	struct 
-//	{
-//		
-//	} writeParams;
-//	
-//	uint16_t usRegHoldingWriteBuf[MB_HOLDING_BUF_SIZE];
-//}stMBHoldingRegWriteParams;
 
-
-
-extern stMBInputRegParams MBInputRegParams;
+//extern stMBInputRegParams MBInputRegParams;
 extern SemaphoreHandle_t	xMBInputRegParamsMutex;
 
 extern stMBHoldingRegParams MBHoldingRegParams;

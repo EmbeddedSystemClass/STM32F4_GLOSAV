@@ -17,6 +17,7 @@
 "glosav configuration\can_app.o"
 "glosav configuration\discrete_output_app.o"
 "glosav configuration\mfunc_app.o"
+"glosav configuration\discrete_input_app.o"
 "glosav configuration\startup_stm32f429xx.o"
 "glosav configuration\stm32f4xx_hal_smartcard.o"
 "glosav configuration\stm32f4xx_hal_adc_ex.o"

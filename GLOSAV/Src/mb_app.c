@@ -40,7 +40,7 @@ USHORT   usRegInputStart = REG_INPUT_START;
 USHORT   usRegHoldingStart = REG_HOLDING_START;
 USHORT   usRegHoldingBuf[REG_HOLDING_NREGS] = {0x11, 0x22, 0x33, 0x44, 0x66, 0x77};
 
-stMBInputRegParams MBInputRegParams;
+//stMBInputRegParams MBInputRegParams;
 stMBHoldingRegParams MBHoldingRegParams;
 
 
@@ -74,12 +74,12 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
         iRegIndex = ( int )( usAddress - usRegInputStart );
         while( usNRegs > 0 )
         {
-						xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
-						{	
-								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] >> 8 );
-								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] & 0xFF );
-						}
-						xSemaphoreGive( xMBInputRegParamsMutex );
+//						xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
+//						{	
+//								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] >> 8 );
+//								*pucRegBuffer++ = ( unsigned char )( /*usRegInputBuf*/MBInputRegParams.usRegInputBuf[iRegIndex] & 0xFF );
+//						}
+//						xSemaphoreGive( xMBInputRegParamsMutex );
 
             iRegIndex++;
             usNRegs--;
@@ -107,8 +107,12 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
         case MB_REG_READ:
             while( usNRegs > 0 )
             {
-                *pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] >> 8 );
-                *pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] & 0xFF );
+								xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+								{	
+									*pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] >> 8 );
+									*pucRegBuffer++ = ( unsigned char )( MBHoldingRegParams.usRegHoldingBuf[iRegIndex] & 0xFF );
+								}
+								xSemaphoreGive( xMBHoldingRegParamsMutex );
                 iRegIndex++;
                 usNRegs--;
             }
@@ -117,8 +121,12 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
         case MB_REG_WRITE:
             while( usNRegs > 0 )
             {
-                MBHoldingRegParams.usRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
-                MBHoldingRegParams.usRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+								xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+								{	
+									MBHoldingRegParams.usRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
+									MBHoldingRegParams.usRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+								}
+								xSemaphoreGive( xMBHoldingRegParamsMutex );
                 iRegIndex++;
                 usNRegs--;
             }

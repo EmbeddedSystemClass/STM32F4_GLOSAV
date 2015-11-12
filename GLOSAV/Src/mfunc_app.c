@@ -106,7 +106,7 @@ void Mfunc_App_Init(void)
 		Mfunc_Input_SetMode(0xC000000);
 		
 	HAL_TIM_Base_Start_IT(&htim6);
-		xTaskCreate(Mfunc_Task,(signed char*)"ADC polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
+		xTaskCreate(Mfunc_Task,(signed char*)"Mfunc polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
 void Mfunc_Input_SetMode(uint32_t mode)

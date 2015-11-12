@@ -48,6 +48,7 @@
 #include "gpio_app.h"
 #include "can_app.h"
 #include "mfunc_app.h"
+#include "discrete_input_app.h"
 #include "mb.h"
 
 /* USER CODE END Includes */
@@ -113,6 +114,7 @@ int main(void)
 	
 	CAN_App_Init();
 	Mfunc_App_Init();
+	Discrete_Input_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
