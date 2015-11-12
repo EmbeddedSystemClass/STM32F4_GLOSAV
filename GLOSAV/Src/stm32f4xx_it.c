@@ -35,7 +35,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "cmsis_os.h"
-#include "mfunc_app.h"
 
 /* USER CODE BEGIN 0 */
 
