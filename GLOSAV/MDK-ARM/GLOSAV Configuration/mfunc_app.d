@@ -52,4 +52,5 @@ glosav configuration\mfunc_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\inc
 glosav configuration\mfunc_app.o: ..\Src\can_app.h
 glosav configuration\mfunc_app.o: ..\Inc\adc.h
 glosav configuration\mfunc_app.o: ..\Src\mb_app.h
+glosav configuration\mfunc_app.o: ..\Src\usart_app.h
 glosav configuration\mfunc_app.o: ..\Inc\tim.h

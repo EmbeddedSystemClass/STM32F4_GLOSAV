@@ -175,16 +175,7 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 						}
 					}
 				}
-				//--------------------------
-//				pucBuffer[idx]=(MAX_COM_PORTS_CNT << 4) | sizeof(stCAN_FSM_Params);
-//				xSemaphoreTake( xCAN1_DataMutex, portMAX_DELAY );//сформируем пакет по CANу
-//				{	
-//					 memcpy(&pucBuffer[idx+1],(uint8_t*)(&CAN_FSM_Params),sizeof(stCAN_FSM_Params));
-//				}
-//				xSemaphoreGive( xCAN1_DataMutex );
-//				idx+=(1+sizeof(stCAN_FSM_Params));
-				//---------------------------
-				
+		
 				* ucBytes = idx;
 				break;
 

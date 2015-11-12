@@ -3,6 +3,7 @@
 #include "stm32f4xx_hal.h"
 #include "can_app.h"
 #include "mfunc_app.h"
+#include "usart_app.h"
 
 #define MB_INPUT_BUF_SIZE	126
 #define MB_HOLDING_BUF_SIZE	126
@@ -18,8 +19,6 @@ typedef union
 	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
 }stMBInputRegParams;
 
-//#define MFUNC_CHANNELS_NUM	16
-#define UART_NUM		8
 
 
 typedef union

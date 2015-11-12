@@ -64,3 +64,4 @@ glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\modbus\inclu
 glosav configuration\tasks.o: ..\Src\mb_app.h
 glosav configuration\tasks.o: ..\Src\can_app.h
 glosav configuration\tasks.o: ..\Src\mfunc_app.h
+glosav configuration\tasks.o: ..\Src\usart_app.h

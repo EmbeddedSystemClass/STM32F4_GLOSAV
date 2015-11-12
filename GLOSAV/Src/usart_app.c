@@ -126,8 +126,34 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
+enum
+{
+	UART2_BAUDRATE_VAL=0,
+	UART3_BAUDRATE_VAL,
+	UART4_BAUDRATE_VAL,
+	UART5_BAUDRATE_VAL,
+	UART6_BAUDRATE_VAL,
+};
+
+
+UART_HandleTypeDef *huart[UART_NUM]={&huart2,&huart3,&huart4,&huart5,&huart6};
+
+
 void USARTs_SetSpeed(uint32_t *uartBaudRate)
 {
-		
+	uint8_t uart_count=0;
+	
+	for(uart_count=0;uart_count<UART_NUM;uart_count++)
+	{
+		if(huart[uart_count]->Init.BaudRate!=uartBaudRate[uart_count])
+		{
+				huart[uart_count]->Init.BaudRate=uartBaudRate[uart_count];
+				HAL_UART_Init(huart[uart_count]);
+		}
+		else
+		{
+			uartBaudRate[uart_count]=huart[uart_count]->Init.BaudRate;
+		}
+	}	
 }
 
