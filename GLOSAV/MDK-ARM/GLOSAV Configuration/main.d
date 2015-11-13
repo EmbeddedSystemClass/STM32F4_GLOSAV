@@ -65,6 +65,7 @@ glosav configuration\main.o: ..\Inc\gpio_app.h
 glosav configuration\main.o: ..\Src\can_app.h
 glosav configuration\main.o: ..\Src\mfunc_app.h
 glosav configuration\main.o: ..\Src\discrete_input_app.h
+glosav configuration\main.o: ..\Src\count_input_app.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
 glosav configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h

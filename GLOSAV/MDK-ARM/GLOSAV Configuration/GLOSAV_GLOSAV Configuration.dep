@@ -110,7 +110,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
-F (..\Src\main.c)(0x5644A034)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\main.o" --omf_browse "glosav configuration\main.crf" --depend "glosav configuration\main.d")
+F (..\Src\main.c)(0x56459A75)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\main.o" --omf_browse "glosav configuration\main.crf" --depend "glosav configuration\main.d")
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
 I (..\Inc\stm32f4xx_hal_conf.h)(0x564440EA)
 I (..\Inc\mxconstants.h)(0x56444104)
@@ -172,8 +172,9 @@ I (..\Inc\config.h)(0x560163F2)
 I (..\Src\usart_app.h)(0x56447A87)
 I (..\Inc\gpio_app.h)(0x55BB48B2)
 I (..\Src\can_app.h)(0x56434629)
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Src\discrete_input_app.h)(0x56448EBC)
+I (..\Src\count_input_app.h)(0x564599D8)
 I (..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h)(0x55C36BBA)
 I (..\Middlewares\Third_Party\FreeModbus\port\port.h)(0x55C1C3D0)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x563B3408)
@@ -331,7 +332,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
 I (..\Inc\gpio.h)(0x564440E4)
-F (..\Src\stm32f4xx_it.c)(0x564440EA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\stm32f4xx_it.o" --omf_browse "glosav configuration\stm32f4xx_it.crf" --depend "glosav configuration\stm32f4xx_it.d")
+F (..\Src\stm32f4xx_it.c)(0x5645990F)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\stm32f4xx_it.o" --omf_browse "glosav configuration\stm32f4xx_it.crf" --depend "glosav configuration\stm32f4xx_it.d")
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
 I (..\Inc\stm32f4xx_hal_conf.h)(0x564440EA)
 I (..\Inc\mxconstants.h)(0x56444104)
@@ -383,6 +384,7 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h)(0x562E2AF4)
+I (..\Src\count_input_app.h)(0x564599D8)
 F (..\Src\can.c)(0x564468EC)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\can.o" --omf_browse "glosav configuration\can.crf" --depend "glosav configuration\can.d")
 I (..\Inc\can.h)(0x564440E6)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
@@ -532,10 +534,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55AF3C42)
 I (..\Inc\config.h)(0x560163F2)
 I (..\Middlewares\Third_Party\FreeModbus\modbus\include\mbport.h)(0x4C0B9A90)
 I (..\Middlewares\Third_Party\FreeModbus\modbus\include\mbproto.h)(0x55C32750)
-I (..\Src\mb_app.h)(0x5644870A)
+I (..\Src\mb_app.h)(0x56459382)
 I (..\Src\can_app.h)(0x56434629)
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Src\usart_app.h)(0x56447A87)
+I (..\Src\count_input_app.h)(0x564599D8)
 F (..\Src\usart_app.c)(0x5644856A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\usart_app.o" --omf_browse "glosav configuration\usart_app.crf" --depend "glosav configuration\usart_app.d")
 I (..\Inc\usart.h)(0x564440EA)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
@@ -703,10 +706,11 @@ I (..\Inc\config.h)(0x560163F2)
 I (..\Middlewares\Third_Party\FreeModbus\modbus\include\mbport.h)(0x4C0B9A90)
 I (..\Middlewares\Third_Party\FreeModbus\modbus\include\mbproto.h)(0x55C32750)
 I (..\Inc\tasks.h)(0x55FD8482)
-I (..\Src\mb_app.h)(0x5644870A)
+I (..\Src\mb_app.h)(0x56459382)
 I (..\Src\can_app.h)(0x56434629)
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Src\usart_app.h)(0x56447A87)
+I (..\Src\count_input_app.h)(0x564599D8)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55AF3C42)
 F (..\Src\can_app.c)(0x5643473F)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\can_app.o" --omf_browse "glosav configuration\can_app.crf" --depend "glosav configuration\can_app.d")
 I (..\Src\can_app.h)(0x56434629)
@@ -745,7 +749,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x562E2AF4)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55AF3C42)
 I (..\Inc\FreeRTOSConfig.h)(0x564440E6)
@@ -758,8 +762,9 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x562E2AF4)
-I (..\Src\mb_app.h)(0x5644870A)
+I (..\Src\mb_app.h)(0x56459382)
 I (..\Src\usart_app.h)(0x56447A87)
+I (..\Src\count_input_app.h)(0x564599D8)
 F (..\Src\discrete_output_app.c)(0x564494F4)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\discrete_output_app.o" --omf_browse "glosav configuration\discrete_output_app.crf" --depend "glosav configuration\discrete_output_app.d")
 I (..\Src\discrete_output_app.h)(0x5641986A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
@@ -798,7 +803,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
 F (..\Src\mfunc_app.c)(0x5644909B)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\mfunc_app.o" --omf_browse "glosav configuration\mfunc_app.crf" --depend "glosav configuration\mfunc_app.d")
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
 I (..\Inc\stm32f4xx_hal_conf.h)(0x564440EA)
 I (..\Inc\mxconstants.h)(0x56444104)
@@ -848,8 +853,9 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x562E2AF4)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x562E2AF4)
 I (..\Src\can_app.h)(0x56434629)
 I (..\Inc\adc.h)(0x564440E5)
-I (..\Src\mb_app.h)(0x5644870A)
+I (..\Src\mb_app.h)(0x56459382)
 I (..\Src\usart_app.h)(0x56447A87)
+I (..\Src\count_input_app.h)(0x564599D8)
 I (..\Inc\tim.h)(0x564440E8)
 F (..\Src\discrete_input_app.c)(0x56449FBC)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\discrete_input_app.o" --omf_browse "glosav configuration\discrete_input_app.crf" --depend "glosav configuration\discrete_input_app.d")
 I (..\Src\discrete_input_app.h)(0x56448EBC)
@@ -888,9 +894,63 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
-I (..\Src\mb_app.h)(0x5644870A)
+I (..\Src\mb_app.h)(0x56459382)
 I (..\Src\can_app.h)(0x56434629)
-I (..\Src\mfunc_app.h)(0x56431A43)
+I (..\Src\mfunc_app.h)(0x56459139)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x562E2AF4)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55AF3C42)
+I (..\Inc\FreeRTOSConfig.h)(0x564440E6)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x55B655D0)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x562E2AF4)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x562E2AF4)
+I (..\Src\usart_app.h)(0x56447A87)
+I (..\Src\count_input_app.h)(0x564599D8)
+F (..\Src\count_input_app.c)(0x564599BE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc -I..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I..\Middlewares\Third_Party\FreeRTOS\Source\include -I..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -I..\Drivers\CMSIS\Include -I..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I..\Middlewares\Third_Party\FreeModbus\modbus\include -I..\Middlewares\Third_Party\FreeModbus\port -I..\Middlewares\Third_Party\FreeModbus\modbus\rtu -I..\Middlewares\Third_Party\FreeModbus\modbus\ascii --C99 -I D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429_439xx-o "glosav configuration\count_input_app.o" --omf_browse "glosav configuration\count_input_app.crf" --depend "glosav configuration\count_input_app.d")
+I (..\Src\count_input_app.h)(0x564599D8)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x562E2ADC)
+I (..\Inc\stm32f4xx_hal_conf.h)(0x564440EA)
+I (..\Inc\mxconstants.h)(0x56444104)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x562E2ADC)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x562E2AD3)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x562E2AD3)
+I (..\Drivers\CMSIS\Include\core_cm4.h)(0x562E2AD8)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55AF3C42)
+I (..\Drivers\CMSIS\Include\core_cmInstr.h)(0x562E2AD8)
+I (..\Drivers\CMSIS\Include\core_cmFunc.h)(0x562E2AD8)
+I (..\Drivers\CMSIS\Include\core_cmSimd.h)(0x562E2AD8)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x562E2AD3)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x562E2ADC)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55AF3C42)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x562E2ADC)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x562E2ADC)
+I (..\Src\mb_app.h)(0x56459382)
+I (..\Src\can_app.h)(0x56434629)
+I (..\Src\mfunc_app.h)(0x56459139)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x562E2AF4)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55AF3C42)
 I (..\Inc\FreeRTOSConfig.h)(0x564440E6)

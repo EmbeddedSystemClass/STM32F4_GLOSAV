@@ -35,6 +35,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "cmsis_os.h"
+#include "count_input_app.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -187,6 +188,7 @@ void TIM6_DAC_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
 	Mfunc_TimerInterruptHandler();
+	Count_Input_InterruptHandler();
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
 

@@ -4,6 +4,7 @@
 #include "can_app.h"
 #include "mfunc_app.h"
 #include "usart_app.h"
+#include "count_input_app.h"
 
 #define MB_INPUT_BUF_SIZE	126
 #define MB_HOLDING_BUF_SIZE	126
@@ -30,6 +31,7 @@ typedef union
 				uint32_t uartBaudRate[UART_NUM];
 				uint8_t discreteOutputs;
 				uint32_t mfuncMode;
+				uint8_t  countInputsMode;
 		}write;
 		
 		stCANFMSParams CANFMSParams;
@@ -37,6 +39,7 @@ typedef union
 		uint16_t mfuncADC[MFUNC_CHANNELS_NUM];
 		uint32_t mfuncCount[MFUNC_CHANNELS_NUM];
 		uint16_t statusInputs;
+		uint32_t countInputs[COUNT_INPUTS_NUM];
 		uint16_t version;
 	} params;
 	

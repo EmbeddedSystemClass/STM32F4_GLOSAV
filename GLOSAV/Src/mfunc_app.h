@@ -30,15 +30,8 @@ typedef struct
 	uint8_t 					mode;
 	uint8_t   				discreteState;
 	uint8_t   				discreteStateOld;
-//	uint16_t 					pulseCounter;
-//	uint16_t 					adcVal;
 }stMfunc;
 
-//typedef struct
-//{
-//	uint32_t 					pulseCounter;
-//	uint16_t 					adcVal;	
-//}stMfuncData;
 
 void Mfunc_App_Init(void);
 void Mfunc_Input_SetMode(uint32_t mode);
