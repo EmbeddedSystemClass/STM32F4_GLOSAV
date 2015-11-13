@@ -38,14 +38,14 @@ void Count_Input_InterruptHandler(void)
 		CountInput[input_counter].discreteStateOld=CountInput[input_counter].discreteState;	
 		CountInput[input_counter].discreteState=HAL_GPIO_ReadPin(CountInput[input_counter].port,CountInput[input_counter].pin);
 		
-		if(CountInput[input_counter].mode==MFUNC_REDGE)
+		if(CountInput[input_counter].mode==COUNT_REDGE)
 		{
 				if((CountInput[input_counter].discreteState==GPIO_PIN_SET)&&(CountInput[input_counter].discreteStateOld==GPIO_PIN_RESET))
 				{
 						MBHoldingRegParams.params.countInputs[input_counter]++;
 				}
 		}
-		else if(CountInput[input_counter].mode==MFUNC_FEDGE)
+		else if(CountInput[input_counter].mode==COUNT_REDGE)
 		{
 				if((CountInput[input_counter].discreteState==GPIO_PIN_RESET)&&(CountInput[input_counter].discreteStateOld==GPIO_PIN_SET))
 				{

@@ -34,9 +34,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
-#include "stm32f4xx_hal_gpio.h"
 /* USER CODE BEGIN 0 */
-
+#include "stm32f4xx_hal_gpio.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -52,8 +51,6 @@
         * Output
         * EVENT_OUT
         * EXTI
-     PE9   ------> S_TIM1_CH1
-     PE11   ------> S_TIM1_CH2
 */
 void MX_GPIO_Init(void)
 {
@@ -118,10 +115,8 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PE9 PE11 */
   GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_11;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF1_TIM1;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
@@ -144,7 +139,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
 /* USER CODE BEGIN 2 */
 HAL_GPIO_WritePin(GPIOE,	out_CAN1_SD_Pin, GPIO_PIN_RESET);
 HAL_GPIO_WritePin(GPIOE,	out_CAN2_SD_Pin, GPIO_PIN_RESET);
