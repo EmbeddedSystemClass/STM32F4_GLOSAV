@@ -66,4 +66,5 @@ glosav configuration\mb_app.o: ..\Src\can_app.h
 glosav configuration\mb_app.o: ..\Src\mfunc_app.h
 glosav configuration\mb_app.o: ..\Src\usart_app.h
 glosav configuration\mb_app.o: ..\Src\count_input_app.h
+glosav configuration\mb_app.o: ..\Src\discrete_output_app.h
 glosav configuration\mb_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

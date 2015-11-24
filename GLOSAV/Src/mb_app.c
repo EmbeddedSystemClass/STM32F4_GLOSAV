@@ -19,6 +19,9 @@
 
 //#include "can_app.h"
 #include "mb_app.h"
+#include "discrete_output_app.h"
+#include "count_input_app.h"
+#include "usart_app.h"
 
 #include <string.h>
 
@@ -132,6 +135,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
             }
 						USARTs_SetSpeed(MBHoldingRegParams.params.write.uartBaudRate);
 						DiscreteOutputs_SetState(MBHoldingRegParams.params.write.discreteOutputs);
+						Mfunc_Input_SetMode(MBHoldingRegParams.params.write.mfuncMode);
+						Count_Input_SetMode(MBHoldingRegParams.params.write.countInputsMode);
+						
 						break;
         }
     }
@@ -159,12 +165,13 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 		int16_t  bytesLeft; 	// на всякий случай сделал знаковым, т.к. а вдруг неверный формат, чтобы не зависнуть
 		uint8_t byte;
 		uint8_t portByteIdx, rxCnt, idx, portNumber, portDataCnt;
+//		uint8_t* pOut;
 
 
 		switch ( eMode )
 		{
 			// считаем содержимое RX_FIFO сом портов и сформируем ответный пакет. 
-			// Т.к. у нас не может быть 16 портов, то проверку на длину пакета не выполняем !!!
+			// Т.к. у нас не может быть более 8 портов, то проверку на длину пакета не выполняем !!!
 			case MB_REG_READ: 
 				idx = 0;
 				for(portNumber=0; portNumber<MAX_COM_PORTS_CNT; portNumber++){
@@ -178,12 +185,28 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 							pucBuffer[idx] = byte;
 						}
 						if(rxCnt != 0){	// если что-то считали и положили, то тогда сформируем заголовок
-							pucBuffer[portByteIdx] = (portNumber << 4) |  rxCnt;
+							pucBuffer[portByteIdx] = (portNumber << 5) |  rxCnt;
 							idx++;
 						}
 					}
+/*					else{
+						if(portNumber == MAX_COM_PORTS_CNT-1){ // последний порт имеет особое назначение!
+							portByteIdx = idx;
+							rxCnt = 0;
+							pOut = (uint8_t*)&specDataOut;
+							while(rxCnt < sizeof(specData_t)){
+								idx++;
+								rxCnt++;
+								pucBuffer[idx] = *pOut;
+								pOut++;
+							}
+							if(rxCnt != 0){	// если что-то считали и положили, то тогда сформируем заголовок
+								pucBuffer[portByteIdx] = (portNumber << 4) |  rxCnt;
+								idx++;
+							}
+						}
+					}*/
 				}
-		
 				* ucBytes = idx;
 				break;
 
@@ -191,14 +214,25 @@ eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 				idx = 0;
 				bytesLeft = *ucBytes;
 				while(bytesLeft > 0){
-					portNumber = pucBuffer[idx] >> 4;
+					portNumber = pucBuffer[idx] >> 5;
+/*					if(portNumber == MAX_COM_PORTS_CNT-1){ // последний порт имеет особое назначение!
+						pOut = (uint8_t*)&specDataIn;
+					}*/
 					fifo = TX_FIFO_Handlers[portNumber];
-					portDataCnt = pucBuffer[idx] & 0x0F;
+					portDataCnt = pucBuffer[idx] & 0x1F;
 					idx++; bytesLeft--;
 					while(portDataCnt){
 						if(fifo){
 							xQueueSend(*fifo , &pucBuffer[idx], 0 );
 						}
+/*						else{
+							if(portNumber == MAX_COM_PORTS_CNT-1){ // последний порт имеет особое назначение!
+								if(pOut < (uint8_t*)&specDataIn + sizeof(specData_t)){
+									*pOut = pucBuffer[idx];
+									pOut++;
+								}
+							}
+						}*/
 						idx++; bytesLeft--; portDataCnt--;
 					}
 				}
