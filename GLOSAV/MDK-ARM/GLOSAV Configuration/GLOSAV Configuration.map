@@ -3261,7 +3261,7 @@ Image Symbol Table
     huart                                    0x2000005c   Data          20  usart_app.o(.data)
     usRegInputStart                          0x20000070   Data           2  mb_app.o(.data)
     usRegHoldingStart                        0x20000072   Data           2  mb_app.o(.data)
-    usRegHoldingBuf                          0x20000074   Data         252  mb_app.o(.data)
+    usRegHoldingBuf                          0x20000074   Data         250  mb_app.o(.data)
     xMBInputRegParamsMutex                   0x200001f0   Data           4  mb_app.o(.data)
     xMBHoldingRegParamsMutex                 0x200001f4   Data           4  mb_app.o(.data)
     xCAN1_MessageQueue                       0x200001f8   Data           4  can_app.o(.data)

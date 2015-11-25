@@ -6,8 +6,8 @@
 #include "usart_app.h"
 #include "count_input_app.h"
 
-#define MB_INPUT_BUF_SIZE	126
-#define MB_HOLDING_BUF_SIZE	126
+#define MB_INPUT_BUF_SIZE	125
+#define MB_HOLDING_BUF_SIZE	125
 
 //typedef union
 //{

@@ -32,8 +32,8 @@
 #define REG_HOLDING_NREGS               ( MB_HOLDING_BUF_SIZE )
 
 // Указатели на FIFO RX от СОМ портов в порядке их нумерации. Если порта нет, то NULL
-#define MAX_COM_PORTS_CNT		(16) // максимальное количество адресуемых портов
-#define MAX_COM_PORT_BUFFER	(15) // максимальное количество байтов от/к одному порту
+#define MAX_COM_PORTS_CNT		(8) // максимальное количество адресуемых портов
+#define MAX_COM_PORT_BUFFER	(31) // максимальное количество байтов от/к одному порту
 
 //extern stCAN_FSM_Params CAN_FSM_Params;
 
@@ -52,7 +52,7 @@ static osMessageQId* RX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	&myQueueUart5RxHandle,
 	&myQueueUart6RxHandle,
 	NULL,
-	NULL, NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL, NULL,	NULL,
+	NULL, NULL,	NULL,	NULL,
 };
 
 static osMessageQId* TX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
@@ -60,7 +60,7 @@ static osMessageQId* TX_FIFO_Handlers[MAX_COM_PORTS_CNT]={
 	&myQueueUart5TxHandle,
 	&myQueueUart6TxHandle,
 	NULL,
-	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,
+	NULL,	NULL,	NULL,	NULL,
 };
 
 SemaphoreHandle_t	xMBInputRegParamsMutex;
@@ -151,12 +151,15 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegi
 /*
 Чтение - запись FIFO СОМ портов
 
-Write mode data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ... // data to TX FIFO
-Read mode data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ...	// data from RX FIFO
+Write mode data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ... // data to TX FIFO
+Read mode data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ...	// data from RX FIFO
 + ucBytesReading in read mode.
-Не более 16 номеров портов и не более 16 байтов в каждом
+Не более 8 номеров портов и не более 31 байтов в каждом
 Формат входных данных уже проверен в головной функции
 */
+
+//extern specData_t specDataIn, specDataOut;
+
 eMBErrorCode
 eMBUser100ComPortCB( UCHAR * pucBuffer, UCHAR * ucBytes, eMBRegisterMode eMode )
 {
