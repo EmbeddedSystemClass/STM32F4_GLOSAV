@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Tue Nov 24 12:54:01 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Wed Nov 25 11:47:05 2015
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1727,15 +1727,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncReadDiscreteInputs
 </UL>
 
-<P><STRONG><a name="[11e]"></a>eMBRegHoldingCB</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, mb_app.o(i.eMBRegHoldingCB))
+<P><STRONG><a name="[11e]"></a>eMBRegHoldingCB</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, mb_app.o(i.eMBRegHoldingCB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = eMBRegHoldingCB &rArr; USARTs_SetSpeed &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mfunc_Input_SetMode
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DiscreteOutputs_SetState
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Count_Input_SetMode
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USARTs_SetSpeed
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncWriteMultipleHoldingRegister
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncWriteHoldingRegister
@@ -2460,7 +2458,6 @@ Global Symbols
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Handling_Message
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Listening_Task
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBUser100ComPortCB
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRegHoldingCB
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskUart6Tx
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskUart5Tx
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskTrmlTx
@@ -2504,7 +2501,6 @@ Global Symbols
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mfunc_Task
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Handling_Message
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBUser100ComPortCB
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRegHoldingCB
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueCreateMutex
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTimerGenericCommand
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
