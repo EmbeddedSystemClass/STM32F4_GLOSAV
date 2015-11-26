@@ -44,15 +44,15 @@ TaskCreate(CAN1_Listening_Task,(signed char*)"CAN1 Listening",CAN1_LISTENING_STA
 TaskCreate(CAN2_Sending_Task,(signed char*)"CAN2 Sending",128,NULL, tskIDLE_PRIORITY + 5, NULL);                
 ..\Src\can_app.c(170): warning:  #177-D: variable "temp" was declared but never referenced
         static uint8_t temp;
-..\Src\can_app.c(224): warning:  #550-D: variable "temp" was set but never used
+..\Src\can_app.c(228): warning:  #550-D: variable "temp" was set but never used
         static uint8_t temp=0;
-..\Src\can_app.c(253): warning:  #177-D: variable "i" was declared but never referenced
+..\Src\can_app.c(257): warning:  #177-D: variable "i" was declared but never referenced
                 static uint32_t i=0;
-..\Src\can_app.c(256): warning:  #177-D: variable "test" was declared but never referenced
+..\Src\can_app.c(260): warning:  #177-D: variable "test" was declared but never referenced
         uint16_t test=0;
 ..\Src\can_app.c: 10 warnings, 0 errors
 linking...
-Program Size: Code=31840 RO-data=1356 RW-data=812 ZI-data=36092  
+Program Size: Code=31672 RO-data=1356 RW-data=812 ZI-data=36092  
 FromELF: creating hex file...
 "GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 10 Warning(s).
 
@@ -61,7 +61,7 @@ FromELF: creating hex file...
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:07
+Build Time Elapsed:  00:00:08
 </pre>
 </body>
 </html>

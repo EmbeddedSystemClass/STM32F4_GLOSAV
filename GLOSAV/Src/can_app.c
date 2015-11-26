@@ -7,9 +7,9 @@
 #include "queue.h"
 #include "semphr.h"
 
-#define CAN1_MESSAGE_QUEUE_MAX_LENGTH  10
+#define CAN1_MESSAGE_QUEUE_MAX_LENGTH  32
 
-#define FMS_PGN_CCVS1		(0x00FEF1)
+#define FMS_PGN_CCVS1		0x00FEF1
 #define FMS_PGN_EEC2		0x00F003
 #define FMS_PGN_LFC			0x00FEE9
 #define FMS_PGN_DD			0x00FEFC
@@ -32,10 +32,10 @@ static void CAN1_Listening_Task(void *pvParameters);
 static void CAN2_Sending_Task(void *pvParameters);
 void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 
-#define CAN1_ADDRESS	(0x00000100)
-#define CAN1_FILTER		(0xFFFFFFFF)
+
 
 #define CAN1_LISTENING_STACK_SIZE		128
+#define CAN_LISTENING_DELAY					100
 
 #define PGN_MASK 0x07FFF800
 
@@ -170,8 +170,12 @@ static void CAN1_Listening_Task(void *pvParameters)
 	static uint8_t temp;
 	while(1)
 	{  
-		xQueueReceive(xCAN1_MessageQueue, &RxMessage, portMAX_DELAY);
-		CAN1_Handling_Message(&RxMessage);
+		while(xQueueReceive(xCAN1_MessageQueue, &RxMessage, portMAX_DELAY)==pdTRUE)
+		{
+			CAN1_Handling_Message(&RxMessage);
+		}
+		//taskYIELD();
+		vTaskDelay(CAN_LISTENING_DELAY);
 	}
 }
 
@@ -255,7 +259,7 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 	
 	uint16_t test=0;
 	
-	xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
+	//xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
   {	
 			switch(pgn)
 			{
@@ -322,6 +326,6 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg)
 					}
 			}
 	}
-  xSemaphoreGive( xMBInputRegParamsMutex );
+  //xSemaphoreGive( xMBInputRegParamsMutex );
 }
 

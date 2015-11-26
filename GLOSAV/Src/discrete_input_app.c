@@ -50,12 +50,12 @@ static void Discrete_Input_Task(void *pvParameters)
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_IGN_PORT,DISCR_IN_IGN_PIN))
 			{
-					xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
 					{	
 							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_IGN_BIT));
 							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_IGN_BIT);
 					}
-					xSemaphoreGive( xMBHoldingRegParamsMutex );
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
 			
 			
@@ -63,12 +63,12 @@ static void Discrete_Input_Task(void *pvParameters)
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_BUTTON_CALL_PORT,DISCR_IN_BUTTON_CALL_PIN))
 			{
-					xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
 					{	
 							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_BUTTON_CALL_BIT));
 							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_BUTTON_CALL_BIT);
 					}
-					xSemaphoreGive( xMBHoldingRegParamsMutex );
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
 			
 			
@@ -76,24 +76,24 @@ static void Discrete_Input_Task(void *pvParameters)
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_SW_PORT,DISCR_IN_CASE_OPEN_SW_PIN))
 			{
-					xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
 					{	
 							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_CASE_OPEN_SW_BIT));
 							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_CASE_OPEN_SW_BIT);
 					}
-					xSemaphoreGive( xMBHoldingRegParamsMutex );
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
 			
 			temp_bit=HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O_PORT,DISCR_IN_CASE_OPEN_O_PIN);
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O_PORT,DISCR_IN_CASE_OPEN_O_PIN))
 			{
-					xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
 					{	
 							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_CASE_OPEN_O_BIT));
 							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_CASE_OPEN_O_BIT);
 					}
-					xSemaphoreGive( xMBHoldingRegParamsMutex );
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
 	}
 }

@@ -205,11 +205,11 @@ static void Mfunc_Task(void *pvParameters)
 							
 							if (HAL_ADC_PollForConversion(MfuncInputs[adc_chn_count].adc, 10) == HAL_OK && HAL_ADC_GetState(MfuncInputs[adc_chn_count].adc) == HAL_ADC_STATE_EOC_REG)
 							{
-								xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
+							//	xSemaphoreTake( xMBInputRegParamsMutex, portMAX_DELAY );
 								{
 									MBHoldingRegParams.params.mfuncADC[adc_chn_count] = HAL_ADC_GetValue(MfuncInputs[adc_chn_count].adc);
 								}
-								xSemaphoreGive( xMBInputRegParamsMutex );
+							//	xSemaphoreGive( xMBInputRegParamsMutex );
 							}
 						
 							HAL_ADC_Stop(MfuncInputs[adc_chn_count].adc);
