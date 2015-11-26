@@ -22,7 +22,7 @@
 
 	
 
-//#pragma pack(2) 
+#pragma pack(1) 
 
 typedef union
 {
@@ -49,7 +49,7 @@ typedef union
 }stMBHoldingRegParams;
 	
 
-//#pragma pack( ) 
+#pragma pack( ) 
 
 //extern stMBInputRegParams MBInputRegParams;
 extern SemaphoreHandle_t	xMBInputRegParamsMutex;

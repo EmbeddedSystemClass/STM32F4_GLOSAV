@@ -7,7 +7,7 @@
 
 void CAN_App_Init(void);
 
-
+#pragma pack(1) 
 typedef	struct 
 {
 	uint16_t 	vehicleSpeed;
@@ -20,6 +20,6 @@ typedef	struct
 	uint16_t 	serviceDist;
 	uint16_t 	fuelRate;
 } stCANFMSParams;
-
+#pragma pack() 
 
 #endif
