@@ -5,7 +5,7 @@
 #include "tim.h"
 
 
-#define ADC_POLL_PERIOD		100
+#define ADC_POLL_PERIOD		1000
 
 //uint16_t adc_channels_data[ADC_CHANNELS_NUM];
 //const uint8_t adc_channel_list[MFUNC_CHANNELS_NUM]={ADC_CHANNEL_8,ADC_CHANNEL_14,ADC_CHANNEL_15};

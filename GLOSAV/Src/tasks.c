@@ -56,7 +56,7 @@ void StartTaskTrmlRx(void const * argument);
 void StartTaskSIMRx(void const * argument);
 void StartTaskTrmlTx(void const * argument);
 void StartTaskUart6Tx(void const * argument);
-//void StartTaskUart4Tx(void const * argument);
+void StartTaskUart4Tx(void const * argument);
 void StartTaskUart5Tx(void const * argument);
 void StartTaskMODBUS(void const * argument);
 void Callback01(void const * argument);
@@ -84,8 +84,8 @@ void startUserTasks(void)
   osThreadDef(myTaskUart6Tx, StartTaskUart6Tx, osPriorityNormal, 0, 128);
   myTaskUart6TxHandle = osThreadCreate(osThread(myTaskUart6Tx), NULL);
   /* definition and creation of myTaskUart4Tx */
-//  osThreadDef(myTaskUart4Tx, StartTaskUart4Tx, osPriorityNormal, 0, 128);
-//  myTaskUart4TxHandle = osThreadCreate(osThread(myTaskUart4Tx), NULL);
+  osThreadDef(myTaskUart4Tx, StartTaskUart4Tx, osPriorityNormal, 0, 128);
+  myTaskUart4TxHandle = osThreadCreate(osThread(myTaskUart4Tx), NULL);
   /* definition and creation of myTaskUart4Tx */
   osThreadDef(myTaskUart5Tx, StartTaskUart5Tx, osPriorityNormal, 0, 128);
   myTaskUart5TxHandle = osThreadCreate(osThread(myTaskUart5Tx), NULL);
@@ -95,7 +95,7 @@ void startUserTasks(void)
   myTaskSIMRxHandle = osThreadCreate(osThread(myTaskSIMRx), NULL);
 
   /* definition and creation of myTaskMODBUS */
-  osThreadDef(myTaskMODBUS, StartTaskMODBUS, osPriorityAboveNormal, 0, TASK_MODBUS_STACK_SIZE);
+  osThreadDef(myTaskMODBUS, StartTaskMODBUS, osPriorityRealtime, 0, TASK_MODBUS_STACK_SIZE);
   myTaskMODBUSHandle = osThreadCreate(osThread(myTaskMODBUS), NULL);
 //	   if( pdPASS != xTaskCreate( vTaskMODBUS, "MODBUS", TASK_MODBUS_STACK_SIZE, NULL, TASK_MODBUS_PRIORITY, NULL ) )
 

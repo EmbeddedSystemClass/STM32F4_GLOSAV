@@ -20,7 +20,9 @@
 //	uint16_t usRegInputBuf[MB_INPUT_BUF_SIZE];
 //}stMBInputRegParams;
 
+	
 
+//#pragma pack(2) 
 
 typedef union
 {
@@ -45,7 +47,9 @@ typedef union
 	
 	uint16_t usRegHoldingBuf[MB_HOLDING_BUF_SIZE];
 }stMBHoldingRegParams;
+	
 
+//#pragma pack( ) 
 
 //extern stMBInputRegParams MBInputRegParams;
 extern SemaphoreHandle_t	xMBInputRegParamsMutex;

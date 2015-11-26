@@ -129,6 +129,8 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 
 UART_HandleTypeDef *huart[UART_NUM]={&huart2,&huart3,&huart4,&huart5,&huart6};
 
+#define USART_MIN_BAUDRATE	1200
+#define USART_MAX_BAUDRATE	115200
 
 void USARTs_SetSpeed(uint32_t *uartBaudRate)
 {
@@ -136,7 +138,7 @@ void USARTs_SetSpeed(uint32_t *uartBaudRate)
 	
 	for(uart_count=0;uart_count<UART_NUM;uart_count++)
 	{
-		if(huart[uart_count]->Init.BaudRate!=uartBaudRate[uart_count])
+		if((huart[uart_count]->Init.BaudRate!=uartBaudRate[uart_count])&&(uartBaudRate[uart_count]>=USART_MIN_BAUDRATE)&&(uartBaudRate[uart_count]<=USART_MAX_BAUDRATE))
 		{
 				huart[uart_count]->Init.BaudRate=uartBaudRate[uart_count];
 				HAL_UART_Init(huart[uart_count]);
