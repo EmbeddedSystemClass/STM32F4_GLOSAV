@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Thu Nov 26 11:16:47 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Thu Nov 26 14:03:12 2015
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -618,7 +618,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429xx.o(RESET)
 </UL>
-<P><STRONG><a name="[9d]"></a>CAN_App_Init</STRONG> (Thumb, 110 bytes, Stack size 64 bytes, can_app.o(i.CAN_App_Init))
+<P><STRONG><a name="[9d]"></a>CAN_App_Init</STRONG> (Thumb, 556 bytes, Stack size 64 bytes, can_app.o(i.CAN_App_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = CAN_App_Init &rArr; xTaskGenericCreate &rArr; prvAllocateTCBAndStack &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGenericCreate
@@ -766,9 +766,9 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>HAL_CAN_RxCpltCallback</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, can_app.o(i.HAL_CAN_RxCpltCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_CAN_RxCpltCallback &rArr; xQueueGenericSendFromISR &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Receive_IT
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Receive_IT
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive_IT
 </UL>
@@ -1365,37 +1365,41 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
 </UL>
-<P><STRONG><a name="[89]"></a>StartTaskTrmlTx</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, tasks.o(i.StartTaskTrmlTx))
+<P><STRONG><a name="[89]"></a>StartTaskTrmlTx</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, tasks.o(i.StartTaskTrmlTx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = StartTaskTrmlTx &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
 </UL>
-<P><STRONG><a name="[8b]"></a>StartTaskUart4Tx</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart4Tx))
+<P><STRONG><a name="[8b]"></a>StartTaskUart4Tx</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart4Tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = StartTaskUart4Tx &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
 </UL>
-<P><STRONG><a name="[8c]"></a>StartTaskUart5Tx</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart5Tx))
+<P><STRONG><a name="[8c]"></a>StartTaskUart5Tx</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart5Tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = StartTaskUart5Tx &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
 </UL>
-<P><STRONG><a name="[8a]"></a>StartTaskUart6Tx</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart6Tx))
+<P><STRONG><a name="[8a]"></a>StartTaskUart6Tx</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, tasks.o(i.StartTaskUart6Tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = StartTaskUart6Tx &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortYield
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(.constdata)
@@ -2152,6 +2156,10 @@ Global Symbols
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskUart6Tx
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskUart5Tx
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskUart4Tx
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskTrmlTx
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessTimerOrBlockTask
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset

@@ -9,7 +9,7 @@
 
 #define CAN1_MESSAGE_QUEUE_MAX_LENGTH  10
 
-#define FMS_PGN_CCVS1		0x00FEF1
+#define FMS_PGN_CCVS1		(0x00FEF1)
 #define FMS_PGN_EEC2		0x00F003
 #define FMS_PGN_LFC			0x00FEE9
 #define FMS_PGN_DD			0x00FEFC
@@ -37,13 +37,15 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 
 #define CAN1_LISTENING_STACK_SIZE		128
 
+#define PGN_MASK 0x07FFF800
+
 void CAN_App_Init(void)
 {
 		CAN_FilterConfTypeDef hcan1filter;
-		hcan1filter.FilterIdHigh =0;// ((CAN1_ADDRESS<<3)>>16)&0xFFFF0000;
-		hcan1filter.FilterIdLow = 0;// (CAN1_ADDRESS<<3 )&0x0000FFFF;
-		hcan1filter.FilterMaskIdHigh =0;// ((CAN1_FILTER<<3)>>16)&0xFFFF0000;
-		hcan1filter.FilterMaskIdLow = 0;// (CAN1_FILTER<<3 )&0x0000FFFF;
+		hcan1filter.FilterIdHigh =((FMS_PGN_HOURS<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_HOURS<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
 		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
 		hcan1filter.FilterNumber = 0;
 		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
@@ -51,6 +53,106 @@ void CAN_App_Init(void)
 		hcan1filter.FilterActivation = ENABLE;
 		hcan1filter.BankNumber = 14;
 		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+	
+			hcan1filter.FilterIdHigh =((FMS_PGN_EEC2<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_EEC2<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 1;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 15;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+	
+//--
+
+		hcan1filter.FilterIdHigh =((FMS_PGN_LFC<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_LFC<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 2;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 16;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_DD<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_DD<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 3;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 17;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_EEC1<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_EEC1<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 4;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 18;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_VW<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_VW<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 5;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 19;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_HOURS<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_HOURS<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 6;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 20;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_SERV<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_SERV<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 8;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 22;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+		
+		hcan1filter.FilterIdHigh =((FMS_PGN_LFE1<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_LFE1<<11)&0xFFFF;
+		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
+		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
+		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+		hcan1filter.FilterNumber = 7;
+		hcan1filter.FilterMode = CAN_FILTERMODE_IDMASK;
+		hcan1filter.FilterScale = CAN_FILTERSCALE_32BIT;
+		hcan1filter.FilterActivation = ENABLE;
+		hcan1filter.BankNumber = 21;
+		HAL_CAN_ConfigFilter(&hcan1, &hcan1filter);
+	
+	
 	
 		hcan1.pRxMsg = &can1RxMessage;
 

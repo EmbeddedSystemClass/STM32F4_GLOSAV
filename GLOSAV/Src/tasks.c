@@ -178,6 +178,7 @@ void StartTaskTrmlTx(void const * argument)
   {
 		xQueueReceive( myQueueUart2TxHandle, &w, portMAX_DELAY );
 		HAL_UART_Transmit(&huart2,(uint8_t *)&w,1, 0xFFFF); //PB10
+		taskYIELD();
 //		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
 //		osDelay(1);
   }
@@ -193,6 +194,7 @@ void StartTaskUart4Tx(void const * argument)
 		UART4_DIR_SEND();
 		HAL_UART_Transmit(&huart4,(uint8_t *)&w,1, 0xFFFF); //PB10
 		UART4_DIR_RCV();
+		taskYIELD();
   }
 }
 
@@ -205,6 +207,7 @@ void StartTaskUart5Tx(void const * argument)
 		UART5_DIR_SEND();
 		HAL_UART_Transmit(&huart5,(uint8_t *)&w,1, 0xFFFF); //PB10
 		UART5_DIR_RCV();
+		taskYIELD();
   }
 }
 
@@ -218,6 +221,7 @@ void StartTaskUart6Tx(void const * argument)
 		UART6_DIR_SEND();
 		HAL_UART_Transmit(&huart6,(uint8_t *)&w,1, 0xFFFF); //PB10
 		UART6_DIR_RCV();
+		taskYIELD();
   }
 }
 
