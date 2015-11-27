@@ -42,8 +42,8 @@ void CAN1_Handling_Message(CanRxMsgTypeDef *can1msg);
 void CAN_App_Init(void)
 {
 		CAN_FilterConfTypeDef hcan1filter;
-		hcan1filter.FilterIdHigh =((FMS_PGN_HOURS<<11)>>16)&0xFFFF;
-		hcan1filter.FilterIdLow = (FMS_PGN_HOURS<<11)&0xFFFF;
+		hcan1filter.FilterIdHigh =((FMS_PGN_CCVS1<<11)>>16)&0xFFFF;
+		hcan1filter.FilterIdLow = (FMS_PGN_CCVS1<<11)&0xFFFF;
 		hcan1filter.FilterMaskIdHigh =(PGN_MASK>>16)&0xFFFF;
 		hcan1filter.FilterMaskIdLow = PGN_MASK&0xFFFF;
 		hcan1filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
