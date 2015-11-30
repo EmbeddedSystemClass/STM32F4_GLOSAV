@@ -43,9 +43,7 @@
 
 /* ----------------------- Defines ------------------------------------------*/
 
-#define SUBFUNC_COMPORTS     	( 1 )
-
-#define MB_PDU_FUNC_USER100_SUBFUNC_OFF     	( MB_PDU_DATA_OFF + 0 )
+#define MB_PDU_FUNC_USER100_DATA_OFF     	( MB_PDU_DATA_OFF + 1 )
 #define MB_PDU_FUNC_USER100_SIZE_MIN          ( 1 )
 
 /* ----------------------- Static functions ---------------------------------*/
@@ -55,13 +53,11 @@ eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
 
 /*
 packet format:
-func - subFunc - dataSpecific
+func - length_data - dataSpecific
 func=100
-subfunc = ...
-1 - read-write Rx-TxFIFO Com ports: 
-command data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ... // data to TX FIFO
-answer data: comPortNumber*16+N_bytes - Byte1 - ... ByteN - comPortNumber*16+N_bytes - ...	// data from RX FIFO
-2 - ???
+read-write Rx-TxFIFO Com ports: 
+command data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ... // data to TX FIFO
+answer data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ...	// data from RX FIFO
 */
 
 eMBException
@@ -82,37 +78,29 @@ eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
 
     if( *usLen >= ( MB_PDU_FUNC_USER100_SIZE_MIN + MB_PDU_SIZE_MIN ) )
     {
-			switch (( UCHAR )( pucFrame[MB_PDU_FUNC_USER100_SUBFUNC_OFF])){
-				case SUBFUNC_COMPORTS:
-					// проверим сначала корректность данных (посчитаем порты и данные)
-					idx = MB_PDU_FUNC_USER100_SUBFUNC_OFF+1;
-					bytesLeft = *usLen - idx;
-					ucByteCnt = 0;
-					while(bytesLeft && !errFormat){
-						portDataCnt = pucFrame[idx] & 0x0F;
-						idx++; bytesLeft--; ucByteCnt++;
-						if(portDataCnt > bytesLeft){
-							errFormat = 1;
-							break;
-						}
-						idx+=portDataCnt;
-						ucByteCnt+=portDataCnt;
-						bytesLeft-=portDataCnt;
-					}
-					if(errFormat){
-			      /* Can't be a valid request because the length is incorrect. */
-						eStatus = MB_EX_ILLEGAL_DATA_VALUE;
-				    return eStatus;
-					}
+			// проверим сначала корректность данных (посчитаем порты и данные)
+			idx = MB_PDU_FUNC_USER100_DATA_OFF;
+			bytesLeft = *usLen - idx;
+			ucByteCnt = 0;
+			while(bytesLeft && !errFormat){
+				portDataCnt = pucFrame[idx] & 0x1F;
+				idx++; bytesLeft--; ucByteCnt++;
+				if(portDataCnt > bytesLeft){
+					errFormat = 1;
 					break;
-				default:
-					eStatus = MB_EX_ILLEGAL_DATA_VALUE;
-//					eStatus = MB_EX_ILLEGAL_FUNCTION;
-			    return eStatus;
+				}
+				idx+=portDataCnt;
+				ucByteCnt+=portDataCnt;
+				bytesLeft-=portDataCnt;
+			}
+			if(errFormat){
+				/* Can't be a valid request because the length is incorrect. */
+				eStatus = MB_EX_ILLEGAL_DATA_VALUE;
+				return eStatus;
 			}
 			
       /* Make callback to update the TX FIFO values. */
-      eRegStatus = eMBUser100ComPortCB( &pucFrame[MB_PDU_FUNC_USER100_SUBFUNC_OFF+1], &ucByteCnt, MB_REG_WRITE );
+      eRegStatus = eMBUser100ComPortCB( &pucFrame[MB_PDU_FUNC_USER100_DATA_OFF], &ucByteCnt, MB_REG_WRITE );
 			if( eRegStatus == MB_ENOERR )	{
 					/* Set the current PDU data pointer to the beginning. */
 					pucFrameCur = &pucFrame[MB_PDU_FUNC_OFF];
@@ -122,8 +110,8 @@ eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
 					*pucFrameCur++ = MB_FUNC_USER_100;
 					*usLen += 1;
 
-					/* Second byte in the response contain the subfunction code. */
-					*pucFrameCur++ = SUBFUNC_COMPORTS;
+					/* Second byte in the response contain the length of data field. */
+					*pucFrameCur++ = 0;
 					*usLen += 1;
 
 					/* Make the read callback. */
@@ -131,6 +119,7 @@ eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
 							eMBUser100ComPortCB( pucFrameCur, &ucByteCnt, MB_REG_READ );
 					if( eRegStatus == MB_ENOERR )	{
 							*usLen += ucByteCnt;
+							pucFrame[MB_PDU_FUNC_OFF+1] = ucByteCnt; /* Second byte in the response contain the length of data field. */
 					}
 			}
 			if( eRegStatus != MB_ENOERR )
