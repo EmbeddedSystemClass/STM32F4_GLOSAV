@@ -16,7 +16,9 @@ enum
 	DISCR_IN_IGN_BIT=0,
 	DISCR_IN_BUTTON_CALL_BIT,
 	DISCR_IN_CASE_OPEN_SW_BIT,
+	DISCR_IN_CASE_OPEN_SW2_BIT,
 	DISCR_IN_CASE_OPEN_O_BIT,
+	DISCR_IN_CASE_OPEN_O2_BIT,
 };
 
 #define DISCR_IN_IGN_PORT							GPIOF
@@ -25,11 +27,17 @@ enum
 #define DISCR_IN_BUTTON_CALL_PORT			GPIOE
 #define DISCR_IN_BUTTON_CALL_PIN			GPIO_PIN_6
 
-#define DISCR_IN_CASE_OPEN_SW_PORT		GPIOG
-#define DISCR_IN_CASE_OPEN_SW_PIN			GPIO_PIN_0
+#define DISCR_IN_CASE_OPEN_SW_PORT		GPIOF
+#define DISCR_IN_CASE_OPEN_SW_PIN			GPIO_PIN_14
 
-#define DISCR_IN_CASE_OPEN_O_PORT		GPIOG
-#define DISCR_IN_CASE_OPEN_O_PIN		GPIO_PIN_1
+#define DISCR_IN_CASE_OPEN_SW2_PORT		GPIOG
+#define DISCR_IN_CASE_OPEN_SW2_PIN		GPIO_PIN_1
+
+#define DISCR_IN_CASE_OPEN_O_PORT			GPIOF
+#define DISCR_IN_CASE_OPEN_O_PIN			GPIO_PIN_13
+
+#define DISCR_IN_CASE_OPEN_O2_PORT		GPIOG
+#define DISCR_IN_CASE_OPEN_O2_PIN			GPIO_PIN_0
 
 static void Discrete_Input_Task(void *pvParameters);
 
@@ -84,6 +92,18 @@ static void Discrete_Input_Task(void *pvParameters)
 					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
 			
+			temp_bit=HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_SW2_PORT,DISCR_IN_CASE_OPEN_SW2_PIN);
+			vTaskDelay(1);
+			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_SW2_PORT,DISCR_IN_CASE_OPEN_SW2_PIN))
+			{
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					{	
+							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_CASE_OPEN_SW2_BIT));
+							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_CASE_OPEN_SW2_BIT);
+					}
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
+			}
+			
 			temp_bit=HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O_PORT,DISCR_IN_CASE_OPEN_O_PIN);
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O_PORT,DISCR_IN_CASE_OPEN_O_PIN))
@@ -92,6 +112,18 @@ static void Discrete_Input_Task(void *pvParameters)
 					{	
 							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_CASE_OPEN_O_BIT));
 							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_CASE_OPEN_O_BIT);
+					}
+					//xSemaphoreGive( xMBHoldingRegParamsMutex );
+			}
+			
+			temp_bit=HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O2_PORT,DISCR_IN_CASE_OPEN_O2_PIN);
+			vTaskDelay(1);
+			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_CASE_OPEN_O2_PORT,DISCR_IN_CASE_OPEN_O2_PIN))
+			{
+					//xSemaphoreTake( xMBHoldingRegParamsMutex, portMAX_DELAY );
+					{	
+							MBHoldingRegParams.params.statusInputs&=(~(1<<DISCR_IN_CASE_OPEN_O2_BIT));
+							MBHoldingRegParams.params.statusInputs|=(temp_bit<<DISCR_IN_CASE_OPEN_O2_BIT);
 					}
 					//xSemaphoreGive( xMBHoldingRegParamsMutex );
 			}
