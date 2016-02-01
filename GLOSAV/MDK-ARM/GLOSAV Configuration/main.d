@@ -31,7 +31,6 @@ glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h
-glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 glosav configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
@@ -54,7 +53,6 @@ glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\
 glosav configuration\main.o: ..\Inc\adc.h
 glosav configuration\main.o: ..\Inc\can.h
 glosav configuration\main.o: ..\Inc\i2c.h
-glosav configuration\main.o: ..\Inc\spi.h
 glosav configuration\main.o: ..\Inc\tim.h
 glosav configuration\main.o: ..\Inc\usart.h
 glosav configuration\main.o: ..\Inc\gpio.h

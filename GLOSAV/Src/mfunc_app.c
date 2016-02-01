@@ -18,90 +18,100 @@ static void Mfunc_Task(void *pvParameters);
 void Mfunc_App_Init(void)
 {
 		MfuncInputs[0].port=GPIOF;
-		MfuncInputs[0].pin=GPIO_PIN_4;
+		MfuncInputs[0].pin=GPIO_PIN_6;
 		MfuncInputs[0].adc=&hadc3;
-		MfuncInputs[0].adcChn=ADC_CHANNEL_14;
+		MfuncInputs[0].adcChn=ADC_CHANNEL_4;
 		MfuncInputs[0].mode=MFUNC_ADC;
 	
 		MfuncInputs[1].port=GPIOF;
-		MfuncInputs[1].pin=GPIO_PIN_5;
+		MfuncInputs[1].pin=GPIO_PIN_7;
 		MfuncInputs[1].adc=&hadc3;
-		MfuncInputs[1].adcChn=ADC_CHANNEL_15;
+		MfuncInputs[1].adcChn=ADC_CHANNEL_5;
 		MfuncInputs[1].mode=MFUNC_ADC;
 	
 		MfuncInputs[2].port=GPIOF;
-		MfuncInputs[2].pin=GPIO_PIN_6;
+		MfuncInputs[2].pin=GPIO_PIN_8;
 		MfuncInputs[2].adc=&hadc3;
-		MfuncInputs[2].adcChn=ADC_CHANNEL_4;
+		MfuncInputs[2].adcChn=ADC_CHANNEL_6;
 		MfuncInputs[2].mode=MFUNC_ADC;
 	
 		MfuncInputs[3].port=GPIOF;
-		MfuncInputs[3].pin=GPIO_PIN_7;
+		MfuncInputs[3].pin=GPIO_PIN_9;
 		MfuncInputs[3].adc=&hadc3;
-		MfuncInputs[3].adcChn=ADC_CHANNEL_5;
+		MfuncInputs[3].adcChn=ADC_CHANNEL_7;
 		MfuncInputs[3].mode=MFUNC_ADC;
-		
-		MfuncInputs[4].port=GPIOF;
-		MfuncInputs[4].pin=GPIO_PIN_8;
-		MfuncInputs[4].adc=&hadc3;
-		MfuncInputs[4].adcChn=ADC_CHANNEL_6;
+		//$ok
+		MfuncInputs[4].port=GPIOA;
+		MfuncInputs[4].pin=GPIO_PIN_0;
+		MfuncInputs[4].adc=&hadc2;
+		MfuncInputs[4].adcChn=ADC_CHANNEL_0;
 		MfuncInputs[4].mode=MFUNC_ADC;
 		
-		MfuncInputs[5].port=GPIOF;
-		MfuncInputs[5].pin=GPIO_PIN_9;
-		MfuncInputs[5].adc=&hadc3;
-		MfuncInputs[5].adcChn=ADC_CHANNEL_7;
+		MfuncInputs[5].port=GPIOA;
+		MfuncInputs[5].pin=GPIO_PIN_1;
+		MfuncInputs[5].adc=&hadc2;
+		MfuncInputs[5].adcChn=ADC_CHANNEL_1;
 		MfuncInputs[5].mode=MFUNC_ADC;
 		
-		//---
-		
 		MfuncInputs[6].port=GPIOA;
-		MfuncInputs[6].pin=GPIO_PIN_0;
-		MfuncInputs[6].adc=&hadc3;
-		MfuncInputs[6].adcChn=ADC_CHANNEL_0;
+		MfuncInputs[6].pin=GPIO_PIN_2;
+		MfuncInputs[6].adc=&hadc2;
+		MfuncInputs[6].adcChn=ADC_CHANNEL_2;
 		MfuncInputs[6].mode=MFUNC_ADC;
 		
 		MfuncInputs[7].port=GPIOA;
-		MfuncInputs[7].pin=GPIO_PIN_1;
-		MfuncInputs[7].adc=&hadc3;
-		MfuncInputs[7].adcChn=ADC_CHANNEL_1;
+		MfuncInputs[7].pin=GPIO_PIN_3;
+		MfuncInputs[7].adc=&hadc2;
+		MfuncInputs[7].adcChn=ADC_CHANNEL_3;
 		MfuncInputs[7].mode=MFUNC_ADC;
 		
 		MfuncInputs[8].port=GPIOA;
-		MfuncInputs[8].pin=GPIO_PIN_2;
-		MfuncInputs[8].adc=&hadc3;
-		MfuncInputs[8].adcChn=ADC_CHANNEL_2;
+		MfuncInputs[8].pin=GPIO_PIN_4;
+		MfuncInputs[8].adc=&hadc2;
+		MfuncInputs[8].adcChn=ADC_CHANNEL_4;
 		MfuncInputs[8].mode=MFUNC_ADC;
 		
 		MfuncInputs[9].port=GPIOA;
-		MfuncInputs[9].pin=GPIO_PIN_3;
-		MfuncInputs[9].adc=&hadc3;
-		MfuncInputs[9].adcChn=ADC_CHANNEL_3;
+		MfuncInputs[9].pin=GPIO_PIN_5;
+		MfuncInputs[9].adc=&hadc2;
+		MfuncInputs[9].adcChn=ADC_CHANNEL_5;
 		MfuncInputs[9].mode=MFUNC_ADC;
 		
 		MfuncInputs[10].port=GPIOA;
-		MfuncInputs[10].pin=GPIO_PIN_4;
+		MfuncInputs[10].pin=GPIO_PIN_6;
 		MfuncInputs[10].adc=&hadc2;
-		MfuncInputs[10].adcChn=ADC_CHANNEL_4;
+		MfuncInputs[10].adcChn=ADC_CHANNEL_6;
 		MfuncInputs[10].mode=MFUNC_ADC;
 		
 		MfuncInputs[11].port=GPIOA;
-		MfuncInputs[11].pin=GPIO_PIN_5;
+		MfuncInputs[11].pin=GPIO_PIN_7;
 		MfuncInputs[11].adc=&hadc2;
-		MfuncInputs[11].adcChn=ADC_CHANNEL_5;
+		MfuncInputs[11].adcChn=ADC_CHANNEL_7;
 		MfuncInputs[11].mode=MFUNC_ADC;
-		
-		MfuncInputs[12].port=GPIOA;
-		MfuncInputs[12].pin=GPIO_PIN_6;
-		MfuncInputs[12].adc=&hadc2;
-		MfuncInputs[12].adcChn=ADC_CHANNEL_6;
+		//$ok
+		MfuncInputs[12].port=GPIOC;
+		MfuncInputs[12].pin=GPIO_PIN_2;
+		MfuncInputs[12].adc=&hadc3;
+		MfuncInputs[12].adcChn=ADC_CHANNEL_12;
 		MfuncInputs[12].mode=MFUNC_ADC;
 		
-		MfuncInputs[13].port=GPIOA;
-		MfuncInputs[13].pin=GPIO_PIN_7;
-		MfuncInputs[13].adc=&hadc2;
-		MfuncInputs[13].adcChn=ADC_CHANNEL_7;
+		MfuncInputs[13].port=GPIOC;
+		MfuncInputs[13].pin=GPIO_PIN_3;
+		MfuncInputs[13].adc=&hadc3;
+		MfuncInputs[13].adcChn=ADC_CHANNEL_13;
 		MfuncInputs[13].mode=MFUNC_ADC;
+		
+		MfuncInputs[14].port=GPIOF;
+		MfuncInputs[14].pin=GPIO_PIN_4;
+		MfuncInputs[14].adc=&hadc3;
+		MfuncInputs[14].adcChn=ADC_CHANNEL_14;
+		MfuncInputs[14].mode=MFUNC_ADC;
+		
+		MfuncInputs[15].port=GPIOF;
+		MfuncInputs[15].pin=GPIO_PIN_5;
+		MfuncInputs[15].adc=&hadc3;
+		MfuncInputs[15].adcChn=ADC_CHANNEL_15;
+		MfuncInputs[15].mode=MFUNC_ADC;
 		
 		Mfunc_Input_SetMode(0xC000000);
 		

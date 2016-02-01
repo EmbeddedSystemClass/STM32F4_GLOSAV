@@ -4,7 +4,6 @@
 "glosav configuration\stm32f4xx_hal_msp.o"
 "glosav configuration\main.o"
 "glosav configuration\adc.o"
-"glosav configuration\spi.o"
 "glosav configuration\tim.o"
 "glosav configuration\usart.o"
 "glosav configuration\stm32f4xx_it.o"

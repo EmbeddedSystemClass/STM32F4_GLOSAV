@@ -5,7 +5,7 @@
   *                      of the ADC instances.
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -143,6 +143,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PF7     ------> ADC3_IN5
     PF8     ------> ADC3_IN6
     PF9     ------> ADC3_IN7
+    PC2     ------> ADC3_IN12
+    PC3     ------> ADC3_IN13
     PA0/WKUP     ------> ADC3_IN0
     PA1     ------> ADC3_IN1
     PA2     ------> ADC3_IN2
@@ -153,6 +155,11 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
@@ -203,6 +210,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PF7     ------> ADC3_IN5
     PF8     ------> ADC3_IN6
     PF9     ------> ADC3_IN7
+    PC2     ------> ADC3_IN12
+    PC3     ------> ADC3_IN13
     PA0/WKUP     ------> ADC3_IN0
     PA1     ------> ADC3_IN1
     PA2     ------> ADC3_IN2
@@ -210,6 +219,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     */
     HAL_GPIO_DeInit(GPIOF, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7 
                           |GPIO_PIN_8|GPIO_PIN_9);
+
+    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_2|GPIO_PIN_3);
 
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
