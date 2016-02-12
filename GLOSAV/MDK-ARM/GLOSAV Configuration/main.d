@@ -62,6 +62,7 @@ glosav configuration\main.o: ..\Src\usart_app.h
 glosav configuration\main.o: ..\Inc\gpio_app.h
 glosav configuration\main.o: ..\Src\can_app.h
 glosav configuration\main.o: ..\Src\mfunc_app.h
+glosav configuration\main.o: ..\Src\sleep_app.h
 glosav configuration\main.o: ..\Src\discrete_input_app.h
 glosav configuration\main.o: ..\Src\count_input_app.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h

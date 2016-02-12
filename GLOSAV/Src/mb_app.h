@@ -31,7 +31,7 @@ typedef union
 		struct
 		{
 				uint32_t uartBaudRate[UART_NUM];
-				uint8_t discreteOutputs;
+				uint16_t discreteOutputs;
 				uint32_t mfuncMode;
 				uint8_t  countInputsMode;
 		}write;

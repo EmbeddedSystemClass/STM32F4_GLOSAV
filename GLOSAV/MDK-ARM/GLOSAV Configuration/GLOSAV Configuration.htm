@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Tue Feb 02 15:29:30 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Fri Feb 12 16:45:38 2016
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -551,9 +551,9 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[11d]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBSetSlaveID
-<LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncReportSlaveID
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCopyDataToQueue
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCopyDataFromQueue
+<LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBFuncReportSlaveID
 </UL>
 
 <P><STRONG><a name="[15a]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
@@ -602,7 +602,7 @@ Global Symbols
 
 <P><STRONG><a name="[185]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[96]"></a>CAN1_Handling_Message</STRONG> (Thumb, 178 bytes, Stack size 12 bytes, can_app.o(i.CAN1_Handling_Message))
+<P><STRONG><a name="[96]"></a>CAN1_Handling_Message</STRONG> (Thumb, 188 bytes, Stack size 12 bytes, can_app.o(i.CAN1_Handling_Message))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CAN1_Handling_Message
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Listening_Task
@@ -646,7 +646,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRegHoldingCB
 </UL>
 
-<P><STRONG><a name="[a7]"></a>DiscreteOutputs_SetState</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, discrete_output_app.o(i.DiscreteOutputs_SetState))
+<P><STRONG><a name="[a7]"></a>DiscreteOutputs_SetState</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, discrete_output_app.o(i.DiscreteOutputs_SetState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DiscreteOutputs_SetState
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -914,9 +914,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
 
 <P><STRONG><a name="[ba]"></a>HAL_RCC_GetPCLK1Freq</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq))
@@ -1008,12 +1008,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ca]"></a>HAL_TIM_ConfigClockSource</STRONG> (Thumb, 306 bytes, Stack size 24 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_ConfigClockSource))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_TIM_ConfigClockSource &rArr; TIM_ETR_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_TIM_ConfigClockSource &rArr; TIM_TI2_ConfigInputStage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRx_SetConfig
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETR_SetConfig
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI2_ConfigInputStage
+<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI2_ConfigInputStage
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI1_ConfigInputStage
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRx_SetConfig
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETR_SetConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
@@ -1302,7 +1302,7 @@ Global Symbols
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRegHoldingCB
 </UL>
 
-<P><STRONG><a name="[102]"></a>Mfunc_TimerInterruptHandler</STRONG> (Thumb, 270 bytes, Stack size 8 bytes, mfunc_app.o(i.Mfunc_TimerInterruptHandler))
+<P><STRONG><a name="[102]"></a>Mfunc_TimerInterruptHandler</STRONG> (Thumb, 278 bytes, Stack size 8 bytes, mfunc_app.o(i.Mfunc_TimerInterruptHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Mfunc_TimerInterruptHandler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -1483,10 +1483,10 @@ Global Symbols
 <P><STRONG><a name="[10f]"></a>eMBASCIIInit</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, mbascii.o(i.eMBASCIIInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = eMBASCIIInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
+<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBInit
 </UL>
@@ -1494,39 +1494,39 @@ Global Symbols
 <P><STRONG><a name="[80]"></a>eMBASCIIReceive</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, mbascii.o(i.eMBASCIIReceive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = eMBASCIIReceive &rArr; vMBPortExitCritical &rArr; vPortExitCritical
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBLRC
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBLRC
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[7f]"></a>eMBASCIISend</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, mbascii.o(i.eMBASCIISend))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = eMBASCIISend &rArr; vMBPortSerialEnable &rArr; startUARTRcv &rArr; HAL_UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBLRC
+<BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBLRC
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[7d]"></a>eMBASCIIStart</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, mbascii.o(i.eMBASCIIStart))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = eMBASCIIStart &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[7e]"></a>eMBASCIIStop</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, mbascii.o(i.eMBASCIIStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = eMBASCIIStop &rArr; vMBPortSerialEnable &rArr; startUARTRcv &rArr; HAL_UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -1657,10 +1657,10 @@ Global Symbols
 <P><STRONG><a name="[11f]"></a>eMBRTUInit</STRONG> (Thumb, 78 bytes, Stack size 32 bytes, mbrtu.o(i.eMBRTUInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = eMBRTUInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
+<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortTimersInit
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialInit
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBInit
 </UL>
@@ -1676,30 +1676,30 @@ Global Symbols
 <P><STRONG><a name="[78]"></a>eMBRTUSend</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, mbrtu.o(i.eMBRTUSend))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = eMBRTUSend &rArr; vMBPortSerialEnable &rArr; startUARTRcv &rArr; HAL_UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usMBCRC16
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[76]"></a>eMBRTUStart</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, mbrtu.o(i.eMBRTUStart))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = eMBRTUStart &rArr; vMBPortSerialEnable &rArr; startUARTRcv &rArr; HAL_UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersEnable
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersEnable
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[77]"></a>eMBRTUStop</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, mbrtu.o(i.eMBRTUStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = eMBRTUStop &rArr; vMBPortSerialEnable &rArr; startUARTRcv &rArr; HAL_UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2013,14 +2013,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startUARTRcv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIITransmitFSM
+<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIITransmitFSM
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRTUStop
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRTUStart
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRTUSend
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBASCIIStop
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBASCIIStart
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBASCIISend
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
 </UL>
 
 <P><STRONG><a name="[154]"></a>vMBPortSetWithinException</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, portother.o(i.vMBPortSetWithinException))
@@ -2063,13 +2063,13 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vQueueWaitForMessageRestricted
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckForValidListAndQueue
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueFull
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 
 <P><STRONG><a name="[13a]"></a>vPortExitCritical</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, port.o(i.vPortExitCritical))
@@ -2085,13 +2085,13 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vQueueWaitForMessageRestricted
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckForValidListAndQueue
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueFull
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 </UL>
 
 <P><STRONG><a name="[134]"></a>vPortFree</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, heap_4.o(i.vPortFree))
@@ -2264,11 +2264,11 @@ Global Symbols
 <P><STRONG><a name="[81]"></a>xMBASCIIReceiveFSM</STRONG> (Thumb, 276 bytes, Stack size 16 bytes, mbascii.o(i.xMBASCIIReceiveFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = xMBASCIIReceiveFSM &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBCHAR2BIN
+<BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBCHAR2BIN
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialGetByte
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersEnable
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2282,10 +2282,10 @@ Global Symbols
 <P><STRONG><a name="[82]"></a>xMBASCIITransmitFSM</STRONG> (Thumb, 220 bytes, Stack size 16 bytes, mbascii.o(i.xMBASCIITransmitFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = xMBASCIITransmitFSM &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBBIN2CHAR
+<BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvucMBBIN2CHAR
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2313,11 +2313,11 @@ Global Symbols
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bMBPortIsWithinException
 </UL>
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBPoll
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTimerT35Expired
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIITransmitFSM
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIIReceiveFSM
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBASCIIStart
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
 </UL>
 
 <P><STRONG><a name="[168]"></a>xMBPortSerialGetByte</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, portserial.o(i.xMBPortSerialGetByte))
@@ -2340,8 +2340,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit_IT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIITransmitFSM
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
+<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBRTUTransmitFSM
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIITransmitFSM
 </UL>
 
 <P><STRONG><a name="[112]"></a>xMBPortTimersInit</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, porttimer.o(i.xMBPortTimersInit))
@@ -2367,17 +2367,17 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>xMBRTUTimerT35Expired</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, mbrtu.o(i.xMBRTUTimerT35Expired))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = xMBRTUTimerT35Expired &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortTimersDisable
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
 <P><STRONG><a name="[7b]"></a>xMBRTUTransmitFSM</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, mbrtu.o(i.xMBRTUTransmitFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = xMBRTUTransmitFSM &rArr; xMBPortEventPost &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
+<BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortSerialPutByte
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortSerialEnable
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBPortEventPost
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
 </UL>
@@ -2752,10 +2752,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e1]"></a>UART_SetConfig</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, stm32f4xx_hal_uart.o(i.UART_SetConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK2Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetPCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>

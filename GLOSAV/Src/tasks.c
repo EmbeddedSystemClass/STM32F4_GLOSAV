@@ -42,7 +42,7 @@ osMessageQId myQueueUart1TxHandle;
 osMessageQId myQueueUart2RxHandle;
 osMessageQId myQueueUart2TxHandle;
 osMessageQId myQueueUart3RxHandle;
-osMessageQId myQueueUart6TxHandle;
+osMessageQId myQueueUart3TxHandle;
 osMessageQId myQueueUart4RxHandle;
 osMessageQId myQueueUart4TxHandle;
 osMessageQId myQueueUart5RxHandle;
@@ -114,7 +114,7 @@ void startUserTasks(void)
   osMessageQDef(myQueueUart3Rx, 64, uint8_t);
   myQueueUart3RxHandle = osMessageCreate(osMessageQ(myQueueUart3Rx), NULL);
 	osMessageQDef(myQueueUart3Tx, 128, uint8_t);
-  myQueueUart6TxHandle = osMessageCreate(osMessageQ(myQueueUart3Tx), NULL);
+  myQueueUart3TxHandle = osMessageCreate(osMessageQ(myQueueUart3Tx), NULL);
 
   osMessageQDef(myQueueUart4Rx, 64, uint8_t);
   myQueueUart4RxHandle = osMessageCreate(osMessageQ(myQueueUart4Rx), NULL);

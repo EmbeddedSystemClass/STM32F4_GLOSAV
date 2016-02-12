@@ -47,6 +47,7 @@
 #include "gpio_app.h"
 #include "can_app.h"
 #include "mfunc_app.h"
+#include "sleep_app.h"
 #include "discrete_input_app.h"
 #include "count_input_app.h"
 #include "mb.h"
@@ -86,8 +87,11 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
-  /* Initialize all configured peripherals */
+//  /* Initialize all configured peripherals */
   MX_GPIO_Init();
+//	
+
+	
   MX_ADC2_Init();
   MX_ADC3_Init();
   MX_CAN1_Init();
@@ -118,6 +122,8 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
+	
+	
   MX_FREERTOS_Init();
 
   /* Start scheduler */
@@ -133,6 +139,8 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
   /* Infinite loop */
+
+		
   }
   /* USER CODE END 3 */
 

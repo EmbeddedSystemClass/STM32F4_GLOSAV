@@ -605,6 +605,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\count_input_app.c</FilePath>
             </File>
+            <File>
+              <FileName>sleep_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sleep_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

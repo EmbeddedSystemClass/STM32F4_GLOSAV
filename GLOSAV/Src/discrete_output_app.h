@@ -2,6 +2,6 @@
 #define DISCRETE_OUTPUT_APP_H
 #include "stm32f4xx_hal.h"
 
-void DiscreteOutputs_SetState(uint8_t outputs);
+void DiscreteOutputs_SetState(uint16_t outputs);
 
 #endif
