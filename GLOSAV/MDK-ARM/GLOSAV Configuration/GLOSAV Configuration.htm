@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Fri Feb 12 17:41:56 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Wed Feb 17 17:00:32 2016
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -646,7 +646,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRegHoldingCB
 </UL>
 
-<P><STRONG><a name="[a7]"></a>DiscreteOutputs_SetState</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, discrete_output_app.o(i.DiscreteOutputs_SetState))
+<P><STRONG><a name="[a7]"></a>DiscreteOutputs_SetState</STRONG> (Thumb, 148 bytes, Stack size 8 bytes, discrete_output_app.o(i.DiscreteOutputs_SetState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DiscreteOutputs_SetState
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1665,10 +1665,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBInit
 </UL>
 
-<P><STRONG><a name="[79]"></a>eMBRTUReceive</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, mbrtu.o(i.eMBRTUReceive))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = eMBRTUReceive &rArr; vMBPortExitCritical &rArr; vPortExitCritical
+<P><STRONG><a name="[79]"></a>eMBRTUReceive</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, mbrtu.o(i.eMBRTUReceive))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = eMBRTUReceive &rArr; usMBCRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usMBCRC16
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortExitCritical
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMBPortEnterCritical
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> mb.o(i.eMBInit)
@@ -1912,6 +1913,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = usMBCRC16
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRTUSend
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBRTUReceive
 </UL>
 
 <P><STRONG><a name="[13e]"></a>uxListRemove</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, list.o(i.uxListRemove))

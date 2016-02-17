@@ -7,7 +7,7 @@
 #include "count_input_app.h"
 
 #define MB_INPUT_BUF_SIZE	125
-#define MB_HOLDING_BUF_SIZE	125
+#define MB_HOLDING_BUF_SIZE	100
 
 //typedef union
 //{
@@ -22,7 +22,7 @@
 
 	
 
-#pragma pack(1) 
+#pragma pack(push,1) 
 
 typedef union
 {
@@ -49,7 +49,7 @@ typedef union
 }stMBHoldingRegParams;
 	
 
-#pragma pack( ) 
+#pragma pack(pop) 
 
 //extern stMBInputRegParams MBInputRegParams;
 extern SemaphoreHandle_t	xMBInputRegParamsMutex;

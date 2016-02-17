@@ -45,9 +45,11 @@ enum enDiscrOutput
 #define ALARM_INDICATOR_PIN		GPIO_PIN_2
 
 
-
+static uint16_t outputsOld=0x0;
 void DiscreteOutputs_SetState(uint16_t outputs)
 {
+	if(outputs!=outputsOld)
+	{
 		HAL_GPIO_WritePin(POW_OUTPUT_1_PORT,	POW_OUTPUT_1_PIN,	outputs&(1<<POW_OUTPUT_1_BIT));
 		HAL_GPIO_WritePin(POW_OUTPUT_2_PORT,	POW_OUTPUT_2_PIN,	outputs&(1<<POW_OUTPUT_2_BIT));
 		HAL_GPIO_WritePin(POW_OUTPUT_3_PORT,	POW_OUTPUT_3_PIN,	outputs&(1<<POW_OUTPUT_3_BIT));
@@ -61,4 +63,6 @@ void DiscreteOutputs_SetState(uint16_t outputs)
 	
 		HAL_GPIO_WritePin(BUTTON_HIGHLIGHT_PORT,	BUTTON_HIGHLIGHT_PIN,	outputs&(1<<BUTTON_HIGHLIGHT_BIT));
 		HAL_GPIO_WritePin(ALARM_INDICATOR_PORT,	ALARM_INDICATOR_PIN,	outputs&(1<<ALARM_INDICATOR_BIT));
+		outputsOld=outputs;
+	}
 }

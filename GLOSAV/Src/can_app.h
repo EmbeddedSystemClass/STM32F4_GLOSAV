@@ -7,7 +7,7 @@
 
 void CAN_App_Init(void);
 
-#pragma pack(1) 
+#pragma pack(push,1) 
 typedef	struct 
 {
 	uint16_t 	vehicleSpeed;//скорость тс 1/256 км/ч на бит, значение FMS 10250
@@ -21,6 +21,6 @@ typedef	struct
 	uint16_t 	fuelRate;// расход топлива, 0,05 л/ч на бит, параметр не передается FMS
 } stCANFMSParams;
 
-#pragma pack() 
+#pragma pack(pop) 
 
 #endif
