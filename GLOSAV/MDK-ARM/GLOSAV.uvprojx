@@ -610,6 +610,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\sleep_app.c</FilePath>
             </File>
+            <File>
+              <FileName>OneWire.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\OneWire.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
