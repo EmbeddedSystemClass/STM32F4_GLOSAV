@@ -39,6 +39,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "OneWire.h"
 
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
@@ -92,33 +93,34 @@ int main(void)
 //	
 
 	
-  MX_ADC2_Init();
-  MX_ADC3_Init();
-  MX_CAN1_Init();
-  MX_CAN2_Init();
-  MX_I2C2_Init();
-  MX_TIM2_Init();
-  MX_TIM6_Init();
-  MX_UART4_Init();
-  MX_UART5_Init();
-  MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
-  MX_USART3_UART_Init();
-  MX_USART6_UART_Init();
+//  MX_ADC2_Init();
+//  MX_ADC3_Init();
+//  MX_CAN1_Init();
+//  MX_CAN2_Init();
+//  MX_I2C2_Init();
+//  MX_TIM2_Init();
+//  MX_TIM6_Init();
+//  MX_UART4_Init();
+//  MX_UART5_Init();
+//  MX_USART1_UART_Init();
+//  MX_USART2_UART_Init();
+//  MX_USART3_UART_Init();
+//  MX_USART6_UART_Init();
 
   /* USER CODE BEGIN 2 */
 	MAIN_GPIO_Init();
-	startUARTRcv(&huart1);	// to BeagleBone 
-	startUARTRcv(&huart2);	// console
-	startUARTRcv(&huart3);	// RS-485 ext
-	startUARTRcv(&huart4);	// 
-	startUARTRcv(&huart5);	// RS-485 ext
-	startUARTRcv(&huart6);	// RS-485 ext
-	
-	CAN_App_Init();
-	Mfunc_App_Init();
-	Discrete_Input_Init();
-	Count_Input_App_Init();
+//	startUARTRcv(&huart1);	// to BeagleBone 
+//	startUARTRcv(&huart2);	// console
+//	startUARTRcv(&huart3);	// RS-485 ext
+//	startUARTRcv(&huart4);	// 
+//	startUARTRcv(&huart5);	// RS-485 ext
+//	startUARTRcv(&huart6);	// RS-485 ext
+//	
+//	CAN_App_Init();
+//	Mfunc_App_Init();
+//	Discrete_Input_Init();
+//	Count_Input_App_Init();
+	OneWire_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

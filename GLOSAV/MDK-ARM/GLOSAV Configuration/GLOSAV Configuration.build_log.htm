@@ -28,32 +28,21 @@ Project File Date:  03/15/2016
 *** Using Compiler 'V5.06 (build 20)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'GLOSAV Configuration'
 compiling OneWire.c...
-..\Src\OneWire.c(23): error:  #20: identifier "GPIO_MODE_OUTPUT" is undefined
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
-..\Src\OneWire.c(30): warning:  #223-D: function "DELAY_Init" declared implicitly
-        DELAY_Init();
-..\Src\OneWire.c(48): warning:  #223-D: function "Delay" declared implicitly
+..\Src\OneWire.c(60): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
         
-NEWIRE_DELAY(480);
-..\Src\OneWire.c(69): warning:  #223-D: function "Delay" declared implicitly
-                
-NEWIRE_DELAY(10);
-..\Src\OneWire.c(81): warning:  #223-D: function "Delay" declared implicitly
-                
-NEWIRE_DELAY(65);
-..\Src\OneWire.c(99): warning:  #223-D: function "Delay" declared implicitly
-        
-NEWIRE_DELAY(3);
-..\Src\OneWire.c: 5 warnings, 1 error
-"GLOSAV Configuration\GLOSAV Configuration.axf" - 1 Error(s), 5 Warning(s).
+TaskCreate(OneWire_Task,(signed char*)"OneWire Task",ONEWIRE_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
+..\Src\OneWire.c: 1 warning, 0 errors
+linking...
+Program Size: Code=25540 RO-data=1356 RW-data=764 ZI-data=35772  
+FromELF: creating hex file...
+"GLOSAV Configuration\GLOSAV Configuration.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   D:\PROJECTS\GIT_REPOSITORY\STM32\STM32F4_CAN_MODBUS\GLOSAV\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Target not created.
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:08
 </pre>
 </body>
 </html>

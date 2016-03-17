@@ -2,8 +2,26 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_gpio.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+#define ONEWIRE_READ_PERIOD	500
+#define ONEWIRE_STACK_SIZE		128
+
 void OneWire_Input(void);
 void OneWire_Output(void);
+void Delay(uint32_t delay);
+void OneWire_ReadROM(OneWire_t* OneWireStruct);
+static void OneWire_Task(void *pvParameters);
+
+
+void Delay(uint32_t delay) 
+{
+		delay=delay*39;
+    while (delay--);
+}
 
 void OneWire_Input(void)
 {
@@ -20,23 +38,26 @@ void OneWire_Output(void)
 	GPIO_InitTypeDef GPIO_InitStruct;
 	
 	GPIO_InitStruct.Pin = in_1_wire_in_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(in_1_wire_in_GPIO_Port, &GPIO_InitStruct);
 }
 
-void OneWire_Init(OneWire_t* OneWireStruct, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) {
-	/* Initialize delay if it was not already */
-	DELAY_Init();
-	
-	HAL_GPIO_WritePin(out_1_Wire_ctrl_GPIO_Port, out_1_Wire_ctrl_Pin, GPIO_PIN_RESET);
+void OneWire_StrongPullUp_On(void)
+{
+	ONEWIRE_HIGH();
+	HAL_GPIO_WritePin(out_1_Wire_ctrl_GPIO_Port, out_1_Wire_ctrl_Pin, GPIO_PIN_SET);	
+}
 
-	/* Init GPIO pin */
-//	GPIO_Init(GPIOx, GPIO_Pin, GPIO_Mode_OUT, GPIO_OType_PP, GPIO_PuPd_UP, GPIO_Speed_Medium);
-	
-	/* Save settings */
-//	OneWireStruct->GPIOx = GPIOx;
-	//OneWireStruct->GPIO_Pin = GPIO_Pin;
+void OneWire_StrongPullUp_Off(void)
+{
+	HAL_GPIO_WritePin(out_1_Wire_ctrl_GPIO_Port, out_1_Wire_ctrl_Pin, GPIO_PIN_RESET);
+}
+
+void OneWire_Init(void) 
+{	
+	HAL_GPIO_WritePin(out_1_Wire_ctrl_GPIO_Port, out_1_Wire_ctrl_Pin, GPIO_PIN_RESET);
+	xTaskCreate(OneWire_Task,(signed char*)"OneWire Task",ONEWIRE_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
 uint8_t OneWire_Reset(OneWire_t* OneWireStruct) {
@@ -45,7 +66,7 @@ uint8_t OneWire_Reset(OneWire_t* OneWireStruct) {
 	/* Line low, and wait 480us */
 	ONEWIRE_LOW();
 	OneWire_Output();
-	ONEWIRE_DELAY(480);
+	ONEWIRE_DELAY(/*480*/600);
 	
 	/* Release line and wait for 70us */
 	OneWire_Input();
@@ -377,4 +398,45 @@ uint8_t OneWire_CRC8(uint8_t *addr, uint8_t len) {
 	
 	/* Return calculated CRC */
 	return crc;
+}
+
+void OneWire_ReadROM(OneWire_t* OneWireStruct)
+{
+	OneWire_Reset(OneWireStruct);
+	OneWire_WriteByte(OneWireStruct,ONEWIRE_CMD_READROM);
+/*	for(uint8_t i=0; i<8; i++) 
+	{
+			OneWireStruct->ROM_NO[i]=OneWire_ReadByte(OneWireStruct);
+	}*/
+}
+
+uint8_t temperature[2];
+
+void OneWire_DS18b20(OneWire_t* OneWireStruct)
+{
+	OneWire_Reset(OneWireStruct);
+	OneWire_WriteByte(OneWireStruct,0xCC);	
+	OneWire_WriteByte(OneWireStruct,0x44);
+	OneWire_StrongPullUp_On();	
+	vTaskDelay(1000);
+	OneWire_StrongPullUp_Off();	
+	OneWire_Reset(OneWireStruct);
+	OneWire_WriteByte(OneWireStruct,0xCC);	
+	OneWire_WriteByte(OneWireStruct,0xBE);	
+	
+	temperature[0]=OneWire_ReadByte(OneWireStruct);
+	temperature[1]=OneWire_ReadByte(OneWireStruct);	
+}
+
+OneWire_t OneWireStruct;
+
+static void OneWire_Task(void *pvParameters)
+{
+	while(1)
+	{  
+		OneWire_DS18b20(&OneWireStruct);
+		//OneWire_WriteByte(&OneWireStruct,0xCC);		
+//OneWire_Reset(&OneWireStruct);		
+		vTaskDelay(ONEWIRE_READ_PERIOD);
+	}
 }

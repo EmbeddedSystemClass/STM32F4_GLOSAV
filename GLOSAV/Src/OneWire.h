@@ -60,7 +60,7 @@ typedef struct {
  * @param  GPIO_Pin: GPIO Pin on specific GPIOx to be used for onewire channel
  * @retval None
  */
-void OneWire_Init(OneWire_t* OneWireStruct, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void OneWire_Init(void);
 
 /**
  * @brief  Resets OneWire bus

@@ -56,6 +56,8 @@ glosav configuration\main.o: ..\Inc\i2c.h
 glosav configuration\main.o: ..\Inc\tim.h
 glosav configuration\main.o: ..\Inc\usart.h
 glosav configuration\main.o: ..\Inc\gpio.h
+glosav configuration\main.o: ..\Src\OneWire.h
+glosav configuration\main.o: ..\Inc\mxconstants.h
 glosav configuration\main.o: ..\Inc\config.h
 glosav configuration\main.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\main.o: ..\Src\usart_app.h
