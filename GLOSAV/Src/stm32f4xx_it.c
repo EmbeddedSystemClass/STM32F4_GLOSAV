@@ -4,7 +4,7 @@
   * @brief   Interrupt Service Routines.
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -35,7 +35,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "cmsis_os.h"
-#include "count_input_app.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -46,6 +45,7 @@ extern void xPortSysTickHandler(void);
 extern CAN_HandleTypeDef hcan1;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
+extern TIM_HandleTypeDef htim7;
 extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart1;
@@ -191,6 +191,20 @@ void TIM6_DAC_IRQHandler(void)
 	Count_Input_InterruptHandler();
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
+
+/**
+* @brief This function handles TIM7 global interrupt.
+*/
+//void TIM7_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN TIM7_IRQn 0 */
+
+//  /* USER CODE END TIM7_IRQn 0 */
+//  HAL_TIM_IRQHandler(&htim7);
+//  /* USER CODE BEGIN TIM7_IRQn 1 */
+
+//  /* USER CODE END TIM7_IRQn 1 */
+//}
 
 /**
 * @brief This function handles USART6 global interrupt.

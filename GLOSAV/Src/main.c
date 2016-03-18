@@ -39,7 +39,6 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "OneWire.h"
 
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
@@ -52,6 +51,7 @@
 #include "discrete_input_app.h"
 #include "count_input_app.h"
 #include "mb.h"
+#include "OneWire.h"
 
 /* USER CODE END Includes */
 
@@ -88,24 +88,22 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
-//  /* Initialize all configured peripherals */
+  /* Initialize all configured peripherals */
   MX_GPIO_Init();
-//	
-
-	
-//  MX_ADC2_Init();
-//  MX_ADC3_Init();
-//  MX_CAN1_Init();
-//  MX_CAN2_Init();
-//  MX_I2C2_Init();
-//  MX_TIM2_Init();
-//  MX_TIM6_Init();
-//  MX_UART4_Init();
-//  MX_UART5_Init();
-//  MX_USART1_UART_Init();
-//  MX_USART2_UART_Init();
-//  MX_USART3_UART_Init();
-//  MX_USART6_UART_Init();
+  MX_ADC2_Init();
+  MX_ADC3_Init();
+  MX_CAN1_Init();
+  MX_CAN2_Init();
+  MX_I2C2_Init();
+  MX_TIM2_Init();
+  MX_TIM6_Init();
+  MX_TIM7_Init();
+  MX_UART4_Init();
+  MX_UART5_Init();
+  MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
+  MX_USART3_UART_Init();
+  MX_USART6_UART_Init();
 
   /* USER CODE BEGIN 2 */
 	MAIN_GPIO_Init();
@@ -124,8 +122,6 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-	
-	
   MX_FREERTOS_Init();
 
   /* Start scheduler */

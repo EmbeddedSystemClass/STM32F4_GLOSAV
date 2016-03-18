@@ -38,7 +38,7 @@ void OneWire_Output(void)
 	GPIO_InitTypeDef GPIO_InitStruct;
 	
 	GPIO_InitStruct.Pin = in_1_wire_in_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(in_1_wire_in_GPIO_Port, &GPIO_InitStruct);
 }
@@ -82,57 +82,41 @@ uint8_t OneWire_Reset(OneWire_t* OneWireStruct) {
 	return i;
 }
 
-void OneWire_WriteBit(OneWire_t* OneWireStruct, uint8_t bit) {
-	if (bit) {
-		/* Set line low */
-		ONEWIRE_LOW();
+void OneWire_WriteBit(OneWire_t* OneWireStruct, uint8_t bit) 
+{
 		OneWire_Output();
-		ONEWIRE_DELAY(10);
-		
-		/* Bit high */
+		if (bit) 
+		{
+			ONEWIRE_LOW();
+			ONEWIRE_DELAY(10);
+			ONEWIRE_HIGH();
+			ONEWIRE_DELAY(55);
+		} 
+		else 
+		{
+			ONEWIRE_LOW();
+			ONEWIRE_DELAY(65);
+			ONEWIRE_HIGH();
+			ONEWIRE_DELAY(5);
+		}
 		OneWire_Input();
-		
-		/* Wait for 55 us and release the line */
-		ONEWIRE_DELAY(55);
-		OneWire_Input();
-	} else {
-		/* Set line low */
-		ONEWIRE_LOW();
-		OneWire_Output();
-		ONEWIRE_DELAY(65);
-		
-		/* Bit high */
-		OneWire_Input();
-		
-		/* Wait for 5 us and release the line */
-		ONEWIRE_DELAY(5);
-		OneWire_Input();
-	}
-
 }
 
-uint8_t OneWire_ReadBit(OneWire_t* OneWireStruct) {
+uint8_t OneWire_ReadBit(OneWire_t* OneWireStruct) 
+{
 	uint8_t bit = 0;
-	
-	/* Line low */
-	ONEWIRE_LOW();
 	OneWire_Output();
+
+	ONEWIRE_LOW();
 	ONEWIRE_DELAY(3);
-	
-	/* Release line */
 	OneWire_Input();
 	ONEWIRE_DELAY(10);
 	
-	/* Read line value */
-	if (HAL_GPIO_ReadPin(in_1_wire_in_GPIO_Port, in_1_wire_in_Pin)) {
-		/* Bit is HIGH */
+	if (HAL_GPIO_ReadPin(in_1_wire_in_GPIO_Port, in_1_wire_in_Pin)) 
+	{
 		bit = 1;
 	}
-	
-	/* Wait 50us to complete 60us period */
 	ONEWIRE_DELAY(50);
-	
-	/* Return bit value */
 	return bit;
 }
 
@@ -404,39 +388,149 @@ void OneWire_ReadROM(OneWire_t* OneWireStruct)
 {
 	OneWire_Reset(OneWireStruct);
 	OneWire_WriteByte(OneWireStruct,ONEWIRE_CMD_READROM);
-/*	for(uint8_t i=0; i<8; i++) 
+	for(uint8_t i=0; i<8; i++) 
 	{
 			OneWireStruct->ROM_NO[i]=OneWire_ReadByte(OneWireStruct);
-	}*/
+	}
 }
 
 uint8_t temperature[2];
 
-void OneWire_DS18b20(OneWire_t* OneWireStruct)
+uint8_t OneWire_DS18b20(OneWire_t* OneWireStruct)
 {
-	OneWire_Reset(OneWireStruct);
-	OneWire_WriteByte(OneWireStruct,0xCC);	
-	OneWire_WriteByte(OneWireStruct,0x44);
-	OneWire_StrongPullUp_On();	
-	vTaskDelay(1000);
-	OneWire_StrongPullUp_Off();	
-	OneWire_Reset(OneWireStruct);
-	OneWire_WriteByte(OneWireStruct,0xCC);	
-	OneWire_WriteByte(OneWireStruct,0xBE);	
-	
-	temperature[0]=OneWire_ReadByte(OneWireStruct);
-	temperature[1]=OneWire_ReadByte(OneWireStruct);	
+	if(OneWire_Reset(OneWireStruct)==0)
+	{
+		OneWire_WriteByte(OneWireStruct,0xCC);	
+		OneWire_WriteByte(OneWireStruct,0x44);
+		OneWire_StrongPullUp_On();	
+		vTaskDelay(1000);
+		OneWire_StrongPullUp_Off();	
+		OneWire_Reset(OneWireStruct);
+		OneWire_WriteByte(OneWireStruct,0xCC);	
+		OneWire_WriteByte(OneWireStruct,0xBE);	
+		
+		temperature[0]=OneWire_ReadByte(OneWireStruct);
+		temperature[1]=OneWire_ReadByte(OneWireStruct);
+		return 0;
+	}		
+	else
+	{
+			return 1;
+	}		
 }
 
 OneWire_t OneWireStruct;
-
+extern TIM_HandleTypeDef htim7;
 static void OneWire_Task(void *pvParameters)
 {
 	while(1)
 	{  
-		OneWire_DS18b20(&OneWireStruct);
-		//OneWire_WriteByte(&OneWireStruct,0xCC);		
-//OneWire_Reset(&OneWireStruct);		
+		OneWire_DS18b20(&OneWireStruct);	
 		vTaskDelay(ONEWIRE_READ_PERIOD);
+		//HAL_TIM_Base_Start_IT(&htim7);
+	}
+}
+enum
+{
+	OW_STATE_IDLE=0,
+	OW_STATE_TIMESLOT_START,
+	OW_STATE_WRITE_0,
+	OW_STATE_WRITE_1,
+	OW_STATE_READ,
+	OW_STATE_TIMESLOT_END,
+};
+
+enum
+{
+	OW_NONE,
+	OW_WRITE,
+	OW_READ,
+};
+
+uint8_t ow_state=OW_STATE_IDLE;
+uint8_t ow_operation=OW_NONE;
+uint8_t ow_bit=0;
+uint8_t ow_flag_done=0;
+
+void TIM7_IRQHandler(void)
+{
+	HAL_TIM_Base_Stop_IT(&htim7);
+	switch(ow_state)
+	{
+		case OW_STATE_IDLE:
+		{
+
+		}
+		break;
+		
+		case OW_STATE_TIMESLOT_START:
+		{
+				OneWire_Output();
+				ONEWIRE_LOW();
+				htim7.Init.Period = 15;
+				HAL_TIM_Base_Init(&htim7);
+			  HAL_TIM_Base_Start_IT(&htim7);
+			
+				switch(ow_operation)
+				{
+					case OW_NONE:  break;
+					
+					case OW_WRITE: 
+					{
+						if(ow_bit)
+						{
+								ow_state=OW_STATE_WRITE_1; 
+						}
+						else
+						{
+							  ow_state=OW_STATE_WRITE_0; 
+						}
+					}
+					break;
+					
+					case OW_READ: ow_state=OW_STATE_READ; break;
+				}
+		}
+		break;
+		
+		case OW_STATE_WRITE_0:
+		{
+				ONEWIRE_LOW();
+				htim7.Init.Period = 45;
+				HAL_TIM_Base_Init(&htim7);
+			  HAL_TIM_Base_Start_IT(&htim7);
+				ow_state=OW_STATE_TIMESLOT_END;
+		}
+		break;
+		
+		case OW_STATE_WRITE_1:
+		{
+				ONEWIRE_HIGH();
+				htim7.Init.Period = 45;
+				HAL_TIM_Base_Init(&htim7);
+			  HAL_TIM_Base_Start_IT(&htim7);	
+				ow_state=OW_STATE_TIMESLOT_END;			
+		}
+		break;
+		
+		case OW_STATE_READ:
+		{
+				OneWire_Input();
+				ONEWIRE_HIGH();
+				ow_bit=HAL_GPIO_ReadPin(in_1_wire_in_GPIO_Port, in_1_wire_in_Pin);
+				htim7.Init.Period = 45;
+				HAL_TIM_Base_Init(&htim7);
+			  HAL_TIM_Base_Start_IT(&htim7);	
+				ow_state=OW_STATE_TIMESLOT_END;		
+		}
+		break;
+		
+		case OW_STATE_TIMESLOT_END:
+		{
+				OneWire_Output();
+				ONEWIRE_HIGH();
+				ow_state=OW_STATE_IDLE;
+		}
+		break;
 	}
 }

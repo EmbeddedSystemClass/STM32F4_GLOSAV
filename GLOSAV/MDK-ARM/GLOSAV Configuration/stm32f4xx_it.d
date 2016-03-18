@@ -51,4 +51,3 @@ glosav configuration\stm32f4xx_it.o: ..\Middlewares\Third_Party\FreeRTOS\Source\
 glosav configuration\stm32f4xx_it.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\stm32f4xx_it.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
 glosav configuration\stm32f4xx_it.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h
-glosav configuration\stm32f4xx_it.o: ..\Src\count_input_app.h
