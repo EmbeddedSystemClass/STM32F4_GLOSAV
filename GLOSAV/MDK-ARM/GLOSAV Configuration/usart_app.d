@@ -8,14 +8,14 @@ glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Include\core_cm4.h
-glosav configuration\usart_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+glosav configuration\usart_app.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Include\core_cmInstr.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Include\core_cmFunc.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Include\core_cmSimd.h
 glosav configuration\usart_app.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-glosav configuration\usart_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+glosav configuration\usart_app.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h
@@ -38,7 +38,7 @@ glosav configuration\usart_app.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_
 glosav configuration\usart_app.o: ..\Src\usart_app.h
 glosav configuration\usart_app.o: ..\Inc\gpio.h
 glosav configuration\usart_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
-glosav configuration\usart_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+glosav configuration\usart_app.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\usart_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\usart_app.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\usart_app.o: ..\Inc\mxconstants.h

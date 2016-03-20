@@ -10,6 +10,33 @@
 #define ONEWIRE_READ_PERIOD	500
 #define ONEWIRE_STACK_SIZE		128
 
+#define ONEWIRE_RW_HARDWARE_TIMER
+
+enum
+{
+	OW_STATE_IDLE=0,
+	OW_STATE_TIMESLOT_START,
+	OW_STATE_WRITE_0,
+	OW_STATE_WRITE_1,
+	OW_STATE_READ,
+	OW_STATE_TIMESLOT_END,
+};
+
+enum
+{
+	OW_NONE,
+	OW_WRITE,
+	OW_READ,
+};
+
+uint8_t ow_state=OW_STATE_IDLE;
+uint8_t ow_operation=OW_NONE;
+uint8_t ow_bit=0;
+uint8_t ow_flag_done=0;
+
+OneWire_t OneWireStruct;
+extern TIM_HandleTypeDef htim7;
+
 void OneWire_Input(void);
 void OneWire_Output(void);
 void Delay(uint32_t delay);
@@ -81,7 +108,7 @@ uint8_t OneWire_Reset(OneWire_t* OneWireStruct) {
 	/* Return value of presence pulse, 0 = OK, 1 = ERROR */
 	return i;
 }
-
+#ifndef ONEWIRE_RW_HARDWARE_TIMER
 void OneWire_WriteBit(OneWire_t* OneWireStruct, uint8_t bit) 
 {
 		OneWire_Output();
@@ -119,6 +146,25 @@ uint8_t OneWire_ReadBit(OneWire_t* OneWireStruct)
 	ONEWIRE_DELAY(50);
 	return bit;
 }
+#else
+void OneWire_WriteBit(OneWire_t* OneWireStruct, uint8_t bit)
+{
+	ow_bit=bit;
+	ow_operation=OW_WRITE;
+	ow_state=OW_STATE_TIMESLOT_START;
+	HAL_TIM_Base_Start_IT(&htim7);
+	while(ow_state!=OW_STATE_IDLE);
+}
+
+uint8_t OneWire_ReadBit(OneWire_t* OneWireStruct)
+{
+	ow_bit=0;
+	ow_operation=OW_READ;
+	ow_state=OW_STATE_TIMESLOT_START;
+	while(ow_state!=OW_STATE_IDLE);
+	return ow_bit; 
+}
+#endif
 
 void OneWire_WriteByte(OneWire_t* OneWireStruct, uint8_t byte) {
 	uint8_t i = 8;
@@ -419,8 +465,7 @@ uint8_t OneWire_DS18b20(OneWire_t* OneWireStruct)
 	}		
 }
 
-OneWire_t OneWireStruct;
-extern TIM_HandleTypeDef htim7;
+
 static void OneWire_Task(void *pvParameters)
 {
 	while(1)
@@ -430,27 +475,9 @@ static void OneWire_Task(void *pvParameters)
 		//HAL_TIM_Base_Start_IT(&htim7);
 	}
 }
-enum
-{
-	OW_STATE_IDLE=0,
-	OW_STATE_TIMESLOT_START,
-	OW_STATE_WRITE_0,
-	OW_STATE_WRITE_1,
-	OW_STATE_READ,
-	OW_STATE_TIMESLOT_END,
-};
 
-enum
-{
-	OW_NONE,
-	OW_WRITE,
-	OW_READ,
-};
 
-uint8_t ow_state=OW_STATE_IDLE;
-uint8_t ow_operation=OW_NONE;
-uint8_t ow_bit=0;
-uint8_t ow_flag_done=0;
+
 
 void TIM7_IRQHandler(void)
 {

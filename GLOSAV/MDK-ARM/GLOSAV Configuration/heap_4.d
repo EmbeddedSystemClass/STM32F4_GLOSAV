@@ -1,8 +1,8 @@
 glosav configuration\heap_4.o: ..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c
-glosav configuration\heap_4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+glosav configuration\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 glosav configuration\heap_4.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
-glosav configuration\heap_4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-glosav configuration\heap_4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+glosav configuration\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+glosav configuration\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\heap_4.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\heap_4.o: ..\Inc\mxconstants.h
 glosav configuration\heap_4.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h

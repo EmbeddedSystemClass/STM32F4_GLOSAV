@@ -1,8 +1,8 @@
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c
-glosav configuration\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+glosav configuration\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
-glosav configuration\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-glosav configuration\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+glosav configuration\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+glosav configuration\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 glosav configuration\cmsis_os.o: ..\Drivers\CMSIS\Include\core_cmFunc.h
 glosav configuration\cmsis_os.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 glosav configuration\cmsis_os.o: ..\Inc\FreeRTOSConfig.h
