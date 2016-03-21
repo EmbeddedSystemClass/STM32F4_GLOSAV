@@ -161,6 +161,7 @@ uint8_t OneWire_ReadBit(OneWire_t* OneWireStruct)
 	ow_bit=0;
 	ow_operation=OW_READ;
 	ow_state=OW_STATE_TIMESLOT_START;
+	HAL_TIM_Base_Start_IT(&htim7);
 	while(ow_state!=OW_STATE_IDLE);
 	return ow_bit; 
 }
@@ -468,9 +469,15 @@ uint8_t OneWire_DS18b20(OneWire_t* OneWireStruct)
 
 static void OneWire_Task(void *pvParameters)
 {
+//	OneWire_Output();
+//	htim7.Init.Period = 45;
+//	HAL_TIM_Base_Init(&htim7);
+//	HAL_TIM_Base_Start_IT(&htim7);
 	while(1)
 	{  
-		OneWire_DS18b20(&OneWireStruct);	
+		OneWire_DS18b20(&OneWireStruct);
+	//	OneWire_WriteByte(&OneWireStruct,0x00);
+		//OneWire_ReadByte(&OneWireStruct);
 		vTaskDelay(ONEWIRE_READ_PERIOD);
 		//HAL_TIM_Base_Start_IT(&htim7);
 	}
@@ -482,6 +489,10 @@ static void OneWire_Task(void *pvParameters)
 void TIM7_IRQHandler(void)
 {
 	HAL_TIM_Base_Stop_IT(&htim7);
+	__HAL_TIM_CLEAR_FLAG(&htim7, TIM_IT_UPDATE);
+	
+	TIM7->CNT=0;
+
 	switch(ow_state)
 	{
 		case OW_STATE_IDLE:
@@ -494,8 +505,9 @@ void TIM7_IRQHandler(void)
 		{
 				OneWire_Output();
 				ONEWIRE_LOW();
-				htim7.Init.Period = 15;
-				HAL_TIM_Base_Init(&htim7);
+				//htim7.Init.Period = 15;
+				//HAL_TIM_Base_Init(&htim7);
+				TIM7->ARR=15;
 			  HAL_TIM_Base_Start_IT(&htim7);
 			
 				switch(ow_operation)
@@ -523,8 +535,9 @@ void TIM7_IRQHandler(void)
 		case OW_STATE_WRITE_0:
 		{
 				ONEWIRE_LOW();
-				htim7.Init.Period = 45;
-				HAL_TIM_Base_Init(&htim7);
+//				htim7.Init.Period = 45;
+//				HAL_TIM_Base_Init(&htim7);
+				TIM7->ARR=45;
 			  HAL_TIM_Base_Start_IT(&htim7);
 				ow_state=OW_STATE_TIMESLOT_END;
 		}
@@ -533,8 +546,9 @@ void TIM7_IRQHandler(void)
 		case OW_STATE_WRITE_1:
 		{
 				ONEWIRE_HIGH();
-				htim7.Init.Period = 45;
-				HAL_TIM_Base_Init(&htim7);
+//				htim7.Init.Period = 45;
+//				HAL_TIM_Base_Init(&htim7);
+				TIM7->ARR=45;
 			  HAL_TIM_Base_Start_IT(&htim7);	
 				ow_state=OW_STATE_TIMESLOT_END;			
 		}
@@ -545,8 +559,9 @@ void TIM7_IRQHandler(void)
 				OneWire_Input();
 				ONEWIRE_HIGH();
 				ow_bit=HAL_GPIO_ReadPin(in_1_wire_in_GPIO_Port, in_1_wire_in_Pin);
-				htim7.Init.Period = 45;
-				HAL_TIM_Base_Init(&htim7);
+//				htim7.Init.Period = 45;
+//				HAL_TIM_Base_Init(&htim7);
+				TIM7->ARR=45;
 			  HAL_TIM_Base_Start_IT(&htim7);	
 				ow_state=OW_STATE_TIMESLOT_END;		
 		}
@@ -556,8 +571,14 @@ void TIM7_IRQHandler(void)
 		{
 				OneWire_Output();
 				ONEWIRE_HIGH();
+			  //ONEWIRE_LOW();
 				ow_state=OW_STATE_IDLE;
 		}
 		break;
 	}
+	
+	
+
+//	HAL_GPIO_TogglePin(in_1_wire_in_GPIO_Port, in_1_wire_in_Pin);
+//	HAL_TIM_Base_Start_IT(&htim7);
 }

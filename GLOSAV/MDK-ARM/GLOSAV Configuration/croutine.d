@@ -1,7 +1,7 @@
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
-glosav configuration\croutine.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-glosav configuration\croutine.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+glosav configuration\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+glosav configuration\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\croutine.o: ..\Inc\FreeRTOSConfig.h
 glosav configuration\croutine.o: ..\Inc\mxconstants.h
 glosav configuration\croutine.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h

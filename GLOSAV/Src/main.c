@@ -107,17 +107,17 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 	MAIN_GPIO_Init();
-//	startUARTRcv(&huart1);	// to BeagleBone 
-//	startUARTRcv(&huart2);	// console
-//	startUARTRcv(&huart3);	// RS-485 ext
-//	startUARTRcv(&huart4);	// 
-//	startUARTRcv(&huart5);	// RS-485 ext
-//	startUARTRcv(&huart6);	// RS-485 ext
-//	
-//	CAN_App_Init();
-//	Mfunc_App_Init();
-//	Discrete_Input_Init();
-//	Count_Input_App_Init();
+	startUARTRcv(&huart1);	// to BeagleBone 
+	startUARTRcv(&huart2);	// console
+	startUARTRcv(&huart3);	// RS-485 ext
+	startUARTRcv(&huart4);	// 
+	startUARTRcv(&huart5);	// RS-485 ext
+	startUARTRcv(&huart6);	// RS-485 ext
+	
+	CAN_App_Init();
+	Mfunc_App_Init();
+	Discrete_Input_Init();
+	Count_Input_App_Init();
 	OneWire_Init();
   /* USER CODE END 2 */
 
