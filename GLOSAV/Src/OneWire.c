@@ -516,10 +516,13 @@ uint8_t iButtonData[8];
 static void OneWire_Task(void *pvParameters)
 {
 	uint8_t i=0;
+	uint8_t result=0;
 	while(1)
 	{  
 		//OneWire_DS18b20(&OneWireStruct);
-		if(OneWire_Read_iButton(&OneWireStruct,iButtonData)==0);
+		result=OneWire_Read_iButton(&OneWireStruct,iButtonData);
+		//if(OneWire_Read_iButton(&OneWireStruct,iButtonData)==0);
+		if(result==0)
 		{
 			for(i=0;i<8;i++)
 			{			
