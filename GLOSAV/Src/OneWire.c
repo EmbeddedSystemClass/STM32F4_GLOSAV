@@ -471,34 +471,44 @@ uint8_t OneWire_DS18b20(OneWire_t* OneWireStruct)
 
 uint8_t OneWire_Read_iButton(OneWire_t* OneWireStruct,uint8_t *data)
 {
-	uint8_t i=0;
+	uint8_t i=0,result=0;
 	
 	if(OneWire_Reset(OneWireStruct)==0)
 	{
-			OneWire_WriteByte(OneWireStruct,ONEWIRE_CMD_READROM);
 			OneWire_StrongPullUp_On();	
-			vTaskDelay(1000);
+			vTaskDelay(10);
 			OneWire_StrongPullUp_Off();	
-			OneWire_Reset(OneWireStruct);
+		
+		
+			OneWire_WriteByte(OneWireStruct,ONEWIRE_CMD_READROM);
 			
 			for(i=0;i<8;i++)
 			{
 				data[i]=OneWire_ReadByte(OneWireStruct);
 			}
 			
-			//crc???
-			
-			if(OneWire_CRC8(&data[1],7)!=data[0])
-			{
-				return 1;
+			if(data[0]!=0)
+			{	
+				if(OneWire_CRC8(&data[0],7)==data[7])
+				{
+					result= 0;
+				}
+				else
+				{
+					result= 1;
+				}
 			}
-		
-			return 0;
+			else
+			{
+				result= 1;
+			}
 	}		
 	else
 	{
-			return 1;
+			result= 1;
 	}	
+	
+	return result;
 }
 
 uint8_t iButtonData[8];
@@ -516,6 +526,7 @@ static void OneWire_Task(void *pvParameters)
 				MBHoldingRegParams.params.iButtonID[i]=iButtonData[i];
 			}
 		}
+		//OneWire_ReadROM(&OneWireStruct);
 		vTaskDelay(ONEWIRE_READ_PERIOD);
 	}
 }
@@ -569,6 +580,7 @@ void TIM7_IRQHandler(void)
 		
 		case OW_STATE_WRITE_0:
 		{
+				//OneWire_StrongPullUp_Off();	
 				ONEWIRE_LOW();
 //				htim7.Init.Period = 45;
 //				HAL_TIM_Base_Init(&htim7);
@@ -581,6 +593,7 @@ void TIM7_IRQHandler(void)
 		case OW_STATE_WRITE_1:
 		{
 				ONEWIRE_HIGH();
+				//OneWire_StrongPullUp_On();	
 //				htim7.Init.Period = 45;
 //				HAL_TIM_Base_Init(&htim7);
 				TIM7->ARR=45;
@@ -606,6 +619,7 @@ void TIM7_IRQHandler(void)
 		{
 				OneWire_Output();
 				ONEWIRE_HIGH();
+				//OneWire_StrongPullUp_Off();	
 			  //ONEWIRE_LOW();
 				ow_state=OW_STATE_IDLE;
 		}

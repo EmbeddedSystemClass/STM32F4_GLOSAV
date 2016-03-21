@@ -186,34 +186,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>53</LineNumber>
+          <LineNumber>526</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220872</Address>
+          <Address>134234478</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\discrete_output_app.c</Filename>
+          <Filename>..\Src\OneWire.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\GLOSAV_Configuration\../Src/discrete_output_app.c\53</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>182</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134239206</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Middlewares\Third_Party\FreeModbus\modbus\rtu\mbrtu.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\GLOSAV_Configuration\../Middlewares/Third_Party/FreeModbus/modbus/rtu/mbrtu.c\182</Expression>
+          <Expression>\\GLOSAV_Configuration\../Src/OneWire.c\526</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -230,17 +214,17 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MBHoldingRegParams</ItemText>
+          <ItemText>usRcvBufferPos</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ucRTUBuf</ItemText>
+          <ItemText>data</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>usRcvBufferPos</ItemText>
+          <ItemText>OneWireStruct</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -277,24 +261,8 @@
       <bLintAuto>0</bLintAuto>
       <SystemViewers>
         <Entry>
-          <Name>System Viewer\CAN1</Name>
-          <WinId>35904</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\CAN2</Name>
-          <WinId>35902</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\PWR</Name>
-          <WinId>35903</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\RCC</Name>
+          <Name>System Viewer\TIM7</Name>
           <WinId>35901</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\USART1</Name>
-          <WinId>35905</WinId>
         </Entry>
       </SystemViewers>
     </TargetOption>
