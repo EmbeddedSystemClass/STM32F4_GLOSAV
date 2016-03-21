@@ -43,6 +43,7 @@ typedef union
 		uint16_t statusInputs;
 		uint32_t countInputs[COUNT_INPUTS_NUM];
 		uint16_t version;
+		uint8_t  iButtonID[8];
 	} params;
 	
 	uint16_t usRegHoldingBuf[MB_HOLDING_BUF_SIZE];

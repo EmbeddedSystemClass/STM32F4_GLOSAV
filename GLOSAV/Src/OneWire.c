@@ -6,6 +6,7 @@
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
+#include "mb_app.h"
 
 #define ONEWIRE_READ_PERIOD	500
 #define ONEWIRE_STACK_SIZE		128
@@ -36,11 +37,13 @@ uint8_t ow_flag_done=0;
 
 OneWire_t OneWireStruct;
 extern TIM_HandleTypeDef htim7;
+extern stMBHoldingRegParams MBHoldingRegParams;
 
 void OneWire_Input(void);
 void OneWire_Output(void);
 void Delay(uint32_t delay);
 void OneWire_ReadROM(OneWire_t* OneWireStruct);
+uint8_t OneWire_Read_iButton(OneWire_t* OneWireStruct,uint8_t *data);
 static void OneWire_Task(void *pvParameters);
 
 
@@ -466,24 +469,56 @@ uint8_t OneWire_DS18b20(OneWire_t* OneWireStruct)
 	}		
 }
 
+uint8_t OneWire_Read_iButton(OneWire_t* OneWireStruct,uint8_t *data)
+{
+	uint8_t i=0;
+	
+	if(OneWire_Reset(OneWireStruct)==0)
+	{
+			OneWire_WriteByte(OneWireStruct,ONEWIRE_CMD_READROM);
+			OneWire_StrongPullUp_On();	
+			vTaskDelay(1000);
+			OneWire_StrongPullUp_Off();	
+			OneWire_Reset(OneWireStruct);
+			
+			for(i=0;i<8;i++)
+			{
+				data[i]=OneWire_ReadByte(OneWireStruct);
+			}
+			
+			//crc???
+			
+			if(OneWire_CRC8(&data[1],7)!=data[0])
+			{
+				return 1;
+			}
+		
+			return 0;
+	}		
+	else
+	{
+			return 1;
+	}	
+}
+
+uint8_t iButtonData[8];
 
 static void OneWire_Task(void *pvParameters)
 {
-//	OneWire_Output();
-//	htim7.Init.Period = 45;
-//	HAL_TIM_Base_Init(&htim7);
-//	HAL_TIM_Base_Start_IT(&htim7);
+	uint8_t i=0;
 	while(1)
 	{  
-		OneWire_DS18b20(&OneWireStruct);
-	//	OneWire_WriteByte(&OneWireStruct,0x00);
-		//OneWire_ReadByte(&OneWireStruct);
+		//OneWire_DS18b20(&OneWireStruct);
+		if(OneWire_Read_iButton(&OneWireStruct,iButtonData)==0);
+		{
+			for(i=0;i<8;i++)
+			{			
+				MBHoldingRegParams.params.iButtonID[i]=iButtonData[i];
+			}
+		}
 		vTaskDelay(ONEWIRE_READ_PERIOD);
-		//HAL_TIM_Base_Start_IT(&htim7);
 	}
 }
-
-
 
 
 void TIM7_IRQHandler(void)

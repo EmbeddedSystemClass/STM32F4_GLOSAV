@@ -49,3 +49,8 @@ glosav configuration\onewire.o: ..\Middlewares\Third_Party\FreeRTOS\Source\inclu
 glosav configuration\onewire.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
 glosav configuration\onewire.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\onewire.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
+glosav configuration\onewire.o: ..\Src\mb_app.h
+glosav configuration\onewire.o: ..\Src\can_app.h
+glosav configuration\onewire.o: ..\Src\mfunc_app.h
+glosav configuration\onewire.o: ..\Src\usart_app.h
+glosav configuration\onewire.o: ..\Src\count_input_app.h
