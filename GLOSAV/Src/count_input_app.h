@@ -15,12 +15,16 @@ typedef struct
 	GPIO_TypeDef 			*port;
 	uint32_t 					pin;
 	uint8_t 					mode;
-	uint8_t   				discreteState;
-	uint8_t   				discreteStateOld;
+//	uint8_t   				discreteState;
+//	uint8_t   				discreteStateOld;
+	uint8_t 					event;
 }stCountInput;
 
 void Count_Input_App_Init(void);
 void Count_Input_SetMode(uint8_t mode);
 void Count_Input_InterruptHandler(void);
+
+void Count_Input_0_Handler(void);
+void Count_Input_1_Handler(void);
 
 #endif
