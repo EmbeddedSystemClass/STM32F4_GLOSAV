@@ -98,7 +98,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htimer)
 	switch((uint32_t)(htimer->Instance)){
 		case (uint32_t)TIM2:
 			prvvTIMERExpiredISR();
-			led2_toggle();
+			//led2_toggle();
 			break;
 	}
 }

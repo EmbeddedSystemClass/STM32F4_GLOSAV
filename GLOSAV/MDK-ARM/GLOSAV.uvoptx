@@ -186,9 +186,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>526</LineNumber>
+          <LineNumber>291</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134234478</Address>
+          <Address>134234646</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -197,7 +197,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Src\OneWire.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\GLOSAV_Configuration\../Src/OneWire.c\526</Expression>
+          <Expression>\\GLOSAV_Configuration\../Src/OneWire.c\291</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

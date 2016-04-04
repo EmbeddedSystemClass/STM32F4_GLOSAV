@@ -45,7 +45,7 @@ void Count_Input_InterruptHandler(void)
 						MBHoldingRegParams.params.countInputs[input_counter]++;
 				}
 		}
-		else if(CountInput[input_counter].mode==COUNT_REDGE)
+		else if(CountInput[input_counter].mode==COUNT_FEDGE)
 		{
 				if((CountInput[input_counter].discreteState==GPIO_PIN_RESET)&&(CountInput[input_counter].discreteStateOld==GPIO_PIN_SET))
 				{
