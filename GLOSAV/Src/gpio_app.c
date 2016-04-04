@@ -17,17 +17,7 @@
 void MAIN_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
-  LED1_CLK_ENABLE();
-  LED2_CLK_ENABLE();
-  /*Configure GPIO LED pin :  */
-  GPIO_InitStruct.Pin = LED1_PIN;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  HAL_GPIO_Init(LED1_PORT, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = LED2_PIN;
-  HAL_GPIO_Init(LED2_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = UART1_DIR_PIN;
   HAL_GPIO_Init(UART1_DIR_PORT, &GPIO_InitStruct);
