@@ -51,3 +51,5 @@ glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 glosav configuration\freertos.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
+glosav configuration\freertos.o: ..\Src\mfunc_app.h
+glosav configuration\freertos.o: ..\Src\count_input_app.h

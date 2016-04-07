@@ -96,7 +96,7 @@ int main(void)
   MX_CAN2_Init();
   MX_I2C2_Init();
   MX_TIM2_Init();
-  MX_TIM6_Init();
+//  MX_TIM6_Init();
   MX_TIM7_Init();
   MX_UART4_Init();
   MX_UART5_Init();
@@ -106,7 +106,7 @@ int main(void)
   MX_USART6_UART_Init();
 
   /* USER CODE BEGIN 2 */
-	MAIN_GPIO_Init();
+	//MAIN_GPIO_Init();
 	startUARTRcv(&huart1);	// to BeagleBone 
 	startUARTRcv(&huart2);	// console
 	startUARTRcv(&huart3);	// RS-485 ext
@@ -118,7 +118,7 @@ int main(void)
 	Mfunc_App_Init();
 	Discrete_Input_Init();
 	Count_Input_App_Init();
-	OneWire_Init();
+//	OneWire_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

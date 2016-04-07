@@ -39,6 +39,9 @@
 /* USER CODE BEGIN Includes */     
 #include "tasks.h"
 
+#include "mfunc_app.h"
+#include "count_input_app.h"
+
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -70,6 +73,9 @@ void vApplicationTickHook( void )
    added here, but the tick hook is called from an interrupt context, so
    code must not attempt to block, and only the interrupt safe FreeRTOS API
    functions can be used (those that end in FromISR()). */
+	
+		Mfunc_TimerInterruptHandler();
+		Count_Input_InterruptHandler();
 }
 /* USER CODE END 3 */
 
