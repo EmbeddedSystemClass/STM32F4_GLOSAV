@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GLOSAV Configuration\GLOSAV Configuration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GLOSAV Configuration\GLOSAV Configuration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Thu Apr 07 12:44:23 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Tue May 24 10:00:24 2016
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1084,7 +1084,7 @@ Global Symbols
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[de]"></a>HAL_UART_Init</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_Init))
+<P><STRONG><a name="[de]"></a>HAL_UART_Init</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
@@ -1244,7 +1244,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f5]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
+<P><STRONG><a name="[f5]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
@@ -1320,7 +1320,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_IRQHandler
 </UL>
 
-<P><STRONG><a name="[8e]"></a>StartTaskMODBUS</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
+<P><STRONG><a name="[8e]"></a>StartTaskMODBUS</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, tasks.o(i.StartTaskMODBUS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = StartTaskMODBUS &rArr; eMBInit &rArr; eMBRTUInit &rArr; xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1394,7 +1394,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429xx.o(RESET)
 </UL>
-<P><STRONG><a name="[10c]"></a>SystemClock_Config</STRONG> (Thumb, 162 bytes, Stack size 80 bytes, main.o(i.SystemClock_Config))
+<P><STRONG><a name="[10c]"></a>SystemClock_Config</STRONG> (Thumb, 166 bytes, Stack size 80 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SYSTICK_Config
@@ -2353,7 +2353,7 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMBASCIIReceiveFSM
 </UL>
 
-<P><STRONG><a name="[112]"></a>xMBPortSerialInit</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, portserial.o(i.xMBPortSerialInit))
+<P><STRONG><a name="[112]"></a>xMBPortSerialInit</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, portserial.o(i.xMBPortSerialInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = xMBPortSerialInit &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init

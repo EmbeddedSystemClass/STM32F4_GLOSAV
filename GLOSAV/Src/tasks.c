@@ -233,7 +233,7 @@ void StartTaskMODBUS( void const * argument)
     for( ;; )
     {
 //        if( MB_ENOERR != ( eStatus = eMBInit( MB_ASCII, 0x0A, 1, 38400, MB_PAR_EVEN ) ) )
-        if( MB_ENOERR != ( eStatus = eMBInit( MB_RTU, 0x0A, 1, 921600, UART_PARITY_NONE ) ) )
+        if( MB_ENOERR != ( eStatus = eMBInit( MB_RTU, 0x0A, 1, 3000000, UART_PARITY_NONE ) ) )
         {
             /* Can not initialize. Add error handling code here. */
         }

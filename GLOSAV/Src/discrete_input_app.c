@@ -53,7 +53,7 @@ static void Discrete_Input_Task(void *pvParameters)
 	while(1)
 	{
 			vTaskDelay(DISCR_INPUT_DELAY);
-			
+				
 			temp_bit=HAL_GPIO_ReadPin(DISCR_IN_IGN_PORT,DISCR_IN_IGN_PIN);
 			vTaskDelay(1);
 			if(temp_bit==HAL_GPIO_ReadPin(DISCR_IN_IGN_PORT,DISCR_IN_IGN_PIN))

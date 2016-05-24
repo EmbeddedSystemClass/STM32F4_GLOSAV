@@ -76,7 +76,7 @@ xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity e
   H_UART_BB.Init.Parity = eParity;
   H_UART_BB.Init.Mode = UART_MODE_TX_RX;
   H_UART_BB.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  H_UART_BB.Init.OverSampling = UART_OVERSAMPLING_16;
+  H_UART_BB.Init.OverSampling = UART_OVERSAMPLING_8;
   HAL_UART_Init(&H_UART_BB);
   return TRUE;
 }
