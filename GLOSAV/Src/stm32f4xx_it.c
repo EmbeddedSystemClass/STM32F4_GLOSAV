@@ -37,15 +37,21 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN 0 */
+#include "mb.h"
+#include "mbport.h"
+#include "mbrtu.h"
+#include "mfunc_app.h"
+#include "count_input_app.h"
 
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern void xPortSysTickHandler(void);
 extern CAN_HandleTypeDef hcan1;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
+extern DMA_HandleTypeDef hdma_usart1_rx;
+extern DMA_HandleTypeDef hdma_usart1_tx;
 extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart1;
@@ -113,6 +119,15 @@ void TIM2_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
+	// Если прерывание от передачи, то обработаем стандартным способом, т.к. даже при DMA обмене, используется
+	// однократный вызов прерывания на последний байт!
+	// Если прерывание на прием, то вызываем спец. функцию сброса таймера приема, а штатный механизм 
+	// не используется (не взводится при настройке приема по DMA)
+  if(!((((__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TXE)) != RESET) && ((__HAL_UART_GET_IT_SOURCE(&huart1, UART_IT_TXE)) != RESET)) ||
+		(((__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TC)) != RESET) && ((__HAL_UART_GET_IT_SOURCE(&huart1, UART_IT_TC)) != RESET)) ))  {
+		xMBRTUReceiveFSM();
+		return;
+	}
 
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
@@ -198,13 +213,41 @@ void TIM6_DAC_IRQHandler(void)
 //void TIM7_IRQHandler(void)
 //{
 //  /* USER CODE BEGIN TIM7_IRQn 0 */
-
+//
 //  /* USER CODE END TIM7_IRQn 0 */
 //  HAL_TIM_IRQHandler(&htim7);
 //  /* USER CODE BEGIN TIM7_IRQn 1 */
-
+//
 //  /* USER CODE END TIM7_IRQn 1 */
 //}
+
+/**
+* @brief This function handles DMA2 stream2 global interrupt.
+*/
+void DMA2_Stream2_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Stream2_IRQn 0 */
+
+  /* USER CODE END DMA2_Stream2_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart1_rx);
+  /* USER CODE BEGIN DMA2_Stream2_IRQn 1 */
+
+  /* USER CODE END DMA2_Stream2_IRQn 1 */
+}
+
+/**
+* @brief This function handles DMA2 stream7 global interrupt.
+*/
+void DMA2_Stream7_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Stream7_IRQn 0 */
+
+  /* USER CODE END DMA2_Stream7_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart1_tx);
+  /* USER CODE BEGIN DMA2_Stream7_IRQn 1 */
+
+  /* USER CODE END DMA2_Stream7_IRQn 1 */
+}
 
 /**
 * @brief This function handles USART6 global interrupt.

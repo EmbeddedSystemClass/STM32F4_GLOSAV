@@ -43,7 +43,7 @@ extern volatile uint8_t CH_UART_BB;
 
 /* ----------------------- static functions ---------------------------------*/
 void prvvUARTTxReadyISR( void );
-void prvvUARTRxISR( void );
+//void prvvUARTRxISR( void );
 
 /* ----------------------- Start implementation -----------------------------*/
 void
@@ -53,9 +53,11 @@ vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
      * transmitter empty interrupts.
      */
 	// Нам нужно запустить прием и прерывания по RX, если xRxEnable, иначе запретить.
-	//!!! Не сделан запрет!!!
 	if(xRxEnable){
 		startUARTRcv(&H_UART_BB);
+	}
+	else{
+		stopUART(&H_UART_BB);
 	}
 	// Нам нужно запустить передачу и прерывания по TX, если xTxEnable, иначе запретить.
 	// !!! Причем стек сам не запустит прием, если он не примет событие "буфер передатчика свободен"
@@ -69,7 +71,7 @@ vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
 BOOL
 xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 {
-  H_UART_BB.Instance = UART_BB;	// USART3
+  H_UART_BB.Instance = UART_BB;	//
   H_UART_BB.Init.BaudRate = ulBaudRate;
   H_UART_BB.Init.WordLength = UART_WORDLENGTH_8B;
   H_UART_BB.Init.StopBits = UART_STOPBITS_1;
@@ -81,7 +83,9 @@ xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity e
   return TRUE;
 }
 
+
 static CHAR txByte;	// отправляемый байт должен быть доступен во время отправки
+//not used for DMA!
 BOOL
 xMBPortSerialPutByte( CHAR ucByte )
 {
@@ -94,6 +98,18 @@ xMBPortSerialPutByte( CHAR ucByte )
     return TRUE;
 }
 
+/*
+Инициализация отправки по DMA
+*/
+BOOL
+xMBPortSerialPutPktDMA( CHAR *pucSndBuffer, USHORT usSndBufferCount)
+{
+		UART_BB_DIR_SEND();
+		HAL_UART_Transmit_DMA(&H_UART_BB, (uint8_t*)pucSndBuffer, usSndBufferCount);
+		return TRUE;
+}
+
+//not used for DMA!
 BOOL
 xMBPortSerialGetByte( CHAR * pucByte )
 {
@@ -111,6 +127,9 @@ xMBPortSerialGetByte( CHAR * pucByte )
  * xMBPortSerialPutByte( ) to send the character.
  */
 //static unsigned int uiCnt = 0;
+/*
+При использовании DMA вызывается в конце выдачи единожды - нужно сразу вызвать необходимую функцию
+*/
 void prvvUARTTxReadyISR( void )
 {
     BOOL bTaskWoken = FALSE;
@@ -136,7 +155,8 @@ void prvvUARTTxReadyISR( void )
  * protocol stack will then call xMBPortSerialGetByte( ) to retrieve the
  * character.
  */
-void prvvUARTRxISR( void )
+//not used for DMA!
+/*void prvvUARTRxISR( void )
 {
     BOOL bTaskWoken = FALSE;
 
@@ -148,4 +168,4 @@ void prvvUARTRxISR( void )
 
     portEND_SWITCHING_ISR( bTaskWoken ? pdTRUE : pdFALSE );
 }
-
+*/

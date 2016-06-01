@@ -16,9 +16,11 @@
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 #include "tasks.h"
+#include "port.h"
 
 extern void prvvUARTTxReadyISR( void );
 extern void prvvUARTRxISR( void );
+extern volatile UCHAR ucRTUBuf[];
 
 
 FILE *sim;
@@ -48,9 +50,13 @@ void startUARTRcv(UART_HandleTypeDef *huart)
 	// Обработка принятых байтов - в функции HAL_UART_RxCpltCallback()
 	switch((uint32_t)huart->Instance)
 	{
-		case (uint32_t)USART1:
-			HAL_UART_Receive_IT(&huart1, (uint8_t*)&chUART1, 1);
-			break;
+		case (uint32_t)USART1:	// Порт к ВВ работает по DMA!
+		/*!!!!!! MB_SER_PDU_SIZE_MAX = 256 - mbrtu.c. Константу согласовывать! Bykov_DMA !!!!!!*/
+			HAL_UART_Receive_DMA(&huart1, (uint8_t*)&ucRTUBuf, 256);
+    /* Enable the UART Data Register not empty Interrupt 
+		Разрешим прерывания для контроля паузы между приемом байтов (конец фрейма) с помощью таймера */
+    __HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);
+		break;
 		case (uint32_t)USART2:
 			HAL_UART_Receive_IT(&huart2, (uint8_t*)&chUART2, 1);
 			break;
@@ -68,20 +74,42 @@ void startUARTRcv(UART_HandleTypeDef *huart)
 			break;
 	}
 }
+
+/*
+Останов приема и передачи при обмене с ВВ (остановить только прием при DMA проблематично)
+Для полудуплекса вполне допустимо.
+*/
+void stopUART(UART_HandleTypeDef *huart)
+{
+	switch((uint32_t)huart->Instance)
+	{
+		case (uint32_t)USART1:
+			HAL_UART_DMAStop(&huart1);
+    __HAL_UART_DISABLE_IT(&huart1, UART_IT_RXNE);
+		break;
+	}
+}
+
+/*
+Возвращаем количество принятых байтов по DMA по порту BB
+*/
+uint16_t getUART_BB_RcvDMAPktLength(void)
+{
+		 return huart1.RxXferSize - huart1.hdmarx->Instance->NDTR;
+}
+
 // Обработчик приема символов по СОМ портам (терминал и СпМ) в режиме прерываний
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) // from interrupt called!
 { 
-//	HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_14);
+	int i, cnt;
+	uint8_t *pData;
 	switch((uint32_t)UartHandle->Instance)
 	{
-		case (uint32_t)USART1:
-//			HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_10);
-			prvvUARTRxISR();	// modbus - char is in "chUART_"
-//			xQueueSendFromISR( myQueueUart1RxHandle , UartHandle->pRxBuffPtr, NULL  );  
-//			xQueueSendFromISR( myQueueMbUart1RxHandle , UartHandle->pRxBuffPtr, NULL  );  
-//			xQueueSend( RecQHandle, &m, portMAX_DELAY  );
-		  // Do this need? 
-      //HAL_UART_Receive_IT(&huart1, &b1,1);
+		case (uint32_t)USART1: // При обмене с ВВ по DMA, определим сначала длину фрейма и передадим на обработку
+		  cnt=getUART_BB_RcvDMAPktLength();
+		  for(i=0, pData=UartHandle->pRxBuffPtr; i<cnt;i++,pData++){
+				xQueueSendFromISR( myQueueUart6TxHandle , pData, NULL  );  
+			}
 		  break;
 		case (uint32_t)USART2:
 			xQueueSendFromISR( myQueueUart2RxHandle , UartHandle->pRxBuffPtr, NULL  );  
@@ -91,7 +119,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) // from interrupt c
 			break;			
 		case (uint32_t)UART4:
 			xQueueSendFromISR( myQueueUart4RxHandle , UartHandle->pRxBuffPtr, NULL  );  
-//			prvvUARTRxISR();	// modbus - char is in "chUART_"
 		  break;
 		case (uint32_t)UART5:
 			xQueueSendFromISR( myQueueUart5RxHandle , UartHandle->pRxBuffPtr, NULL  );  
@@ -108,6 +135,7 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 	startUARTRcv(huart);
 }
 
+
 // вызывается из прерывания после полного завершения передачи по СОМ порту
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -115,13 +143,6 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 	{
 		case (uint32_t)USART1:	// modbus
 			prvvUARTTxReadyISR();
-/*			__disable_irq ();
-			if( !FIFO_IS_EMPTY( Trml_tx_fifo ) ){ // есть что передать?
-				txTrmlCh = FIFO_FRONT( Trml_tx_fifo );
-				FIFO_POP( Trml_tx_fifo );
-				HAL_UART_Transmit_IT(&huart4, (uint8_t *)&txTrmlCh, 1); // заряжаем...
-			}
-			__enable_irq ();*/
 			break;
 	}
 }
