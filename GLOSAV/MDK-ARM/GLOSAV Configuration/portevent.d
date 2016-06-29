@@ -14,7 +14,6 @@ glosav configuration\portevent.o: ..\Middlewares\Third_Party\FreeRTOS\Source\inc
 glosav configuration\portevent.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\portevent.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\portevent.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\portevent.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\portevent.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\portevent.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 glosav configuration\portevent.o: ..\Inc\stm32f4xx_hal_conf.h

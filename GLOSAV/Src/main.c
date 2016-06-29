@@ -35,6 +35,7 @@
 #include "cmsis_os.h"
 #include "adc.h"
 #include "can.h"
+#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
@@ -90,13 +91,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC2_Init();
   MX_ADC3_Init();
   MX_CAN1_Init();
   MX_CAN2_Init();
   MX_I2C2_Init();
   MX_TIM2_Init();
-//  MX_TIM6_Init();
+  MX_TIM6_Init();
   MX_TIM7_Init();
   MX_UART4_Init();
   MX_UART5_Init();
@@ -106,19 +108,19 @@ int main(void)
   MX_USART6_UART_Init();
 
   /* USER CODE BEGIN 2 */
-	//MAIN_GPIO_Init();
-	startUARTRcv(&huart1);	// to BeagleBone 
-	startUARTRcv(&huart2);	// console
-	startUARTRcv(&huart3);	// RS-485 ext
-	startUARTRcv(&huart4);	// 
-	startUARTRcv(&huart5);	// RS-485 ext
-	startUARTRcv(&huart6);	// RS-485 ext
+	MAIN_GPIO_Init();
 	
 	CAN_App_Init();
 	Mfunc_App_Init();
 	Discrete_Input_Init();
 	Count_Input_App_Init();
 //	OneWire_Init();
+	uartsFifoInit();
+	startUARTRcv(&huart2);	// console
+	startUARTRcv(&huart3);	// RS-485 ext
+	startUARTRcv(&huart4);	// 
+	startUARTRcv(&huart5);	// RS-485 ext
+	startUARTRcv(&huart6);	// RS-485 ext
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -179,7 +181,7 @@ void SystemClock_Config(void)
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
   /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 }
 
 /* USER CODE BEGIN 4 */

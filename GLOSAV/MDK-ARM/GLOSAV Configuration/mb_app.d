@@ -52,7 +52,6 @@ glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\includ
 glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h
 glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\mb_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\mb_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\mb_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\mb_app.o: ..\Inc\config.h
@@ -63,7 +62,8 @@ glosav configuration\mb_app.o: ..\Inc\tasks.h
 glosav configuration\mb_app.o: ..\Src\mb_app.h
 glosav configuration\mb_app.o: ..\Src\can_app.h
 glosav configuration\mb_app.o: ..\Src\mfunc_app.h
-glosav configuration\mb_app.o: ..\Src\usart_app.h
+glosav configuration\mb_app.o: ..\Inc\usart_app.h
+glosav configuration\mb_app.o: ..\Inc\fifo.h
 glosav configuration\mb_app.o: ..\Src\count_input_app.h
 glosav configuration\mb_app.o: ..\Src\discrete_output_app.h
 glosav configuration\mb_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

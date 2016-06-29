@@ -157,13 +157,11 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-
+}
 
 /* USER CODE BEGIN 2 */
-HAL_GPIO_WritePin(GPIOE,	out_CAN1_SD_Pin, GPIO_PIN_RESET);
-HAL_GPIO_WritePin(GPIOE,	out_CAN2_SD_Pin, GPIO_PIN_RESET);
 /* USER CODE END 2 */
-}
+
 /**
   * @}
   */

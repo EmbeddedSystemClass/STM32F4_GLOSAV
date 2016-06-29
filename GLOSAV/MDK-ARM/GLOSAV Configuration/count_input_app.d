@@ -51,4 +51,5 @@ glosav configuration\count_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Sour
 glosav configuration\count_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
 glosav configuration\count_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\count_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
-glosav configuration\count_input_app.o: ..\Src\usart_app.h
+glosav configuration\count_input_app.o: ..\Inc\usart_app.h
+glosav configuration\count_input_app.o: ..\Inc\fifo.h

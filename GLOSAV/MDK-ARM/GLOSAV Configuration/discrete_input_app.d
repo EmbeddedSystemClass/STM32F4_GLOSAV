@@ -51,5 +51,6 @@ glosav configuration\discrete_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\S
 glosav configuration\discrete_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
 glosav configuration\discrete_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\discrete_input_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
-glosav configuration\discrete_input_app.o: ..\Src\usart_app.h
+glosav configuration\discrete_input_app.o: ..\Inc\usart_app.h
+glosav configuration\discrete_input_app.o: ..\Inc\fifo.h
 glosav configuration\discrete_input_app.o: ..\Src\count_input_app.h

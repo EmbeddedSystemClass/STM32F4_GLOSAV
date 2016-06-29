@@ -2,7 +2,6 @@ glosav configuration\mbfuncuser.o: ..\Middlewares\Third_Party\FreeModbus\modbus\
 glosav configuration\mbfuncuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 glosav configuration\mbfuncuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 glosav configuration\mbfuncuser.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\mbfuncuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\mbfuncuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\mbfuncuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\mbfuncuser.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h

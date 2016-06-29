@@ -50,5 +50,6 @@ glosav configuration\can_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\inclu
 glosav configuration\can_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
 glosav configuration\can_app.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
 glosav configuration\can_app.o: ..\Src\mb_app.h
-glosav configuration\can_app.o: ..\Src\usart_app.h
+glosav configuration\can_app.o: ..\Inc\usart_app.h
+glosav configuration\can_app.o: ..\Inc\fifo.h
 glosav configuration\can_app.o: ..\Src\count_input_app.h

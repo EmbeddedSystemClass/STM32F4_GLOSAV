@@ -4,7 +4,7 @@
   * Description        : Code for freertos applications
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -125,8 +125,8 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-//  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-//  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -138,18 +138,18 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 }
 
-///* StartDefaultTask function */
-//void StartDefaultTask(void const * argument)
-//{
+/* StartDefaultTask function */
+void StartDefaultTask(void const * argument)
+{
 
-//  /* USER CODE BEGIN StartDefaultTask */
-////  /* Infinite loop */
-////  for(;;)
-////  {
-////    osDelay(1);
-////  }
-//  /* USER CODE END StartDefaultTask */
-//}
+  /* USER CODE BEGIN StartDefaultTask */
+//  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartDefaultTask */
+}
 
 /* USER CODE BEGIN Application */
      

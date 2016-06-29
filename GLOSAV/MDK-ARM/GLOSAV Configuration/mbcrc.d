@@ -1,6 +1,5 @@
 glosav configuration\mbcrc.o: ..\Middlewares\Third_Party\FreeModbus\modbus\rtu\mbcrc.c
 glosav configuration\mbcrc.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\mbcrc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\mbcrc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\mbcrc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\mbcrc.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h

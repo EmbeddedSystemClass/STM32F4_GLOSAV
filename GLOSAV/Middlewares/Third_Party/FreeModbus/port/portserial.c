@@ -35,11 +35,11 @@
 */
 #define UART_BB USART1	// UART4 USART3
 #define H_UART_BB huart1
-#define CH_UART_BB chUART1
+//#define CH_UART_BB chUART1
 #define UART_BB_DIR_SEND 	UART1_DIR_SEND
 #define UART_BB_DIR_RCV 	UART1_DIR_RCV
 
-extern volatile uint8_t CH_UART_BB;
+//extern volatile uint8_t CH_UART_BB;
 
 /* ----------------------- static functions ---------------------------------*/
 void prvvUARTTxReadyISR( void );
@@ -84,7 +84,9 @@ xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity e
 }
 
 
-static CHAR txByte;	// отправляемый байт должен быть доступен во время отправки
+
+//not used for DMA!
+//static CHAR txByte;	// отправляемый байт должен быть доступен во время отправки
 //not used for DMA!
 BOOL
 xMBPortSerialPutByte( CHAR ucByte )
@@ -92,9 +94,10 @@ xMBPortSerialPutByte( CHAR ucByte )
     /* Put a byte in the UARTs transmit buffer. This function is called
      * by the protocol stack if pxMBFrameCBTransmitterEmpty( ) has been
      * called. */
-		UART_BB_DIR_SEND();
+/*		UART_BB_DIR_SEND();
 		txByte = ucByte;	// мы только заряжаем отправку. Во время отправки буфер должен быть доступен, поэтому используем глобальную переменную
 		HAL_UART_Transmit_IT(&H_UART_BB, (uint8_t *)&txByte, 1); // заряжаем...
+*/
     return TRUE;
 }
 
@@ -116,7 +119,8 @@ xMBPortSerialGetByte( CHAR * pucByte )
     /* Return the byte in the UARTs receive buffer. This function is called
      * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
      */
-		*pucByte = CH_UART_BB;
+//		*pucByte = CH_UART_BB;
+		*pucByte = 0;
     return TRUE;
 }
 

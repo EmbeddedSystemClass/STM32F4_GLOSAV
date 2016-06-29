@@ -87,7 +87,7 @@ void OneWire_StrongPullUp_Off(void)
 void OneWire_Init(void) 
 {	
 	HAL_GPIO_WritePin(out_1_Wire_ctrl_GPIO_Port, out_1_Wire_ctrl_Pin, GPIO_PIN_RESET);
-	xTaskCreate(OneWire_Task,(signed char*)"OneWire Task",ONEWIRE_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
+	xTaskCreate(OneWire_Task,(const char*)"OneWire Task",ONEWIRE_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
 uint8_t OneWire_Reset(OneWire_t* OneWireStruct) {

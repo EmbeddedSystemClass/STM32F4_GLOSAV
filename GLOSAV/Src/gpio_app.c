@@ -16,7 +16,7 @@
 
 void MAIN_GPIO_Init(void)
 {
-  GPIO_InitTypeDef GPIO_InitStruct;
+/*  GPIO_InitTypeDef GPIO_InitStruct;
 
 
   GPIO_InitStruct.Pin = UART1_DIR_PIN;
@@ -29,6 +29,8 @@ void MAIN_GPIO_Init(void)
   HAL_GPIO_Init(UART5_DIR_PORT, &GPIO_InitStruct);
   GPIO_InitStruct.Pin = UART6_DIR_PIN;
   HAL_GPIO_Init(UART6_DIR_PORT, &GPIO_InitStruct);
-	
+*/
+	HAL_GPIO_WritePin(GPIOE,	out_CAN1_SD_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOE,	out_CAN2_SD_Pin, GPIO_PIN_RESET);
 	
 }

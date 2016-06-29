@@ -27,7 +27,9 @@
  *
  * File: $Id: mbfuncuser.c,v 1.1 2015/08/06 23:48:22 Bykov Exp $
  */
-
+/*
+Изменения в протоколе от 10.06.2016 для передачи свободного места в буфере передачи.
+*/
 /* ----------------------- System includes ----------------------------------*/
 #include "stdlib.h"
 #include "string.h"
@@ -44,7 +46,7 @@
 /* ----------------------- Defines ------------------------------------------*/
 
 #define MB_PDU_FUNC_USER100_DATA_OFF     	( MB_PDU_DATA_OFF + 1 )
-#define MB_PDU_FUNC_USER100_SIZE_MIN          ( 1 )
+#define MB_PDU_FUNC_USER100_SIZE_MIN          ( 1 ) // минимально должно быть поле длины данных для функции 100
 
 /* ----------------------- Static functions ---------------------------------*/
 eMBException    prveMBError2Exception( eMBErrorCode eErrorCode );
@@ -56,8 +58,12 @@ packet format:
 func - length_data - dataSpecific
 func=100
 read-write Rx-TxFIFO Com ports: 
-command data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ... // data to TX FIFO
-answer data: comPortNumber*32+N_bytes - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ...	// data from RX FIFO
+command data: comPortNumber*32+N_bytes - TxFreeSpaceSrc - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ... // data to TX FIFO
+answer data: comPortNumber*32+N_bytes - TxFreeSpaceDst - Byte1 - ... ByteN - comPortNumber*32+N_bytes - ...	// data from RX FIFO
+
+Для обеспечения согласования скоростей COM портов и предупреждения переполнения буферов:
+TxFreeSpaceSrc - свободное место в буфере указанного порта на передачу у мастера
+TxFreeSpaceDst - свободное место в буфере указанного порта на передачу у ведомого (нас)
 */
 
 eMBException
@@ -69,9 +75,9 @@ eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
 //    USHORT          usRegWriteCount;
     UCHAR           ucByteCnt;
     UCHAR          	*pucFrameCur;
-    UCHAR          	idx, bytesLeft;
+    SHORT          	idx, bytesLeft;
 	  UCHAR						errFormat = 0;
-    UCHAR           portDataCnt;
+    SHORT           portDataCnt;
 
     eMBException    eStatus = MB_EX_NONE;
     eMBErrorCode    eRegStatus;
@@ -84,7 +90,7 @@ eMBFuncUser100( UCHAR * pucFrame, USHORT * usLen )
 			ucByteCnt = 0;
 			while(bytesLeft && !errFormat){
 				portDataCnt = pucFrame[idx] & 0x1F;
-				idx++; bytesLeft--; ucByteCnt++;
+				idx+=2; bytesLeft-=2; ucByteCnt+=2; // учитываем поле порта и статуса (TxFreeSpace)
 				if(portDataCnt > bytesLeft){
 					errFormat = 1;
 					break;

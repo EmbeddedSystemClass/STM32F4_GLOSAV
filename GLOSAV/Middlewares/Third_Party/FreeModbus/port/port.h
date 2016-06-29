@@ -22,7 +22,8 @@
 #ifndef _PORT_H
 #define _PORT_H
 
-#include <assert.h>
+//#include <assert.h>
+#define assert assert_param
 #include <inttypes.h>
 
 #include "stm32f4xx_hal.h"

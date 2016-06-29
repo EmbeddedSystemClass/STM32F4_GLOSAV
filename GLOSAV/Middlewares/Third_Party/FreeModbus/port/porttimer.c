@@ -72,8 +72,9 @@ inline void
 vMBPortTimersDisable(  )
 {
     /* Disable any pending timers. */
-	HAL_TIM_Base_Stop(&htim2);
+	HAL_TIM_Base_Stop_IT(&htim2);
 	__HAL_TIM_SET_COUNTER(&htim2, 0);
+  __HAL_TIM_CLEAR_IT(&htim2, TIM_IT_UPDATE);
 }
 
 /* Create an ISR which is called whenever the timer has expired. This function

@@ -43,7 +43,7 @@ static void Discrete_Input_Task(void *pvParameters);
 
 void Discrete_Input_Init(void)
 {
-	xTaskCreate(Discrete_Input_Task,(signed char*)"Discr input polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
+	xTaskCreate(Discrete_Input_Task,(const char*)"Discr input polling",128,NULL, tskIDLE_PRIORITY + 1, NULL);
 }
 
 

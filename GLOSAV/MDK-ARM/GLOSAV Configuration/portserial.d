@@ -1,6 +1,5 @@
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeModbus\port\portserial.c
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\portserial.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\portserial.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\portserial.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 glosav configuration\portserial.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
@@ -57,6 +56,7 @@ glosav configuration\portserial.o: ..\Inc\config.h
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\portserial.o: ..\Inc\usart.h
 glosav configuration\portserial.o: ..\Inc\usart_app.h
+glosav configuration\portserial.o: ..\Inc\fifo.h
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mbport.h
 glosav configuration\portserial.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mbproto.h

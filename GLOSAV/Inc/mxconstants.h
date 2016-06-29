@@ -4,7 +4,7 @@
   * Description        : This file contains the common defines of the application
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -50,8 +50,6 @@
 #define in_1_wire_in_GPIO_Port GPIOC
 #define out_1_Wire_ctrl_Pin GPIO_PIN_1
 #define out_1_Wire_ctrl_GPIO_Port GPIOC
-#define in_case_open_o_Pin GPIO_PIN_13
-#define in_case_open_o_GPIO_Port GPIOF
 #define in_case_open_sw_Pin GPIO_PIN_14
 #define in_case_open_sw_GPIO_Port GPIOF
 #define out_SPI2_NSS_Pin GPIO_PIN_12

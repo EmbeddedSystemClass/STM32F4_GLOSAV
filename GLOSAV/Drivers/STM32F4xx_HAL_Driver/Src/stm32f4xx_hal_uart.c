@@ -1766,7 +1766,6 @@ static HAL_StatusTypeDef UART_EndTransmit_IT(UART_HandleTypeDef *huart)
   * @param  huart: pointer to a UART_HandleTypeDef structure that contains
   *                the configuration information for the specified UART module.
   * @retval HAL status
-Modified for endless receive from Bykov!
   */
 static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
 {
@@ -1782,30 +1781,27 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
       if(huart->Init.Parity == UART_PARITY_NONE)
       {
         *tmp = (uint16_t)(huart->Instance->DR & (uint16_t)0x01FF);
-//        huart->pRxBuffPtr += 2;		// Bykov
+        huart->pRxBuffPtr += 2;
       }
       else
       {
         *tmp = (uint16_t)(huart->Instance->DR & (uint16_t)0x00FF);
-//        huart->pRxBuffPtr += 1; // Bykov
+        huart->pRxBuffPtr += 1;
       }
     }
     else
     {
       if(huart->Init.Parity == UART_PARITY_NONE)
       {
-//        *huart->pRxBuffPtr++ = (uint8_t)(huart->Instance->DR & (uint8_t)0x00FF); // Bykov
-        *huart->pRxBuffPtr = (uint8_t)(huart->Instance->DR & (uint8_t)0x00FF);
+        *huart->pRxBuffPtr++ = (uint8_t)(huart->Instance->DR & (uint8_t)0x00FF);
       }
       else
       {
-//        *huart->pRxBuffPtr++ = (uint8_t)(huart->Instance->DR & (uint8_t)0x007F); // Bykov
-        *huart->pRxBuffPtr = (uint8_t)(huart->Instance->DR & (uint8_t)0x007F);
+        *huart->pRxBuffPtr++ = (uint8_t)(huart->Instance->DR & (uint8_t)0x007F);
       }
     }
 
-//    if(--huart->RxXferCount == 0) // Bykov
-    if(huart->RxXferCount == 0)
+    if(--huart->RxXferCount == 0)
     {
       __HAL_UART_DISABLE_IT(huart, UART_IT_RXNE);
 
@@ -1828,7 +1824,6 @@ static HAL_StatusTypeDef UART_Receive_IT(UART_HandleTypeDef *huart)
 
       return HAL_OK;
     }
-      HAL_UART_RxCpltCallback(huart);	// Bykov
     return HAL_OK;
   }
   else

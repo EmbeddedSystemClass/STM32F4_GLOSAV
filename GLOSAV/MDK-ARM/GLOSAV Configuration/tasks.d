@@ -53,7 +53,6 @@ glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeRTOS\Source\include
 glosav configuration\tasks.o: ..\Inc\usart.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\modbus\include\mb.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\port\port.h
-glosav configuration\tasks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 glosav configuration\tasks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
 glosav configuration\tasks.o: ..\Inc\config.h
@@ -63,5 +62,6 @@ glosav configuration\tasks.o: ..\Middlewares\Third_Party\FreeModbus\modbus\inclu
 glosav configuration\tasks.o: ..\Src\mb_app.h
 glosav configuration\tasks.o: ..\Src\can_app.h
 glosav configuration\tasks.o: ..\Src\mfunc_app.h
-glosav configuration\tasks.o: ..\Src\usart_app.h
+glosav configuration\tasks.o: ..\Inc\usart_app.h
+glosav configuration\tasks.o: ..\Inc\fifo.h
 glosav configuration\tasks.o: ..\Src\count_input_app.h
